@@ -1,0 +1,4 @@
+comment = 'unsigned integer types'
+default_version = 0
+module_pathname = '$libdir/uint'
+relocatable = true

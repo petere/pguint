@@ -1,0 +1,32 @@
+SELECT '55'::uint4;
+ uint4 
+-------
+ 55
+(1 row)
+
+SELECT ''::uint4;
+ERROR:  invalid input syntax for unsigned integer: ""
+LINE 1: SELECT ''::uint4;
+               ^
+SELECT '-55'::uint4;
+ERROR:  invalid input syntax for unsigned integer: "-55"
+LINE 1: SELECT '-55'::uint4;
+               ^
+CREATE TABLE test4 (a uint4);
+INSERT INTO test4 VALUES (1), (2), (3), (4), (5);
+SELECT a FROM test4;
+ a 
+---
+ 1
+ 2
+ 3
+ 4
+ 5
+(5 rows)
+
+SELECT avg(a) FROM test4;
+        avg         
+--------------------
+ 3.0000000000000000
+(1 row)
+
