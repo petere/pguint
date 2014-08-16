@@ -10,3 +10,5 @@ INSERT INTO test4 VALUES (1), (2), (3), (4), (5);
 SELECT a FROM test4;
 
 SELECT avg(a) FROM test4;
+
+SELECT sum(a) FROM test4;
