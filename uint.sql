@@ -1,10 +1,49 @@
+CREATE TYPE uint2;
+
+CREATE FUNCTION uint2in(cstring) RETURNS uint2
+    IMMUTABLE
+    LANGUAGE C
+    AS '$libdir/uint', 'uint2in';
+
+CREATE FUNCTION uint2out(uint2) RETURNS cstring
+    IMMUTABLE
+    LANGUAGE C
+    AS '$libdir/uint', 'uint2out';
+
+CREATE TYPE uint2 (
+    INPUT = uint2in,
+    OUTPUT = uint2out,
+    INTERNALLENGTH = 2,
+    PASSEDBYVALUE,
+    ALIGNMENT = int2
+);
+
+CREATE CAST (bigint AS uint2) WITH INOUT AS ASSIGNMENT;
+CREATE CAST (int AS uint2) WITH INOUT AS ASSIGNMENT;
+CREATE CAST (double precision AS uint2) WITH INOUT AS ASSIGNMENT;
+CREATE CAST (numeric AS uint2) WITH INOUT AS ASSIGNMENT;
+CREATE CAST (oid AS uint2) WITH INOUT AS ASSIGNMENT;
+CREATE CAST (real AS uint2) WITH INOUT AS ASSIGNMENT;
+CREATE CAST (smallint AS uint2) WITH INOUT AS ASSIGNMENT;
+
+CREATE CAST (uint2 AS bigint) WITH INOUT AS IMPLICIT;
+CREATE CAST (uint2 AS double precision) WITH INOUT AS IMPLICIT;
+CREATE CAST (uint2 AS money) WITH INOUT AS ASSIGNMENT;
+CREATE CAST (uint2 AS numeric) WITH INOUT AS IMPLICIT;
+CREATE CAST (uint2 AS oid) WITH INOUT AS IMPLICIT;
+CREATE CAST (uint2 AS real) WITH INOUT AS IMPLICIT;
+CREATE CAST (uint2 AS smallint) WITH INOUT AS ASSIGNMENT;
+
+
 CREATE TYPE uint4;
 
 CREATE FUNCTION uint4in(cstring) RETURNS uint4
+    IMMUTABLE
     LANGUAGE C
     AS '$libdir/uint', 'uint4in';
 
 CREATE FUNCTION uint4out(uint4) RETURNS cstring
+    IMMUTABLE
     LANGUAGE C
     AS '$libdir/uint', 'uint4out';
 
@@ -54,3 +93,7 @@ CREATE AGGREGATE sum(uint4) (
     SFUNC = uint4_sum,
     STYPE = int8
 );
+
+
+CREATE CAST (uint2 AS uint4) WITH INOUT AS IMPLICIT;
+CREATE CAST (uint4 AS uint2) WITH INOUT AS ASSIGNMENT;

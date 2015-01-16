@@ -1,3 +1,33 @@
+SELECT '55'::uint2;
+ uint2 
+-------
+ 55
+(1 row)
+
+SELECT '70000'::uint2;
+ERROR:  value "70000" is out of range for type uint2
+LINE 1: SELECT '70000'::uint2;
+               ^
+SELECT ''::uint2;
+ERROR:  invalid input syntax for unsigned integer: ""
+LINE 1: SELECT ''::uint2;
+               ^
+SELECT '-55'::uint2;
+ERROR:  invalid input syntax for unsigned integer: "-55"
+LINE 1: SELECT '-55'::uint2;
+               ^
+CREATE TABLE test2 (a uint2);
+INSERT INTO test2 VALUES (1), (2), (3), (4), (5);
+SELECT a FROM test2;
+ a 
+---
+ 1
+ 2
+ 3
+ 4
+ 5
+(5 rows)
+
 SELECT '55'::uint4;
  uint4 
 -------

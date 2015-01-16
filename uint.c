@@ -1,17 +1,61 @@
 #include <postgres.h>
 #include <fmgr.h>
 
+#include <limits.h>
+
 #include <utils/array.h>
 #include <utils/builtins.h>
 
 
 PG_MODULE_MAGIC;
 
+PG_FUNCTION_INFO_V1(uint2in);
+PG_FUNCTION_INFO_V1(uint2out);
 PG_FUNCTION_INFO_V1(uint4in);
 PG_FUNCTION_INFO_V1(uint4out);
 PG_FUNCTION_INFO_V1(uint4_avg_accum);
 PG_FUNCTION_INFO_V1(int8_avg);
 PG_FUNCTION_INFO_V1(uint4_sum);
+
+Datum
+uint2in(PG_FUNCTION_ARGS)
+{
+	char	   *s = PG_GETARG_CSTRING(0);
+	unsigned long int result;
+
+	if (s == NULL)
+		elog(ERROR, "NULL pointer");
+	if (*s == 0)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+				 errmsg("invalid input syntax for unsigned integer: \"%s\"",
+						s)));
+
+	if (strchr(s, '-'))
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+				 errmsg("invalid input syntax for unsigned integer: \"%s\"",
+						s)));
+
+	errno = 0;
+	result = strtoul(s, NULL, 10);
+	if (errno == ERANGE || result > USHRT_MAX)
+		ereport(ERROR,
+				(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+				 errmsg("value \"%s\" is out of range for type uint2", s)));
+
+	PG_RETURN_UINT16(result);
+}
+
+Datum
+uint2out(PG_FUNCTION_ARGS)
+{
+	uint16		arg1 = PG_GETARG_UINT16(0);
+	char	   *result = (char *) palloc(11);	/* 10 digits, '\0' */
+
+	sprintf(result, "%u", arg1);
+	PG_RETURN_CSTRING(result);
+}
 
 Datum
 uint4in(PG_FUNCTION_ARGS)
