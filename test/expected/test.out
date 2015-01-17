@@ -66,3 +66,29 @@ SELECT sum(a) FROM test4;
   15
 (1 row)
 
+SELECT '55'::uint8;
+ uint8 
+-------
+ 55
+(1 row)
+
+SELECT ''::uint8;
+ERROR:  invalid input syntax for unsigned integer: ""
+LINE 1: SELECT ''::uint8;
+               ^
+SELECT '-55'::uint8;
+ERROR:  invalid input syntax for unsigned integer: "-55"
+LINE 1: SELECT '-55'::uint8;
+               ^
+CREATE TABLE test8 (a uint8);
+INSERT INTO test8 VALUES (1), (2), (3), (4), (5);
+SELECT a FROM test8;
+ a 
+---
+ 1
+ 2
+ 3
+ 4
+ 5
+(5 rows)
+

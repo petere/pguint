@@ -13,9 +13,18 @@ PG_FUNCTION_INFO_V1(uint2in);
 PG_FUNCTION_INFO_V1(uint2out);
 PG_FUNCTION_INFO_V1(uint4in);
 PG_FUNCTION_INFO_V1(uint4out);
+PG_FUNCTION_INFO_V1(uint8in);
+PG_FUNCTION_INFO_V1(uint8out);
 PG_FUNCTION_INFO_V1(uint4_avg_accum);
 PG_FUNCTION_INFO_V1(int8_avg);
 PG_FUNCTION_INFO_V1(uint4_sum);
+
+#define DatumGetUInt64(X)	((uint64) GET_8_BYTES(X))
+#define UInt64GetDatum(X)	((Datum) SET_8_BYTES(X))
+
+#define PG_GETARG_UINT64(n)	DatumGetUInt64(PG_GETARG_DATUM(n))
+#define PG_RETURN_UINT64(x)	return UInt64GetDatum(x)
+
 
 Datum
 uint2in(PG_FUNCTION_ARGS)
@@ -89,6 +98,41 @@ uint4out(PG_FUNCTION_ARGS)
 	char	   *result = (char *) palloc(11);	/* 10 digits, '\0' */
 
 	sprintf(result, "%u", arg1);
+	PG_RETURN_CSTRING(result);
+}
+
+Datum
+uint8in(PG_FUNCTION_ARGS)
+{
+	char	   *s = PG_GETARG_CSTRING(0);
+	unsigned long long int result;
+
+	if (s == NULL)
+		elog(ERROR, "NULL pointer");
+	if (*s == 0)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+				 errmsg("invalid input syntax for unsigned integer: \"%s\"",
+						s)));
+
+	if (strchr(s, '-'))
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+				 errmsg("invalid input syntax for unsigned integer: \"%s\"",
+						s)));
+
+	result = strtoull(s, NULL, 10);
+
+	PG_RETURN_UINT64(result);
+}
+
+Datum
+uint8out(PG_FUNCTION_ARGS)
+{
+	uint64		arg1 = PG_GETARG_UINT64(0);
+	char	   *result = (char *) palloc(21);	/* 20 digits, '\0' */
+
+	sprintf(result, "%llu", arg1);
 	PG_RETURN_CSTRING(result);
 }
 

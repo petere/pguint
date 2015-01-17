@@ -25,3 +25,15 @@ SELECT a FROM test4;
 SELECT avg(a) FROM test4;
 
 SELECT sum(a) FROM test4;
+
+
+SELECT '55'::uint8;
+SELECT ''::uint8;
+SELECT '-55'::uint8;
+
+
+CREATE TABLE test8 (a uint8);
+
+INSERT INTO test8 VALUES (1), (2), (3), (4), (5);
+
+SELECT a FROM test8;
