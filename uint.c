@@ -1,6 +1,7 @@
 #include <postgres.h>
 #include <fmgr.h>
 
+#include <inttypes.h>
 #include <limits.h>
 
 #include <utils/array.h>
@@ -31,6 +32,9 @@ PG_FUNCTION_INFO_V1(uint4_sum);
 #define PG_RETURN_INT8(x)	return Int8GetDatum(x)
 #define PG_GETARG_UINT8(n)	DatumGetUInt8(PG_GETARG_DATUM(n))
 #define PG_RETURN_UINT8(x)	return UInt8GetDatum(x)
+#ifndef PG_RETURN_UINT16
+#define PG_RETURN_UINT16(x)	return UInt16GetDatum(x)
+#endif
 #define PG_GETARG_UINT64(n)	DatumGetUInt64(PG_GETARG_DATUM(n))
 #define PG_RETURN_UINT64(x)	return UInt64GetDatum(x)
 
@@ -215,7 +219,7 @@ uint8out(PG_FUNCTION_ARGS)
 	uint64		arg1 = PG_GETARG_UINT64(0);
 	char	   *result = (char *) palloc(21);	/* 20 digits, '\0' */
 
-	sprintf(result, "%llu", arg1);
+	sprintf(result, "%"PRIu64, arg1);
 	PG_RETURN_CSTRING(result);
 }
 
