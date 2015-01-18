@@ -1,3 +1,57 @@
+SELECT '55'::int1;
+ int1 
+------
+ 55
+(1 row)
+
+SELECT '200'::int1;
+ERROR:  value "200" is out of range for type int1
+LINE 1: SELECT '200'::int1;
+               ^
+SELECT ''::int1;
+ERROR:  invalid input syntax for integer: ""
+LINE 1: SELECT ''::int1;
+               ^
+SELECT '-55'::int1;
+ int1 
+------
+ -55
+(1 row)
+
+SELECT '-200'::int1;
+ERROR:  value "-200" is out of range for type int1
+LINE 1: SELECT '-200'::int1;
+               ^
+SELECT '55'::uint1;
+ uint1 
+-------
+ 55
+(1 row)
+
+SELECT '300'::uint1;
+ERROR:  value "300" is out of range for type uint1
+LINE 1: SELECT '300'::uint1;
+               ^
+SELECT ''::uint1;
+ERROR:  invalid input syntax for unsigned integer: ""
+LINE 1: SELECT ''::uint1;
+               ^
+SELECT '-55'::uint1;
+ERROR:  invalid input syntax for unsigned integer: "-55"
+LINE 1: SELECT '-55'::uint1;
+               ^
+CREATE TABLE test1 (a int1, b uint1);
+INSERT INTO test1 VALUES (-2, 1), (-1, 2), (0, 3), (1, 4), (2, 5);
+SELECT a, b FROM test1;
+ a  | b 
+----+---
+ -2 | 1
+ -1 | 2
+ 0  | 3
+ 1  | 4
+ 2  | 5
+(5 rows)
+
 SELECT '55'::uint2;
  uint2 
 -------

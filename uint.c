@@ -9,6 +9,10 @@
 
 PG_MODULE_MAGIC;
 
+PG_FUNCTION_INFO_V1(int1in);
+PG_FUNCTION_INFO_V1(int1out);
+PG_FUNCTION_INFO_V1(uint1in);
+PG_FUNCTION_INFO_V1(uint1out);
 PG_FUNCTION_INFO_V1(uint2in);
 PG_FUNCTION_INFO_V1(uint2out);
 PG_FUNCTION_INFO_V1(uint4in);
@@ -19,12 +23,91 @@ PG_FUNCTION_INFO_V1(uint4_avg_accum);
 PG_FUNCTION_INFO_V1(int8_avg);
 PG_FUNCTION_INFO_V1(uint4_sum);
 
+#define DatumGetInt8(X)		((int8) GET_1_BYTE(X))  /* XXX */
 #define DatumGetUInt64(X)	((uint64) GET_8_BYTES(X))
 #define UInt64GetDatum(X)	((Datum) SET_8_BYTES(X))
 
+#define PG_GETARG_INT8(n)	DatumGetInt8(PG_GETARG_DATUM(n))
+#define PG_RETURN_INT8(x)	return Int8GetDatum(x)
+#define PG_GETARG_UINT8(n)	DatumGetUInt8(PG_GETARG_DATUM(n))
+#define PG_RETURN_UINT8(x)	return UInt8GetDatum(x)
 #define PG_GETARG_UINT64(n)	DatumGetUInt64(PG_GETARG_DATUM(n))
 #define PG_RETURN_UINT64(x)	return UInt64GetDatum(x)
 
+
+Datum
+int1in(PG_FUNCTION_ARGS)
+{
+	char	   *s = PG_GETARG_CSTRING(0);
+	long int	result;
+
+	if (s == NULL)
+		elog(ERROR, "NULL pointer");
+	if (*s == 0)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+				 errmsg("invalid input syntax for integer: \"%s\"",
+						s)));
+
+	errno = 0;
+	result = strtol(s, NULL, 10);
+	if (errno == ERANGE || result > SCHAR_MAX || result < SCHAR_MIN)
+		ereport(ERROR,
+				(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+				 errmsg("value \"%s\" is out of range for type int1", s)));
+
+	PG_RETURN_INT8(result);
+}
+
+Datum
+int1out(PG_FUNCTION_ARGS)
+{
+	int8		arg1 = PG_GETARG_INT8(0);
+	char	   *result = (char *) palloc(11);	/* 10 digits, '\0' */
+
+	sprintf(result, "%d", arg1);
+	PG_RETURN_CSTRING(result);
+}
+
+Datum
+uint1in(PG_FUNCTION_ARGS)
+{
+	char	   *s = PG_GETARG_CSTRING(0);
+	unsigned long int result;
+
+	if (s == NULL)
+		elog(ERROR, "NULL pointer");
+	if (*s == 0)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+				 errmsg("invalid input syntax for unsigned integer: \"%s\"",
+						s)));
+
+	if (strchr(s, '-'))
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+				 errmsg("invalid input syntax for unsigned integer: \"%s\"",
+						s)));
+
+	errno = 0;
+	result = strtoul(s, NULL, 10);
+	if (errno == ERANGE || result > UCHAR_MAX)
+		ereport(ERROR,
+				(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+				 errmsg("value \"%s\" is out of range for type uint1", s)));
+
+	PG_RETURN_UINT8(result);
+}
+
+Datum
+uint1out(PG_FUNCTION_ARGS)
+{
+	uint8		arg1 = PG_GETARG_UINT8(0);
+	char	   *result = (char *) palloc(11);	/* 10 digits, '\0' */
+
+	sprintf(result, "%u", arg1);
+	PG_RETURN_CSTRING(result);
+}
 
 Datum
 uint2in(PG_FUNCTION_ARGS)
