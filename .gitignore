@@ -1,0 +1,7 @@
+*.o
+*.so
+/results/
+/*--*.sql
+/compare.c
+/compare.sql
+/test/sql/compare.sql

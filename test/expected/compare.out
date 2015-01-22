@@ -1,0 +1,5940 @@
+SELECT '1'::int1 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 < '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 < '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 < '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 < '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 < '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 < '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 < '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 < '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 < '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 < '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 < '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 < '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 < '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 < '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 < '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
