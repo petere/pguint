@@ -56,24 +56,26 @@ CREATE OPERATOR %s (
        op, funcname, leftarg, rightarg))
 
 
+def write_code(f_c, f_sql, leftarg, rightarg, op, rettype):
+    funcname = leftarg + rightarg + op_words[op]
+    write_c_function(f_c, funcname, leftarg, rightarg, op, rettype)
+    write_sql_operator(f_sql, funcname, leftarg, rightarg, op, rettype)
+
+
 for leftarg in new_types + old_types:
     for rightarg in new_types + old_types:
         if leftarg in old_types and rightarg in old_types:
             continue
         for op in ['<', '<=', '=', '<>', '>=', '>']:
-            funcname = leftarg + rightarg + op_words[op]
-            write_c_function(f_operators_c, funcname, leftarg, rightarg, op, rettype='boolean')
-            write_sql_operator(f_operators_sql, funcname, leftarg, rightarg, op, rettype='boolean')
+            write_code(f_operators_c, f_operators_sql, leftarg, rightarg, op, rettype='boolean')
             f_test_operators_sql.write("SELECT '1'::%s %s '1'::%s;\n" % (leftarg, op, rightarg))
             f_test_operators_sql.write("SELECT '5'::%s %s '2'::%s;\n" % (leftarg, op, rightarg))
             f_test_operators_sql.write("SELECT '3'::%s %s '4'::%s;\n" % (leftarg, op, rightarg))
         f_test_operators_sql.write("\n")
 
         for op in ['+', '-', '*', '/', '%']:
-            funcname = leftarg + rightarg + op_words[op]
             rettype = max(leftarg, rightarg)
-            write_c_function(f_operators_c, funcname, leftarg, rightarg, op, rettype)
-            write_sql_operator(f_operators_sql, funcname, leftarg, rightarg, op, rettype)
+            write_code(f_operators_c, f_operators_sql, leftarg, rightarg, op, rettype)
             f_test_operators_sql.write("SELECT pg_typeof('1'::%s %s '1'::%s);\n" % (leftarg, op, rightarg))
             f_test_operators_sql.write("SELECT '1'::%s %s '1'::%s;\n" % (leftarg, op, rightarg))
             f_test_operators_sql.write("SELECT '3'::%s %s '4'::%s;\n" % (leftarg, op, rightarg))
