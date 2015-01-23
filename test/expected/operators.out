@@ -1,0 +1,12540 @@
+SELECT '1'::int1 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int1 + '1'::int1);
+ pg_typeof 
+-----------
+ int1
+(1 row)
+
+SELECT '1'::int1 + '1'::int1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int1 + '4'::int1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int1 + '2'::int1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int1 - '1'::int1);
+ pg_typeof 
+-----------
+ int1
+(1 row)
+
+SELECT '1'::int1 - '1'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int1 - '4'::int1;
+ ?column? 
+----------
+ -1
+(1 row)
+
+SELECT '5'::int1 - '2'::int1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int1 * '1'::int1);
+ pg_typeof 
+-----------
+ int1
+(1 row)
+
+SELECT '1'::int1 * '1'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int1 * '4'::int1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int1 * '2'::int1;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int1 / '1'::int1);
+ pg_typeof 
+-----------
+ int1
+(1 row)
+
+SELECT '1'::int1 / '1'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int1 / '4'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int1 / '2'::int1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int1 % '1'::int1);
+ pg_typeof 
+-----------
+ int1
+(1 row)
+
+SELECT '1'::int1 % '1'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int1 % '4'::int1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int1 % '2'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int1 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int1 + '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int1 + '1'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int1 + '4'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int1 + '2'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int1 - '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int1 - '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int1 - '4'::uint1;
+ ?column? 
+----------
+ 255
+(1 row)
+
+SELECT '5'::int1 - '2'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int1 * '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int1 * '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int1 * '4'::uint1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int1 * '2'::uint1;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int1 / '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int1 / '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int1 / '4'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int1 / '2'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int1 % '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int1 % '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int1 % '4'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int1 % '2'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int1 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int1 + '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int1 + '1'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int1 + '4'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int1 + '2'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int1 - '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int1 - '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int1 - '4'::uint2;
+ ?column? 
+----------
+ 65535
+(1 row)
+
+SELECT '5'::int1 - '2'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int1 * '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int1 * '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int1 * '4'::uint2;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int1 * '2'::uint2;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int1 / '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int1 / '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int1 / '4'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int1 / '2'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int1 % '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int1 % '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int1 % '4'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int1 % '2'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int1 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int1 + '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int1 + '1'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int1 + '4'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int1 + '2'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int1 - '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int1 - '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int1 - '4'::uint4;
+  ?column?  
+------------
+ 4294967295
+(1 row)
+
+SELECT '5'::int1 - '2'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int1 * '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int1 * '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int1 * '4'::uint4;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int1 * '2'::uint4;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int1 / '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int1 / '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int1 / '4'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int1 / '2'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int1 % '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int1 % '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int1 % '4'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int1 % '2'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int1 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int1 + '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int1 + '1'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int1 + '4'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int1 + '2'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int1 - '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int1 - '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int1 - '4'::uint8;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::int1 - '2'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int1 * '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int1 * '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int1 * '4'::uint8;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int1 * '2'::uint8;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int1 / '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int1 / '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int1 / '4'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int1 / '2'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int1 % '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int1 % '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int1 % '4'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int1 % '2'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int1 < '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int1 + '1'::int2);
+ pg_typeof 
+-----------
+ smallint
+(1 row)
+
+SELECT '1'::int1 + '1'::int2;
+ ?column? 
+----------
+        2
+(1 row)
+
+SELECT '3'::int1 + '4'::int2;
+ ?column? 
+----------
+        7
+(1 row)
+
+SELECT '5'::int1 + '2'::int2;
+ ?column? 
+----------
+        7
+(1 row)
+
+SELECT pg_typeof('1'::int1 - '1'::int2);
+ pg_typeof 
+-----------
+ smallint
+(1 row)
+
+SELECT '1'::int1 - '1'::int2;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int1 - '4'::int2;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '5'::int1 - '2'::int2;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT pg_typeof('1'::int1 * '1'::int2);
+ pg_typeof 
+-----------
+ smallint
+(1 row)
+
+SELECT '1'::int1 * '1'::int2;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::int1 * '4'::int2;
+ ?column? 
+----------
+       12
+(1 row)
+
+SELECT '5'::int1 * '2'::int2;
+ ?column? 
+----------
+       10
+(1 row)
+
+SELECT pg_typeof('1'::int1 / '1'::int2);
+ pg_typeof 
+-----------
+ smallint
+(1 row)
+
+SELECT '1'::int1 / '1'::int2;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::int1 / '4'::int2;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '5'::int1 / '2'::int2;
+ ?column? 
+----------
+        2
+(1 row)
+
+SELECT pg_typeof('1'::int1 % '1'::int2);
+ pg_typeof 
+-----------
+ smallint
+(1 row)
+
+SELECT '1'::int1 % '1'::int2;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int1 % '4'::int2;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int1 % '2'::int2;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '1'::int1 < '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int1 + '1'::int4);
+ pg_typeof 
+-----------
+ integer
+(1 row)
+
+SELECT '1'::int1 + '1'::int4;
+ ?column? 
+----------
+        2
+(1 row)
+
+SELECT '3'::int1 + '4'::int4;
+ ?column? 
+----------
+        7
+(1 row)
+
+SELECT '5'::int1 + '2'::int4;
+ ?column? 
+----------
+        7
+(1 row)
+
+SELECT pg_typeof('1'::int1 - '1'::int4);
+ pg_typeof 
+-----------
+ integer
+(1 row)
+
+SELECT '1'::int1 - '1'::int4;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int1 - '4'::int4;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '5'::int1 - '2'::int4;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT pg_typeof('1'::int1 * '1'::int4);
+ pg_typeof 
+-----------
+ integer
+(1 row)
+
+SELECT '1'::int1 * '1'::int4;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::int1 * '4'::int4;
+ ?column? 
+----------
+       12
+(1 row)
+
+SELECT '5'::int1 * '2'::int4;
+ ?column? 
+----------
+       10
+(1 row)
+
+SELECT pg_typeof('1'::int1 / '1'::int4);
+ pg_typeof 
+-----------
+ integer
+(1 row)
+
+SELECT '1'::int1 / '1'::int4;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::int1 / '4'::int4;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '5'::int1 / '2'::int4;
+ ?column? 
+----------
+        2
+(1 row)
+
+SELECT pg_typeof('1'::int1 % '1'::int4);
+ pg_typeof 
+-----------
+ integer
+(1 row)
+
+SELECT '1'::int1 % '1'::int4;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int1 % '4'::int4;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int1 % '2'::int4;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '1'::int1 < '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 < '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 < '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 <= '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int1 <= '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 = '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 = '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 = '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 <> '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 <> '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 <> '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int1 >= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int1 >= '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 >= '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int1 > '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int1 > '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int1 > '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int1 + '1'::int8);
+ pg_typeof 
+-----------
+ bigint
+(1 row)
+
+SELECT '1'::int1 + '1'::int8;
+ ?column? 
+----------
+        2
+(1 row)
+
+SELECT '3'::int1 + '4'::int8;
+ ?column? 
+----------
+        7
+(1 row)
+
+SELECT '5'::int1 + '2'::int8;
+ ?column? 
+----------
+        7
+(1 row)
+
+SELECT pg_typeof('1'::int1 - '1'::int8);
+ pg_typeof 
+-----------
+ bigint
+(1 row)
+
+SELECT '1'::int1 - '1'::int8;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int1 - '4'::int8;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '5'::int1 - '2'::int8;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT pg_typeof('1'::int1 * '1'::int8);
+ pg_typeof 
+-----------
+ bigint
+(1 row)
+
+SELECT '1'::int1 * '1'::int8;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::int1 * '4'::int8;
+ ?column? 
+----------
+       12
+(1 row)
+
+SELECT '5'::int1 * '2'::int8;
+ ?column? 
+----------
+       10
+(1 row)
+
+SELECT pg_typeof('1'::int1 / '1'::int8);
+ pg_typeof 
+-----------
+ bigint
+(1 row)
+
+SELECT '1'::int1 / '1'::int8;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::int1 / '4'::int8;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '5'::int1 / '2'::int8;
+ ?column? 
+----------
+        2
+(1 row)
+
+SELECT pg_typeof('1'::int1 % '1'::int8);
+ pg_typeof 
+-----------
+ bigint
+(1 row)
+
+SELECT '1'::int1 % '1'::int8;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int1 % '4'::int8;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int1 % '2'::int8;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '1'::uint1 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint1 + '1'::int1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 + '1'::int1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint1 + '4'::int1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint1 + '2'::int1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint1 - '1'::int1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 - '1'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 - '4'::int1;
+ ?column? 
+----------
+ 255
+(1 row)
+
+SELECT '5'::uint1 - '2'::int1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint1 * '1'::int1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 * '1'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 * '4'::int1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint1 * '2'::int1;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint1 / '1'::int1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 / '1'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 / '4'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint1 / '2'::int1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint1 % '1'::int1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 % '1'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 % '4'::int1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint1 % '2'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint1 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint1 + '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 + '1'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint1 + '4'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint1 + '2'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint1 - '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 - '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 - '4'::uint1;
+ ?column? 
+----------
+ 255
+(1 row)
+
+SELECT '5'::uint1 - '2'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint1 * '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 * '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 * '4'::uint1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint1 * '2'::uint1;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint1 / '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 / '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 / '4'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint1 / '2'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint1 % '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 % '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 % '4'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint1 % '2'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint1 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint1 + '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint1 + '1'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint1 + '4'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint1 + '2'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint1 - '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint1 - '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 - '4'::uint2;
+ ?column? 
+----------
+ 65535
+(1 row)
+
+SELECT '5'::uint1 - '2'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint1 * '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint1 * '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 * '4'::uint2;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint1 * '2'::uint2;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint1 / '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint1 / '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 / '4'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint1 / '2'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint1 % '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint1 % '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 % '4'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint1 % '2'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint1 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint1 + '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint1 + '1'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint1 + '4'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint1 + '2'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint1 - '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint1 - '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 - '4'::uint4;
+  ?column?  
+------------
+ 4294967295
+(1 row)
+
+SELECT '5'::uint1 - '2'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint1 * '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint1 * '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 * '4'::uint4;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint1 * '2'::uint4;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint1 / '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint1 / '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 / '4'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint1 / '2'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint1 % '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint1 % '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 % '4'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint1 % '2'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint1 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint1 + '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint1 + '1'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint1 + '4'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint1 + '2'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint1 - '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint1 - '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 - '4'::uint8;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::uint1 - '2'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint1 * '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint1 * '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 * '4'::uint8;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint1 * '2'::uint8;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint1 / '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint1 / '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 / '4'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint1 / '2'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint1 % '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint1 % '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 % '4'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint1 % '2'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint1 < '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint1 + '1'::int2);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 + '1'::int2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint1 + '4'::int2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint1 + '2'::int2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint1 - '1'::int2);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 - '1'::int2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 - '4'::int2;
+ ?column? 
+----------
+ 255
+(1 row)
+
+SELECT '5'::uint1 - '2'::int2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint1 * '1'::int2);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 * '1'::int2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 * '4'::int2;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint1 * '2'::int2;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint1 / '1'::int2);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 / '1'::int2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 / '4'::int2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint1 / '2'::int2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint1 % '1'::int2);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 % '1'::int2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 % '4'::int2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint1 % '2'::int2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint1 < '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint1 + '1'::int4);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 + '1'::int4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint1 + '4'::int4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint1 + '2'::int4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint1 - '1'::int4);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 - '1'::int4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 - '4'::int4;
+ ?column? 
+----------
+ 255
+(1 row)
+
+SELECT '5'::uint1 - '2'::int4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint1 * '1'::int4);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 * '1'::int4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 * '4'::int4;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint1 * '2'::int4;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint1 / '1'::int4);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 / '1'::int4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 / '4'::int4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint1 / '2'::int4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint1 % '1'::int4);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 % '1'::int4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 % '4'::int4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint1 % '2'::int4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint1 < '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 < '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 < '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 <= '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint1 <= '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 = '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 = '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 = '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 <> '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 <> '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 <> '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint1 >= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint1 >= '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 >= '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint1 > '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint1 > '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint1 > '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint1 + '1'::int8);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 + '1'::int8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint1 + '4'::int8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint1 + '2'::int8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint1 - '1'::int8);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 - '1'::int8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 - '4'::int8;
+ ?column? 
+----------
+ 255
+(1 row)
+
+SELECT '5'::uint1 - '2'::int8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint1 * '1'::int8);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 * '1'::int8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 * '4'::int8;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint1 * '2'::int8;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint1 / '1'::int8);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 / '1'::int8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint1 / '4'::int8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint1 / '2'::int8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint1 % '1'::int8);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::uint1 % '1'::int8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint1 % '4'::int8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint1 % '2'::int8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint2 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint2 + '1'::int1);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 + '1'::int1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint2 + '4'::int1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint2 + '2'::int1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint2 - '1'::int1);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 - '1'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 - '4'::int1;
+ ?column? 
+----------
+ 65535
+(1 row)
+
+SELECT '5'::uint2 - '2'::int1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint2 * '1'::int1);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 * '1'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 * '4'::int1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint2 * '2'::int1;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint2 / '1'::int1);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 / '1'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 / '4'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint2 / '2'::int1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint2 % '1'::int1);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 % '1'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 % '4'::int1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint2 % '2'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint2 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint2 + '1'::uint1);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 + '1'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint2 + '4'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint2 + '2'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint2 - '1'::uint1);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 - '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 - '4'::uint1;
+ ?column? 
+----------
+ 65535
+(1 row)
+
+SELECT '5'::uint2 - '2'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint2 * '1'::uint1);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 * '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 * '4'::uint1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint2 * '2'::uint1;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint2 / '1'::uint1);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 / '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 / '4'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint2 / '2'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint2 % '1'::uint1);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 % '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 % '4'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint2 % '2'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint2 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint2 + '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 + '1'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint2 + '4'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint2 + '2'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint2 - '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 - '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 - '4'::uint2;
+ ?column? 
+----------
+ 65535
+(1 row)
+
+SELECT '5'::uint2 - '2'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint2 * '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 * '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 * '4'::uint2;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint2 * '2'::uint2;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint2 / '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 / '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 / '4'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint2 / '2'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint2 % '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 % '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 % '4'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint2 % '2'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint2 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint2 + '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint2 + '1'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint2 + '4'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint2 + '2'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint2 - '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint2 - '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 - '4'::uint4;
+  ?column?  
+------------
+ 4294967295
+(1 row)
+
+SELECT '5'::uint2 - '2'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint2 * '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint2 * '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 * '4'::uint4;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint2 * '2'::uint4;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint2 / '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint2 / '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 / '4'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint2 / '2'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint2 % '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint2 % '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 % '4'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint2 % '2'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint2 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint2 + '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint2 + '1'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint2 + '4'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint2 + '2'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint2 - '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint2 - '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 - '4'::uint8;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::uint2 - '2'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint2 * '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint2 * '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 * '4'::uint8;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint2 * '2'::uint8;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint2 / '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint2 / '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 / '4'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint2 / '2'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint2 % '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint2 % '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 % '4'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint2 % '2'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint2 < '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint2 + '1'::int2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 + '1'::int2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint2 + '4'::int2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint2 + '2'::int2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint2 - '1'::int2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 - '1'::int2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 - '4'::int2;
+ ?column? 
+----------
+ 65535
+(1 row)
+
+SELECT '5'::uint2 - '2'::int2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint2 * '1'::int2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 * '1'::int2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 * '4'::int2;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint2 * '2'::int2;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint2 / '1'::int2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 / '1'::int2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 / '4'::int2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint2 / '2'::int2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint2 % '1'::int2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 % '1'::int2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 % '4'::int2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint2 % '2'::int2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint2 < '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint2 + '1'::int4);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 + '1'::int4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint2 + '4'::int4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint2 + '2'::int4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint2 - '1'::int4);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 - '1'::int4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 - '4'::int4;
+ ?column? 
+----------
+ 65535
+(1 row)
+
+SELECT '5'::uint2 - '2'::int4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint2 * '1'::int4);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 * '1'::int4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 * '4'::int4;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint2 * '2'::int4;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint2 / '1'::int4);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 / '1'::int4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 / '4'::int4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint2 / '2'::int4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint2 % '1'::int4);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 % '1'::int4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 % '4'::int4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint2 % '2'::int4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint2 < '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 < '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 < '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 <= '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint2 <= '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 = '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 = '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 = '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 <> '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 <> '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 <> '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint2 >= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint2 >= '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 >= '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint2 > '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint2 > '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint2 > '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint2 + '1'::int8);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 + '1'::int8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint2 + '4'::int8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint2 + '2'::int8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint2 - '1'::int8);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 - '1'::int8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 - '4'::int8;
+ ?column? 
+----------
+ 65535
+(1 row)
+
+SELECT '5'::uint2 - '2'::int8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint2 * '1'::int8);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 * '1'::int8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 * '4'::int8;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint2 * '2'::int8;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint2 / '1'::int8);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 / '1'::int8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint2 / '4'::int8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint2 / '2'::int8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint2 % '1'::int8);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::uint2 % '1'::int8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint2 % '4'::int8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint2 % '2'::int8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint4 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint4 + '1'::int1);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 + '1'::int1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint4 + '4'::int1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint4 + '2'::int1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint4 - '1'::int1);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 - '1'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 - '4'::int1;
+  ?column?  
+------------
+ 4294967295
+(1 row)
+
+SELECT '5'::uint4 - '2'::int1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint4 * '1'::int1);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 * '1'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 * '4'::int1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint4 * '2'::int1;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint4 / '1'::int1);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 / '1'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 / '4'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint4 / '2'::int1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint4 % '1'::int1);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 % '1'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 % '4'::int1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint4 % '2'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint4 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint4 + '1'::uint1);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 + '1'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint4 + '4'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint4 + '2'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint4 - '1'::uint1);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 - '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 - '4'::uint1;
+  ?column?  
+------------
+ 4294967295
+(1 row)
+
+SELECT '5'::uint4 - '2'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint4 * '1'::uint1);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 * '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 * '4'::uint1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint4 * '2'::uint1;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint4 / '1'::uint1);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 / '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 / '4'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint4 / '2'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint4 % '1'::uint1);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 % '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 % '4'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint4 % '2'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint4 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint4 + '1'::uint2);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 + '1'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint4 + '4'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint4 + '2'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint4 - '1'::uint2);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 - '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 - '4'::uint2;
+  ?column?  
+------------
+ 4294967295
+(1 row)
+
+SELECT '5'::uint4 - '2'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint4 * '1'::uint2);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 * '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 * '4'::uint2;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint4 * '2'::uint2;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint4 / '1'::uint2);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 / '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 / '4'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint4 / '2'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint4 % '1'::uint2);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 % '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 % '4'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint4 % '2'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint4 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint4 + '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 + '1'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint4 + '4'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint4 + '2'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint4 - '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 - '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 - '4'::uint4;
+  ?column?  
+------------
+ 4294967295
+(1 row)
+
+SELECT '5'::uint4 - '2'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint4 * '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 * '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 * '4'::uint4;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint4 * '2'::uint4;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint4 / '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 / '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 / '4'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint4 / '2'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint4 % '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 % '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 % '4'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint4 % '2'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint4 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint4 + '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint4 + '1'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint4 + '4'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint4 + '2'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint4 - '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint4 - '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 - '4'::uint8;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::uint4 - '2'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint4 * '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint4 * '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 * '4'::uint8;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint4 * '2'::uint8;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint4 / '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint4 / '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 / '4'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint4 / '2'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint4 % '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint4 % '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 % '4'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint4 % '2'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint4 < '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint4 + '1'::int2);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 + '1'::int2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint4 + '4'::int2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint4 + '2'::int2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint4 - '1'::int2);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 - '1'::int2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 - '4'::int2;
+  ?column?  
+------------
+ 4294967295
+(1 row)
+
+SELECT '5'::uint4 - '2'::int2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint4 * '1'::int2);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 * '1'::int2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 * '4'::int2;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint4 * '2'::int2;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint4 / '1'::int2);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 / '1'::int2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 / '4'::int2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint4 / '2'::int2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint4 % '1'::int2);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 % '1'::int2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 % '4'::int2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint4 % '2'::int2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint4 < '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint4 + '1'::int4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 + '1'::int4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint4 + '4'::int4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint4 + '2'::int4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint4 - '1'::int4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 - '1'::int4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 - '4'::int4;
+  ?column?  
+------------
+ 4294967295
+(1 row)
+
+SELECT '5'::uint4 - '2'::int4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint4 * '1'::int4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 * '1'::int4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 * '4'::int4;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint4 * '2'::int4;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint4 / '1'::int4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 / '1'::int4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 / '4'::int4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint4 / '2'::int4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint4 % '1'::int4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 % '1'::int4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 % '4'::int4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint4 % '2'::int4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint4 < '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 < '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 < '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 <= '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint4 <= '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 = '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 = '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 = '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 <> '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 <> '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 <> '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint4 >= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint4 >= '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 >= '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint4 > '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint4 > '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint4 > '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint4 + '1'::int8);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 + '1'::int8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint4 + '4'::int8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint4 + '2'::int8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint4 - '1'::int8);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 - '1'::int8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 - '4'::int8;
+  ?column?  
+------------
+ 4294967295
+(1 row)
+
+SELECT '5'::uint4 - '2'::int8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint4 * '1'::int8);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 * '1'::int8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 * '4'::int8;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint4 * '2'::int8;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint4 / '1'::int8);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 / '1'::int8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint4 / '4'::int8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint4 / '2'::int8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint4 % '1'::int8);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::uint4 % '1'::int8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint4 % '4'::int8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint4 % '2'::int8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint8 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint8 + '1'::int1);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 + '1'::int1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint8 + '4'::int1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint8 + '2'::int1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint8 - '1'::int1);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 - '1'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 - '4'::int1;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::uint8 - '2'::int1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint8 * '1'::int1);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 * '1'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 * '4'::int1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint8 * '2'::int1;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint8 / '1'::int1);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 / '1'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 / '4'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint8 / '2'::int1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint8 % '1'::int1);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 % '1'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 % '4'::int1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint8 % '2'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint8 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint8 + '1'::uint1);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 + '1'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint8 + '4'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint8 + '2'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint8 - '1'::uint1);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 - '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 - '4'::uint1;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::uint8 - '2'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint8 * '1'::uint1);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 * '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 * '4'::uint1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint8 * '2'::uint1;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint8 / '1'::uint1);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 / '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 / '4'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint8 / '2'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint8 % '1'::uint1);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 % '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 % '4'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint8 % '2'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint8 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint8 + '1'::uint2);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 + '1'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint8 + '4'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint8 + '2'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint8 - '1'::uint2);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 - '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 - '4'::uint2;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::uint8 - '2'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint8 * '1'::uint2);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 * '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 * '4'::uint2;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint8 * '2'::uint2;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint8 / '1'::uint2);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 / '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 / '4'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint8 / '2'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint8 % '1'::uint2);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 % '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 % '4'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint8 % '2'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint8 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint8 + '1'::uint4);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 + '1'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint8 + '4'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint8 + '2'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint8 - '1'::uint4);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 - '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 - '4'::uint4;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::uint8 - '2'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint8 * '1'::uint4);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 * '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 * '4'::uint4;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint8 * '2'::uint4;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint8 / '1'::uint4);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 / '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 / '4'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint8 / '2'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint8 % '1'::uint4);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 % '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 % '4'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint8 % '2'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint8 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint8 + '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 + '1'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint8 + '4'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint8 + '2'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint8 - '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 - '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 - '4'::uint8;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::uint8 - '2'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint8 * '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 * '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 * '4'::uint8;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint8 * '2'::uint8;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint8 / '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 / '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 / '4'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint8 / '2'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint8 % '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 % '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 % '4'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint8 % '2'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint8 < '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::int2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::int2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint8 + '1'::int2);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 + '1'::int2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint8 + '4'::int2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint8 + '2'::int2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint8 - '1'::int2);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 - '1'::int2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 - '4'::int2;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::uint8 - '2'::int2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint8 * '1'::int2);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 * '1'::int2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 * '4'::int2;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint8 * '2'::int2;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint8 / '1'::int2);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 / '1'::int2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 / '4'::int2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint8 / '2'::int2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint8 % '1'::int2);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 % '1'::int2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 % '4'::int2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint8 % '2'::int2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint8 < '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::int4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::int4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint8 + '1'::int4);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 + '1'::int4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint8 + '4'::int4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint8 + '2'::int4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint8 - '1'::int4);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 - '1'::int4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 - '4'::int4;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::uint8 - '2'::int4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint8 * '1'::int4);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 * '1'::int4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 * '4'::int4;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint8 * '2'::int4;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint8 / '1'::int4);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 / '1'::int4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 / '4'::int4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint8 / '2'::int4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint8 % '1'::int4);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 % '1'::int4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 % '4'::int4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint8 % '2'::int4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::uint8 < '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 < '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 < '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 <= '2'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::uint8 <= '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 = '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 = '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 = '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 <> '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 <> '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 <> '4'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::uint8 >= '1'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::uint8 >= '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 >= '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::uint8 > '1'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::uint8 > '2'::int8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::uint8 > '4'::int8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::uint8 + '1'::int8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 + '1'::int8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::uint8 + '4'::int8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint8 + '2'::int8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::uint8 - '1'::int8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 - '1'::int8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 - '4'::int8;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::uint8 - '2'::int8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::uint8 * '1'::int8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 * '1'::int8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 * '4'::int8;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::uint8 * '2'::int8;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::uint8 / '1'::int8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 / '1'::int8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::uint8 / '4'::int8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint8 / '2'::int8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::uint8 % '1'::int8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::uint8 % '1'::int8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::uint8 % '4'::int8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::uint8 % '2'::int8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int2 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int2 + '1'::int1);
+ pg_typeof 
+-----------
+ smallint
+(1 row)
+
+SELECT '1'::int2 + '1'::int1;
+ ?column? 
+----------
+        2
+(1 row)
+
+SELECT '3'::int2 + '4'::int1;
+ ?column? 
+----------
+        7
+(1 row)
+
+SELECT '5'::int2 + '2'::int1;
+ ?column? 
+----------
+        7
+(1 row)
+
+SELECT pg_typeof('1'::int2 - '1'::int1);
+ pg_typeof 
+-----------
+ smallint
+(1 row)
+
+SELECT '1'::int2 - '1'::int1;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int2 - '4'::int1;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '5'::int2 - '2'::int1;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT pg_typeof('1'::int2 * '1'::int1);
+ pg_typeof 
+-----------
+ smallint
+(1 row)
+
+SELECT '1'::int2 * '1'::int1;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::int2 * '4'::int1;
+ ?column? 
+----------
+       12
+(1 row)
+
+SELECT '5'::int2 * '2'::int1;
+ ?column? 
+----------
+       10
+(1 row)
+
+SELECT pg_typeof('1'::int2 / '1'::int1);
+ pg_typeof 
+-----------
+ smallint
+(1 row)
+
+SELECT '1'::int2 / '1'::int1;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::int2 / '4'::int1;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '5'::int2 / '2'::int1;
+ ?column? 
+----------
+        2
+(1 row)
+
+SELECT pg_typeof('1'::int2 % '1'::int1);
+ pg_typeof 
+-----------
+ smallint
+(1 row)
+
+SELECT '1'::int2 % '1'::int1;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int2 % '4'::int1;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int2 % '2'::int1;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '1'::int2 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int2 + '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int2 + '1'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int2 + '4'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int2 + '2'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int2 - '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int2 - '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int2 - '4'::uint1;
+ ?column? 
+----------
+ 255
+(1 row)
+
+SELECT '5'::int2 - '2'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int2 * '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int2 * '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int2 * '4'::uint1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int2 * '2'::uint1;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int2 / '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int2 / '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int2 / '4'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int2 / '2'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int2 % '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int2 % '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int2 % '4'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int2 % '2'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int2 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int2 + '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int2 + '1'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int2 + '4'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int2 + '2'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int2 - '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int2 - '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int2 - '4'::uint2;
+ ?column? 
+----------
+ 65535
+(1 row)
+
+SELECT '5'::int2 - '2'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int2 * '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int2 * '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int2 * '4'::uint2;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int2 * '2'::uint2;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int2 / '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int2 / '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int2 / '4'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int2 / '2'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int2 % '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int2 % '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int2 % '4'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int2 % '2'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int2 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int2 + '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int2 + '1'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int2 + '4'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int2 + '2'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int2 - '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int2 - '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int2 - '4'::uint4;
+  ?column?  
+------------
+ 4294967295
+(1 row)
+
+SELECT '5'::int2 - '2'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int2 * '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int2 * '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int2 * '4'::uint4;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int2 * '2'::uint4;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int2 / '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int2 / '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int2 / '4'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int2 / '2'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int2 % '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int2 % '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int2 % '4'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int2 % '2'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int2 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int2 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int2 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int2 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int2 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int2 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int2 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int2 + '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int2 + '1'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int2 + '4'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int2 + '2'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int2 - '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int2 - '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int2 - '4'::uint8;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::int2 - '2'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int2 * '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int2 * '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int2 * '4'::uint8;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int2 * '2'::uint8;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int2 / '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int2 / '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int2 / '4'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int2 / '2'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int2 % '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int2 % '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int2 % '4'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int2 % '2'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int4 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int4 + '1'::int1);
+ pg_typeof 
+-----------
+ integer
+(1 row)
+
+SELECT '1'::int4 + '1'::int1;
+ ?column? 
+----------
+        2
+(1 row)
+
+SELECT '3'::int4 + '4'::int1;
+ ?column? 
+----------
+        7
+(1 row)
+
+SELECT '5'::int4 + '2'::int1;
+ ?column? 
+----------
+        7
+(1 row)
+
+SELECT pg_typeof('1'::int4 - '1'::int1);
+ pg_typeof 
+-----------
+ integer
+(1 row)
+
+SELECT '1'::int4 - '1'::int1;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int4 - '4'::int1;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '5'::int4 - '2'::int1;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT pg_typeof('1'::int4 * '1'::int1);
+ pg_typeof 
+-----------
+ integer
+(1 row)
+
+SELECT '1'::int4 * '1'::int1;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::int4 * '4'::int1;
+ ?column? 
+----------
+       12
+(1 row)
+
+SELECT '5'::int4 * '2'::int1;
+ ?column? 
+----------
+       10
+(1 row)
+
+SELECT pg_typeof('1'::int4 / '1'::int1);
+ pg_typeof 
+-----------
+ integer
+(1 row)
+
+SELECT '1'::int4 / '1'::int1;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::int4 / '4'::int1;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '5'::int4 / '2'::int1;
+ ?column? 
+----------
+        2
+(1 row)
+
+SELECT pg_typeof('1'::int4 % '1'::int1);
+ pg_typeof 
+-----------
+ integer
+(1 row)
+
+SELECT '1'::int4 % '1'::int1;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int4 % '4'::int1;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int4 % '2'::int1;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '1'::int4 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int4 + '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int4 + '1'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int4 + '4'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int4 + '2'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int4 - '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int4 - '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int4 - '4'::uint1;
+ ?column? 
+----------
+ 255
+(1 row)
+
+SELECT '5'::int4 - '2'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int4 * '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int4 * '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int4 * '4'::uint1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int4 * '2'::uint1;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int4 / '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int4 / '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int4 / '4'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int4 / '2'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int4 % '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int4 % '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int4 % '4'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int4 % '2'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int4 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int4 + '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int4 + '1'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int4 + '4'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int4 + '2'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int4 - '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int4 - '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int4 - '4'::uint2;
+ ?column? 
+----------
+ 65535
+(1 row)
+
+SELECT '5'::int4 - '2'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int4 * '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int4 * '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int4 * '4'::uint2;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int4 * '2'::uint2;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int4 / '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int4 / '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int4 / '4'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int4 / '2'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int4 % '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int4 % '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int4 % '4'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int4 % '2'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int4 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int4 + '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int4 + '1'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int4 + '4'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int4 + '2'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int4 - '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int4 - '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int4 - '4'::uint4;
+  ?column?  
+------------
+ 4294967295
+(1 row)
+
+SELECT '5'::int4 - '2'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int4 * '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int4 * '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int4 * '4'::uint4;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int4 * '2'::uint4;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int4 / '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int4 / '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int4 / '4'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int4 / '2'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int4 % '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int4 % '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int4 % '4'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int4 % '2'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int4 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int4 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int4 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int4 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int4 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int4 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int4 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int4 + '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int4 + '1'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int4 + '4'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int4 + '2'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int4 - '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int4 - '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int4 - '4'::uint8;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::int4 - '2'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int4 * '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int4 * '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int4 * '4'::uint8;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int4 * '2'::uint8;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int4 / '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int4 / '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int4 / '4'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int4 / '2'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int4 % '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int4 % '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int4 % '4'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int4 % '2'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int8 < '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 < '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 < '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 <= '2'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 <= '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 = '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 = '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 = '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <> '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 <> '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 <> '4'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 >= '1'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 >= '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 >= '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 > '1'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 > '2'::int1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 > '4'::int1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int8 + '1'::int1);
+ pg_typeof 
+-----------
+ bigint
+(1 row)
+
+SELECT '1'::int8 + '1'::int1;
+ ?column? 
+----------
+        2
+(1 row)
+
+SELECT '3'::int8 + '4'::int1;
+ ?column? 
+----------
+        7
+(1 row)
+
+SELECT '5'::int8 + '2'::int1;
+ ?column? 
+----------
+        7
+(1 row)
+
+SELECT pg_typeof('1'::int8 - '1'::int1);
+ pg_typeof 
+-----------
+ bigint
+(1 row)
+
+SELECT '1'::int8 - '1'::int1;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int8 - '4'::int1;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '5'::int8 - '2'::int1;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT pg_typeof('1'::int8 * '1'::int1);
+ pg_typeof 
+-----------
+ bigint
+(1 row)
+
+SELECT '1'::int8 * '1'::int1;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::int8 * '4'::int1;
+ ?column? 
+----------
+       12
+(1 row)
+
+SELECT '5'::int8 * '2'::int1;
+ ?column? 
+----------
+       10
+(1 row)
+
+SELECT pg_typeof('1'::int8 / '1'::int1);
+ pg_typeof 
+-----------
+ bigint
+(1 row)
+
+SELECT '1'::int8 / '1'::int1;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::int8 / '4'::int1;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '5'::int8 / '2'::int1;
+ ?column? 
+----------
+        2
+(1 row)
+
+SELECT pg_typeof('1'::int8 % '1'::int1);
+ pg_typeof 
+-----------
+ bigint
+(1 row)
+
+SELECT '1'::int8 % '1'::int1;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int8 % '4'::int1;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int8 % '2'::int1;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '1'::int8 < '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 < '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 < '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 <= '2'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 <= '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 = '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 = '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 = '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <> '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 <> '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 <> '4'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 >= '1'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 >= '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 >= '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 > '1'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 > '2'::uint1;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 > '4'::uint1;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int8 + '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int8 + '1'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int8 + '4'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int8 + '2'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int8 - '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int8 - '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int8 - '4'::uint1;
+ ?column? 
+----------
+ 255
+(1 row)
+
+SELECT '5'::int8 - '2'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int8 * '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int8 * '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int8 * '4'::uint1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int8 * '2'::uint1;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int8 / '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int8 / '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int8 / '4'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int8 / '2'::uint1;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int8 % '1'::uint1);
+ pg_typeof 
+-----------
+ uint1
+(1 row)
+
+SELECT '1'::int8 % '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int8 % '4'::uint1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int8 % '2'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int8 < '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 < '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 < '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 <= '2'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 <= '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 = '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 = '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 = '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <> '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 <> '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 <> '4'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 >= '1'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 >= '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 >= '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 > '1'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 > '2'::uint2;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 > '4'::uint2;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int8 + '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int8 + '1'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int8 + '4'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int8 + '2'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int8 - '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int8 - '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int8 - '4'::uint2;
+ ?column? 
+----------
+ 65535
+(1 row)
+
+SELECT '5'::int8 - '2'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int8 * '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int8 * '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int8 * '4'::uint2;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int8 * '2'::uint2;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int8 / '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int8 / '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int8 / '4'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int8 / '2'::uint2;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int8 % '1'::uint2);
+ pg_typeof 
+-----------
+ uint2
+(1 row)
+
+SELECT '1'::int8 % '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int8 % '4'::uint2;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int8 % '2'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int8 < '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 < '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 < '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 <= '2'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 <= '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 = '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 = '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 = '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <> '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 <> '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 <> '4'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 >= '1'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 >= '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 >= '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 > '1'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 > '2'::uint4;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 > '4'::uint4;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int8 + '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int8 + '1'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int8 + '4'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int8 + '2'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int8 - '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int8 - '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int8 - '4'::uint4;
+  ?column?  
+------------
+ 4294967295
+(1 row)
+
+SELECT '5'::int8 - '2'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int8 * '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int8 * '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int8 * '4'::uint4;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int8 * '2'::uint4;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int8 / '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int8 / '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int8 / '4'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int8 / '2'::uint4;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int8 % '1'::uint4);
+ pg_typeof 
+-----------
+ uint4
+(1 row)
+
+SELECT '1'::int8 % '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int8 % '4'::uint4;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int8 % '2'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '1'::int8 < '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 < '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 < '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 <= '2'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '3'::int8 <= '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 = '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 = '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 = '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 <> '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 <> '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 <> '4'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '1'::int8 >= '1'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '5'::int8 >= '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 >= '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '1'::int8 > '1'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT '5'::int8 > '2'::uint8;
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT '3'::int8 > '4'::uint8;
+ ?column? 
+----------
+ f
+(1 row)
+
+SELECT pg_typeof('1'::int8 + '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int8 + '1'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT '3'::int8 + '4'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int8 + '2'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT pg_typeof('1'::int8 - '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int8 - '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int8 - '4'::uint8;
+       ?column?       
+----------------------
+ 18446744073709551615
+(1 row)
+
+SELECT '5'::int8 - '2'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT pg_typeof('1'::int8 * '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int8 * '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int8 * '4'::uint8;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '5'::int8 * '2'::uint8;
+ ?column? 
+----------
+ 10
+(1 row)
+
+SELECT pg_typeof('1'::int8 / '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int8 / '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '3'::int8 / '4'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int8 / '2'::uint8;
+ ?column? 
+----------
+ 2
+(1 row)
+
+SELECT pg_typeof('1'::int8 % '1'::uint8);
+ pg_typeof 
+-----------
+ uint8
+(1 row)
+
+SELECT '1'::int8 % '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '3'::int8 % '4'::uint8;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int8 % '2'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+

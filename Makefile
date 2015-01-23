@@ -4,17 +4,17 @@ extension_version = 0
 
 EXTENSION = uint
 MODULE_big = uint
-OBJS = uint.o compare.o
+OBJS = uint.o operators.o
 DATA_built = uint--$(extension_version).sql
 
-REGRESS = init test compare
+REGRESS = init test operators
 REGRESS_OPTS = --inputdir=test
 
 PGXS := $(shell $(PG_CONFIG) --pgxs)
 include $(PGXS)
 
-uint--$(extension_version).sql: uint.sql compare.sql
+uint--$(extension_version).sql: uint.sql operators.sql
 	cat $^ >$@
 
-compare.c compare.sql test/sql/compare.sql: generate.py
+operators.c operators.sql test/sql/operators.sql: generate.py
 	python $<
