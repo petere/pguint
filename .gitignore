@@ -2,6 +2,6 @@
 *.so
 /results/
 /*--*.sql
-/compare.c
-/compare.sql
-/test/sql/compare.sql
+/operators.c
+/operators.sql
+/test/sql/operators.sql
