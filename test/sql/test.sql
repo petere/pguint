@@ -4,6 +4,10 @@ SELECT ''::int1;
 SELECT '-55'::int1;
 SELECT '-200'::int1;
 
+SELECT - '5'::int1;
+SELECT - '127'::int1;
+SELECT - '-128'::int1;
+
 SELECT '55'::uint1;
 SELECT '300'::uint1;
 SELECT ''::uint1;

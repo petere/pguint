@@ -22,6 +22,7 @@ PG_FUNCTION_INFO_V1(uint4in);
 PG_FUNCTION_INFO_V1(uint4out);
 PG_FUNCTION_INFO_V1(uint8in);
 PG_FUNCTION_INFO_V1(uint8out);
+PG_FUNCTION_INFO_V1(int1um);
 PG_FUNCTION_INFO_V1(uint4_avg_accum);
 PG_FUNCTION_INFO_V1(int8_avg);
 PG_FUNCTION_INFO_V1(uint4_sum);
@@ -209,6 +210,21 @@ uint8out(PG_FUNCTION_ARGS)
 
 	sprintf(result, "%"PRIu64, arg1);
 	PG_RETURN_CSTRING(result);
+}
+
+Datum
+int1um(PG_FUNCTION_ARGS)
+{
+	int8		arg = PG_GETARG_INT8(0);
+	int8		result;
+
+	result = -arg;
+	/* overflow check */
+	if (arg != 0 && SAMESIGN(result, arg))
+		ereport(ERROR,
+				(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+				 errmsg("integer out of range")));
+	PG_RETURN_INT8(result);
 }
 
 typedef struct Int8TransTypeData

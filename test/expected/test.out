@@ -22,6 +22,20 @@ SELECT '-200'::int1;
 ERROR:  value "-200" is out of range for type int1
 LINE 1: SELECT '-200'::int1;
                ^
+SELECT - '5'::int1;
+ ?column? 
+----------
+ -5
+(1 row)
+
+SELECT - '127'::int1;
+ ?column? 
+----------
+ -127
+(1 row)
+
+SELECT - '-128'::int1;
+ERROR:  integer out of range
 SELECT '55'::uint1;
  uint1 
 -------
