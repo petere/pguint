@@ -14,3 +14,5 @@
 #endif
 #define PG_GETARG_UINT64(n)	DatumGetUInt64(PG_GETARG_DATUM(n))
 #define PG_RETURN_UINT64(x)	return UInt64GetDatum(x)
+
+#define SAMESIGN(a,b)	(((a) < 0) == ((b) < 0))

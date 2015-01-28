@@ -1,5 +1,11 @@
+import re
+
+
 new_types = ['int1', 'uint1', 'uint2', 'uint4', 'uint8']
 old_types = ['int2', 'int4', 'int8']
+
+comparison_ops = ['<', '<=', '=', '<>', '>=', '>']
+arithmetic_ops = ['+', '-', '*', '/', '%']
 
 op_words = {'<': 'lt', '<=': 'le', '=': 'eq', '<>': 'ne', '>=': 'ge', '>': 'gt',
             '+': 'pl', '-': 'mi', '*': 'mul', '/': 'div', '%': 'mod'}
@@ -16,6 +22,36 @@ c_types = {
     'uint8': 'uint64',
 }
 
+
+def c_operator(op):
+    if op == '=':
+        return '=='
+    elif op == '<>':
+        return '!='
+    else:
+        return op
+
+
+def type_bits(typ):
+    m = re.search(r'(\d+)', typ)
+    return int(m.group(1))
+
+
+def type_unsigned(typ):
+    return typ.startswith('u')
+
+
+max_values = {
+    'int1': '127',
+    'int2': '32767',
+    'int4': '2147483647',
+    'int8': '9223372036854775807',
+    'uint1': '255',
+    'uint2': '65535',
+    'uint4': '4294967295',
+    'uint8': '18446744073709551615',
+}
+
 f_operators_c = open('operators.c', 'w')
 f_operators_sql = open('operators.sql', 'w')
 f_test_operators_sql = open('test/sql/operators.sql', 'w')
@@ -25,7 +61,7 @@ f_operators_c.write('#include <fmgr.h>\n\n')
 f_operators_c.write('#include "uint.h"\n\n')
 
 
-def write_c_function(f, funcname, leftarg, rightarg, op, rettype):
+def write_c_function(f, funcname, leftarg, rightarg, op, rettype, c_check=''):
     f.write("""
 PG_FUNCTION_INFO_V1(%s);
 Datum
@@ -33,14 +69,22 @@ Datum
 {
 	%s arg1 = PG_GETARG_%s(0);
 	%s arg2 = PG_GETARG_%s(1);
-
-	PG_RETURN_%s(arg1 %s arg2);
+	%s result = arg1 %s arg2;
+%s
+	PG_RETURN_%s(result);
 }
 """ % (funcname, funcname,
        c_types[leftarg], c_types[leftarg].upper(),
        c_types[rightarg], c_types[rightarg].upper(),
-       c_types[rettype].upper(),
-       op if op != '<>' else '!='))
+       c_types[rettype], c_operator(op),
+       ("""
+	if (%s)
+		ereport(ERROR,
+			(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+			 errmsg("integer out of range")));
+""" % c_check if c_check else ''),
+       c_types[rettype].upper()))
+
 
 
 def write_sql_operator(f, funcname, leftarg, rightarg, op, rettype):
@@ -56,30 +100,52 @@ CREATE OPERATOR %s (
        op, funcname, leftarg, rightarg))
 
 
-def write_code(f_c, f_sql, leftarg, rightarg, op, rettype):
+def write_code(f_c, f_sql, leftarg, rightarg, op, rettype, c_check=''):
     funcname = leftarg + rightarg + op_words[op]
-    write_c_function(f_c, funcname, leftarg, rightarg, op, rettype)
+    write_c_function(f_c, funcname, leftarg, rightarg, op, rettype, c_check)
     write_sql_operator(f_sql, funcname, leftarg, rightarg, op, rettype)
 
 
 for leftarg in new_types + old_types:
+    for op in comparison_ops + arithmetic_ops:
+        f_test_operators_sql.write("SELECT '2'::%s %s 5;\n" % (leftarg, op))
+        f_test_operators_sql.write("SELECT 2 %s '5'::%s;\n" % (op, leftarg))
+        f_test_operators_sql.write("SELECT '5'::%s %s 2;\n" % (leftarg, op))
+        f_test_operators_sql.write("SELECT 5 %s '2'::%s;\n" % (op, leftarg))
     for rightarg in new_types + old_types:
         if leftarg in old_types and rightarg in old_types:
             continue
-        for op in ['<', '<=', '=', '<>', '>=', '>']:
+        for op in comparison_ops:
             write_code(f_operators_c, f_operators_sql, leftarg, rightarg, op, rettype='boolean')
             f_test_operators_sql.write("SELECT '1'::%s %s '1'::%s;\n" % (leftarg, op, rightarg))
             f_test_operators_sql.write("SELECT '5'::%s %s '2'::%s;\n" % (leftarg, op, rightarg))
             f_test_operators_sql.write("SELECT '3'::%s %s '4'::%s;\n" % (leftarg, op, rightarg))
         f_test_operators_sql.write("\n")
 
-        for op in ['+', '-', '*', '/', '%']:
-            rettype = max(leftarg, rightarg)
-            write_code(f_operators_c, f_operators_sql, leftarg, rightarg, op, rettype)
+        for op in arithmetic_ops:
+            args = sorted([leftarg, rightarg], key=lambda x: (type_bits(x), type_unsigned(x)))
+            rettype = args[-1]
+            if type_unsigned(rettype):
+                if op == '+':
+                    c_check = 'result < arg1 || result < arg2'
+                elif op == '-':
+                    c_check = 'result > arg1'
+                else:
+                    c_check = ''
+            else:
+                if op == '+':
+                    c_check = 'SAMESIGN(arg1, arg2) && !SAMESIGN(result, arg1)'
+                elif op == '-':
+                    c_check = '!SAMESIGN(arg1, arg2) && !SAMESIGN(result, arg1)'
+                else:
+                    c_check = ''
+            write_code(f_operators_c, f_operators_sql, leftarg, rightarg, op, rettype, c_check)
             f_test_operators_sql.write("SELECT pg_typeof('1'::%s %s '1'::%s);\n" % (leftarg, op, rightarg))
             f_test_operators_sql.write("SELECT '1'::%s %s '1'::%s;\n" % (leftarg, op, rightarg))
             f_test_operators_sql.write("SELECT '3'::%s %s '4'::%s;\n" % (leftarg, op, rightarg))
             f_test_operators_sql.write("SELECT '5'::%s %s '2'::%s;\n" % (leftarg, op, rightarg))
+            if op == '+':
+                f_test_operators_sql.write("SELECT '%s'::%s %s '%s'::%s;\n" % (max_values[leftarg], leftarg, op, max_values[rightarg], rightarg))
         f_test_operators_sql.write("\n")
 
 f_operators_c.close()
