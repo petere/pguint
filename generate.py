@@ -7,8 +7,11 @@ old_types = ['int2', 'int4', 'int8']
 comparison_ops = ['<', '<=', '=', '<>', '>=', '>']
 arithmetic_ops = ['+', '-', '*', '/', '%']
 
-op_words = {'<': 'lt', '<=': 'le', '=': 'eq', '<>': 'ne', '>=': 'ge', '>': 'gt',
-            '+': 'pl', '-': 'mi', '*': 'mul', '/': 'div', '%': 'mod'}
+op_words = {
+    '<': 'lt', '<=': 'le', '=': 'eq', '<>': 'ne', '>=': 'ge', '>': 'gt',
+    '+': 'pl', '-': 'mi', '*': 'mul', '/': 'div', '%': 'mod',
+    '&': 'and', '|': 'or', '#': 'xor', '~': 'not', '<<': 'shl', '>>': 'shr',
+}
 
 c_types = {
     'boolean': 'bool',
@@ -28,6 +31,8 @@ def c_operator(op):
         return '=='
     elif op == '<>':
         return '!='
+    elif op == '#':
+        return '^'
     else:
         return op
 
@@ -68,51 +73,62 @@ f_operators_c.write('#include "uint.h"\n\n')
 
 
 def write_c_function(f, funcname, leftarg, rightarg, op, rettype, c_check='', intermediate_type=None):
-    if intermediate_type is None:
-        intermediate_type = rettype
     f.write("""
 PG_FUNCTION_INFO_V1(%s);
 Datum
 %s(PG_FUNCTION_ARGS)
 {
-	%s arg1 = PG_GETARG_%s(0);
-	%s arg2 = PG_GETARG_%s(1);
-	%s result = %sarg1 %s %sarg2;
-%s
-	PG_RETURN_%s(result);
-}
-""" % (funcname, funcname,
-       c_types[leftarg], c_types[leftarg].upper(),
-       c_types[rightarg], c_types[rightarg].upper(),
-       c_types[intermediate_type],
-       "(%s)" % c_types[intermediate_type] if intermediate_type else '',
-       c_operator(op),
-       "(%s)" % c_types[intermediate_type] if intermediate_type else '',
-       ("""
+""" % (funcname, funcname))
+    argcount = 0
+    if leftarg:
+        f.write("\t%s arg1 = PG_GETARG_%s(%d);\n" % (c_types[leftarg], c_types[leftarg].upper(), argcount))
+        argcount += 1
+    if rightarg:
+        f.write("\t%s arg2 = PG_GETARG_%s(%d);\n" % (c_types[rightarg], c_types[rightarg].upper(), argcount))
+        argcount += 1
+    f.write("\t%s result = " % c_types[intermediate_type or rettype])
+    if leftarg:
+        if intermediate_type:
+            f.write("(%s)" % c_types[intermediate_type])
+        f.write("arg1")
+    f.write(" " + c_operator(op) + " ")
+    if rightarg:
+        if intermediate_type:
+            f.write("(%s)" % c_types[intermediate_type])
+        f.write("arg2")
+    f.write(";\n")
+    if c_check:
+        f.write("""
 	if (%s)
 		ereport(ERROR,
 			(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
 			 errmsg("integer out of range")));
-""" % c_check if c_check else ''),
-       c_types[rettype].upper()))
+""" % c_check)
 
+    f.write("""
+	PG_RETURN_%s(result);
+}
+""" % c_types[rettype].upper())
 
 
 def write_sql_operator(f, funcname, leftarg, rightarg, op, rettype):
-    f.write("""
-CREATE FUNCTION %s(%s, %s) RETURNS %s IMMUTABLE LANGUAGE C AS '$libdir/uint', '%s';
+    f.write("CREATE FUNCTION %s(%s) RETURNS %s IMMUTABLE LANGUAGE C AS '$libdir/uint', '%s';\n\n" \
+            % (funcname, ', '.join([x for x in [leftarg, rightarg] if x]), rettype, funcname))
 
-CREATE OPERATOR %s (
-    PROCEDURE = %s,
-    LEFTARG = %s,
-    RIGHTARG = %s
-);
-""" % (funcname, leftarg, rightarg, rettype, funcname,
-       op, funcname, leftarg, rightarg))
+    f.write("CREATE OPERATOR %s (\n" % op)
+    if leftarg:
+        f.write("    LEFTARG = %s,\n" % leftarg)
+    if rightarg:
+        f.write("    RIGHTARG = %s,\n" % rightarg)
+    f.write("    PROCEDURE = %s\n);\n" % funcname)
+
+
+def coalesce(*args):
+    return next((a for a in args if a is not None), None)
 
 
 def write_code(f_c, f_sql, leftarg, rightarg, op, rettype, c_check='', intermediate_type=None):
-    funcname = leftarg + rightarg + op_words[op]
+    funcname = coalesce(leftarg, '') + coalesce(rightarg, '') + op_words[op]
     write_c_function(f_c, funcname, leftarg, rightarg, op, rettype, c_check, intermediate_type)
     write_sql_operator(f_sql, funcname, leftarg, rightarg, op, rettype)
 
@@ -168,6 +184,23 @@ for leftarg in new_types + old_types:
             if op in ['+', '*']:
                 f_test_operators_sql.write("SELECT '%s'::%s %s '%s'::%s;\n" % (max_values[leftarg], leftarg, op, max_values[rightarg], rightarg))
         f_test_operators_sql.write("\n")
+
+for arg in new_types:
+    for op in ['&', '|','#']:
+        write_code(f_operators_c, f_operators_sql, leftarg=arg, rightarg=arg, op=op, rettype=arg)
+        f_test_operators_sql.write("SELECT '1'::%s %s '1'::%s;\n" % (arg, op, arg))
+        f_test_operators_sql.write("SELECT '5'::%s %s '2'::%s;\n" % (arg, op, arg))
+        f_test_operators_sql.write("SELECT '5'::%s %s '4'::%s;\n" % (arg, op, arg))
+    for op in ['~']:
+        write_code(f_operators_c, f_operators_sql, leftarg=None, rightarg=arg, op=op, rettype=arg)
+        f_test_operators_sql.write("SELECT %s '6'::%s;\n" % (op, arg))
+    for op in ['<<', '>>']:
+        write_code(f_operators_c, f_operators_sql, leftarg=arg, rightarg='int4', op=op, rettype=arg)
+        f_test_operators_sql.write("SELECT '6'::%s %s 1;\n" % (arg, op))
+        f_test_operators_sql.write("SELECT '6'::%s %s 3;\n" % (arg, op))
+
+    f_test_operators_sql.write("\n")
+
 
 f_operators_c.close()
 f_operators_sql.close()

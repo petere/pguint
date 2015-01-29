@@ -14702,3 +14702,423 @@ SELECT '5'::int8 % '2'::uint8;
  1
 (1 row)
 
+SELECT '1'::int1 & '1'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '5'::int1 & '2'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int1 & '4'::int1;
+ ?column? 
+----------
+ 4
+(1 row)
+
+SELECT '1'::int1 | '1'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '5'::int1 | '2'::int1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int1 | '4'::int1;
+ ?column? 
+----------
+ 5
+(1 row)
+
+SELECT '1'::int1 # '1'::int1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::int1 # '2'::int1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::int1 # '4'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT ~ '6'::int1;
+ ?column? 
+----------
+ -7
+(1 row)
+
+SELECT '6'::int1 << 1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '6'::int1 << 3;
+ ?column? 
+----------
+ 48
+(1 row)
+
+SELECT '6'::int1 >> 1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '6'::int1 >> 3;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '1'::uint1 & '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '5'::uint1 & '2'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint1 & '4'::uint1;
+ ?column? 
+----------
+ 4
+(1 row)
+
+SELECT '1'::uint1 | '1'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '5'::uint1 | '2'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint1 | '4'::uint1;
+ ?column? 
+----------
+ 5
+(1 row)
+
+SELECT '1'::uint1 # '1'::uint1;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint1 # '2'::uint1;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint1 # '4'::uint1;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT ~ '6'::uint1;
+ ?column? 
+----------
+ 249
+(1 row)
+
+SELECT '6'::uint1 << 1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '6'::uint1 << 3;
+ ?column? 
+----------
+ 48
+(1 row)
+
+SELECT '6'::uint1 >> 1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '6'::uint1 >> 3;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '1'::uint2 & '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '5'::uint2 & '2'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint2 & '4'::uint2;
+ ?column? 
+----------
+ 4
+(1 row)
+
+SELECT '1'::uint2 | '1'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '5'::uint2 | '2'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint2 | '4'::uint2;
+ ?column? 
+----------
+ 5
+(1 row)
+
+SELECT '1'::uint2 # '1'::uint2;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint2 # '2'::uint2;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint2 # '4'::uint2;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT ~ '6'::uint2;
+ ?column? 
+----------
+ 65529
+(1 row)
+
+SELECT '6'::uint2 << 1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '6'::uint2 << 3;
+ ?column? 
+----------
+ 48
+(1 row)
+
+SELECT '6'::uint2 >> 1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '6'::uint2 >> 3;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '1'::uint4 & '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '5'::uint4 & '2'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint4 & '4'::uint4;
+ ?column? 
+----------
+ 4
+(1 row)
+
+SELECT '1'::uint4 | '1'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '5'::uint4 | '2'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint4 | '4'::uint4;
+ ?column? 
+----------
+ 5
+(1 row)
+
+SELECT '1'::uint4 # '1'::uint4;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint4 # '2'::uint4;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint4 # '4'::uint4;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT ~ '6'::uint4;
+  ?column?  
+------------
+ 4294967289
+(1 row)
+
+SELECT '6'::uint4 << 1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '6'::uint4 << 3;
+ ?column? 
+----------
+ 48
+(1 row)
+
+SELECT '6'::uint4 >> 1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '6'::uint4 >> 3;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '1'::uint8 & '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '5'::uint8 & '2'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint8 & '4'::uint8;
+ ?column? 
+----------
+ 4
+(1 row)
+
+SELECT '1'::uint8 | '1'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT '5'::uint8 | '2'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint8 | '4'::uint8;
+ ?column? 
+----------
+ 5
+(1 row)
+
+SELECT '1'::uint8 # '1'::uint8;
+ ?column? 
+----------
+ 0
+(1 row)
+
+SELECT '5'::uint8 # '2'::uint8;
+ ?column? 
+----------
+ 7
+(1 row)
+
+SELECT '5'::uint8 # '4'::uint8;
+ ?column? 
+----------
+ 1
+(1 row)
+
+SELECT ~ '6'::uint8;
+       ?column?       
+----------------------
+ 18446744073709551609
+(1 row)
+
+SELECT '6'::uint8 << 1;
+ ?column? 
+----------
+ 12
+(1 row)
+
+SELECT '6'::uint8 << 3;
+ ?column? 
+----------
+ 48
+(1 row)
+
+SELECT '6'::uint8 >> 1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '6'::uint8 >> 3;
+ ?column? 
+----------
+ 0
+(1 row)
+
