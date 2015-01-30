@@ -1,0 +1,36 @@
+SELECT to_hex(95::int4);
+ to_hex 
+--------
+ 5f
+(1 row)
+
+SELECT to_hex(-95::int4);
+  to_hex  
+----------
+ ffffffa1
+(1 row)
+
+SELECT to_hex(95::int8);
+ to_hex 
+--------
+ 5f
+(1 row)
+
+SELECT to_hex(-95::int8);
+      to_hex      
+------------------
+ ffffffffffffffa1
+(1 row)
+
+SELECT to_hex(95::uint4);
+ to_hex 
+--------
+ 5f
+(1 row)
+
+SELECT to_hex(95::uint8);
+ to_hex 
+--------
+ 5f
+(1 row)
+
