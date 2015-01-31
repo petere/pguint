@@ -166,8 +166,12 @@ Datum
 
 
 def write_sql_operator(f, funcname, leftarg, rightarg, op, rettype):
+    sql_funcname = funcname
+    if op == '%':
+        # SQL standard requires a "mod" function rather than % operator
+        sql_funcname = 'mod'
     f.write("CREATE FUNCTION %s(%s) RETURNS %s IMMUTABLE STRICT LANGUAGE C AS '$libdir/uint', '%s';\n\n" \
-            % (funcname, ', '.join([x for x in [leftarg, rightarg] if x]), rettype, funcname))
+            % (sql_funcname, ', '.join([x for x in [leftarg, rightarg] if x]), rettype, funcname))
 
     f.write("CREATE OPERATOR %s (\n" % op)
     if leftarg:
@@ -185,7 +189,7 @@ def write_sql_operator(f, funcname, leftarg, rightarg, op, rettype):
     if op in ['=']:
         f.write("    HASHES,\n")
         f.write("    MERGES,\n")
-    f.write("    PROCEDURE = %s\n);\n\n" % funcname)
+    f.write("    PROCEDURE = %s\n);\n\n" % sql_funcname)
 
 
 def write_cmp_c_function(f, leftarg, rightarg):
@@ -303,6 +307,8 @@ for leftarg in new_types + old_types:
                 f_test_operators_sql.write("SELECT '%s'::%s %s '%s'::%s;\n" % (max_values[leftarg], leftarg, op, max_values[rightarg], rightarg))
             if op in ['/', '%']:
                 f_test_operators_sql.write("SELECT '5'::%s %s '0'::%s;\n" % (leftarg, op, rightarg))
+            if op in ['%']:
+                f_test_operators_sql.write("SELECT mod('5'::%s, '2'::%s);\n" % (leftarg, rightarg))
         f_test_operators_sql.write("\n")
 
 for arg in new_types:
