@@ -370,6 +370,24 @@ SELECT '3'::int1 > '4'::int1;
  f
 (1 row)
 
+SELECT btint1int1cmp('1'::int1, '1'::int1);
+ btint1int1cmp 
+---------------
+             0
+(1 row)
+
+SELECT btint1int1cmp('5'::int1, '2'::int1);
+ btint1int1cmp 
+---------------
+             1
+(1 row)
+
+SELECT btint1int1cmp('3'::int1, '4'::int1);
+ btint1int1cmp 
+---------------
+            -1
+(1 row)
+
 SELECT pg_typeof('1'::int1 + '1'::int1);
  pg_typeof 
 -----------
@@ -606,6 +624,24 @@ SELECT '3'::int1 > '4'::uint1;
  f
 (1 row)
 
+SELECT btint1uint1cmp('1'::int1, '1'::uint1);
+ btint1uint1cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint1uint1cmp('5'::int1, '2'::uint1);
+ btint1uint1cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint1uint1cmp('3'::int1, '4'::uint1);
+ btint1uint1cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::int1 + '1'::uint1);
  pg_typeof 
 -----------
@@ -836,6 +872,24 @@ SELECT '3'::int1 > '4'::uint2;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btint1uint2cmp('1'::int1, '1'::uint2);
+ btint1uint2cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint1uint2cmp('5'::int1, '2'::uint2);
+ btint1uint2cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint1uint2cmp('3'::int1, '4'::uint2);
+ btint1uint2cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::int1 + '1'::uint2);
@@ -1070,6 +1124,24 @@ SELECT '3'::int1 > '4'::uint4;
  f
 (1 row)
 
+SELECT btint1uint4cmp('1'::int1, '1'::uint4);
+ btint1uint4cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint1uint4cmp('5'::int1, '2'::uint4);
+ btint1uint4cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint1uint4cmp('3'::int1, '4'::uint4);
+ btint1uint4cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::int1 + '1'::uint4);
  pg_typeof 
 -----------
@@ -1302,6 +1374,24 @@ SELECT '3'::int1 > '4'::uint8;
  f
 (1 row)
 
+SELECT btint1uint8cmp('1'::int1, '1'::uint8);
+ btint1uint8cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint1uint8cmp('5'::int1, '2'::uint8);
+ btint1uint8cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint1uint8cmp('3'::int1, '4'::uint8);
+ btint1uint8cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::int1 + '1'::uint8);
  pg_typeof 
 -----------
@@ -1532,6 +1622,24 @@ SELECT '3'::int1 > '4'::int2;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btint1int2cmp('1'::int1, '1'::int2);
+ btint1int2cmp 
+---------------
+             0
+(1 row)
+
+SELECT btint1int2cmp('5'::int1, '2'::int2);
+ btint1int2cmp 
+---------------
+             1
+(1 row)
+
+SELECT btint1int2cmp('3'::int1, '4'::int2);
+ btint1int2cmp 
+---------------
+            -1
 (1 row)
 
 SELECT pg_typeof('1'::int1 + '1'::int2);
@@ -1770,6 +1878,24 @@ SELECT '3'::int1 > '4'::int4;
  f
 (1 row)
 
+SELECT btint1int4cmp('1'::int1, '1'::int4);
+ btint1int4cmp 
+---------------
+             0
+(1 row)
+
+SELECT btint1int4cmp('5'::int1, '2'::int4);
+ btint1int4cmp 
+---------------
+             1
+(1 row)
+
+SELECT btint1int4cmp('3'::int1, '4'::int4);
+ btint1int4cmp 
+---------------
+            -1
+(1 row)
+
 SELECT pg_typeof('1'::int1 + '1'::int4);
  pg_typeof 
 -----------
@@ -2004,6 +2130,24 @@ SELECT '3'::int1 > '4'::int8;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btint1int8cmp('1'::int1, '1'::int8);
+ btint1int8cmp 
+---------------
+             0
+(1 row)
+
+SELECT btint1int8cmp('5'::int1, '2'::int8);
+ btint1int8cmp 
+---------------
+             1
+(1 row)
+
+SELECT btint1int8cmp('3'::int1, '4'::int8);
+ btint1int8cmp 
+---------------
+            -1
 (1 row)
 
 SELECT pg_typeof('1'::int1 + '1'::int8);
@@ -2506,6 +2650,24 @@ SELECT '3'::uint1 > '4'::int1;
  f
 (1 row)
 
+SELECT btuint1int1cmp('1'::uint1, '1'::int1);
+ btuint1int1cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint1int1cmp('5'::uint1, '2'::int1);
+ btuint1int1cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint1int1cmp('3'::uint1, '4'::int1);
+ btuint1int1cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::uint1 + '1'::int1);
  pg_typeof 
 -----------
@@ -2736,6 +2898,24 @@ SELECT '3'::uint1 > '4'::uint1;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint1uint1cmp('1'::uint1, '1'::uint1);
+ btuint1uint1cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint1uint1cmp('5'::uint1, '2'::uint1);
+ btuint1uint1cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint1uint1cmp('3'::uint1, '4'::uint1);
+ btuint1uint1cmp 
+-----------------
+              -1
 (1 row)
 
 SELECT pg_typeof('1'::uint1 + '1'::uint1);
@@ -2970,6 +3150,24 @@ SELECT '3'::uint1 > '4'::uint2;
  f
 (1 row)
 
+SELECT btuint1uint2cmp('1'::uint1, '1'::uint2);
+ btuint1uint2cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint1uint2cmp('5'::uint1, '2'::uint2);
+ btuint1uint2cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint1uint2cmp('3'::uint1, '4'::uint2);
+ btuint1uint2cmp 
+-----------------
+              -1
+(1 row)
+
 SELECT pg_typeof('1'::uint1 + '1'::uint2);
  pg_typeof 
 -----------
@@ -3200,6 +3398,24 @@ SELECT '3'::uint1 > '4'::uint4;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint1uint4cmp('1'::uint1, '1'::uint4);
+ btuint1uint4cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint1uint4cmp('5'::uint1, '2'::uint4);
+ btuint1uint4cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint1uint4cmp('3'::uint1, '4'::uint4);
+ btuint1uint4cmp 
+-----------------
+              -1
 (1 row)
 
 SELECT pg_typeof('1'::uint1 + '1'::uint4);
@@ -3434,6 +3650,24 @@ SELECT '3'::uint1 > '4'::uint8;
  f
 (1 row)
 
+SELECT btuint1uint8cmp('1'::uint1, '1'::uint8);
+ btuint1uint8cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint1uint8cmp('5'::uint1, '2'::uint8);
+ btuint1uint8cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint1uint8cmp('3'::uint1, '4'::uint8);
+ btuint1uint8cmp 
+-----------------
+              -1
+(1 row)
+
 SELECT pg_typeof('1'::uint1 + '1'::uint8);
  pg_typeof 
 -----------
@@ -3664,6 +3898,24 @@ SELECT '3'::uint1 > '4'::int2;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint1int2cmp('1'::uint1, '1'::int2);
+ btuint1int2cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint1int2cmp('5'::uint1, '2'::int2);
+ btuint1int2cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint1int2cmp('3'::uint1, '4'::int2);
+ btuint1int2cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::uint1 + '1'::int2);
@@ -3902,6 +4154,24 @@ SELECT '3'::uint1 > '4'::int4;
  f
 (1 row)
 
+SELECT btuint1int4cmp('1'::uint1, '1'::int4);
+ btuint1int4cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint1int4cmp('5'::uint1, '2'::int4);
+ btuint1int4cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint1int4cmp('3'::uint1, '4'::int4);
+ btuint1int4cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::uint1 + '1'::int4);
  pg_typeof 
 -----------
@@ -4136,6 +4406,24 @@ SELECT '3'::uint1 > '4'::int8;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint1int8cmp('1'::uint1, '1'::int8);
+ btuint1int8cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint1int8cmp('5'::uint1, '2'::int8);
+ btuint1int8cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint1int8cmp('3'::uint1, '4'::int8);
+ btuint1int8cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::uint1 + '1'::int8);
@@ -4638,6 +4926,24 @@ SELECT '3'::uint2 > '4'::int1;
  f
 (1 row)
 
+SELECT btuint2int1cmp('1'::uint2, '1'::int1);
+ btuint2int1cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint2int1cmp('5'::uint2, '2'::int1);
+ btuint2int1cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint2int1cmp('3'::uint2, '4'::int1);
+ btuint2int1cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::uint2 + '1'::int1);
  pg_typeof 
 -----------
@@ -4868,6 +5174,24 @@ SELECT '3'::uint2 > '4'::uint1;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint2uint1cmp('1'::uint2, '1'::uint1);
+ btuint2uint1cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint2uint1cmp('5'::uint2, '2'::uint1);
+ btuint2uint1cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint2uint1cmp('3'::uint2, '4'::uint1);
+ btuint2uint1cmp 
+-----------------
+              -1
 (1 row)
 
 SELECT pg_typeof('1'::uint2 + '1'::uint1);
@@ -5102,6 +5426,24 @@ SELECT '3'::uint2 > '4'::uint2;
  f
 (1 row)
 
+SELECT btuint2uint2cmp('1'::uint2, '1'::uint2);
+ btuint2uint2cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint2uint2cmp('5'::uint2, '2'::uint2);
+ btuint2uint2cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint2uint2cmp('3'::uint2, '4'::uint2);
+ btuint2uint2cmp 
+-----------------
+              -1
+(1 row)
+
 SELECT pg_typeof('1'::uint2 + '1'::uint2);
  pg_typeof 
 -----------
@@ -5332,6 +5674,24 @@ SELECT '3'::uint2 > '4'::uint4;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint2uint4cmp('1'::uint2, '1'::uint4);
+ btuint2uint4cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint2uint4cmp('5'::uint2, '2'::uint4);
+ btuint2uint4cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint2uint4cmp('3'::uint2, '4'::uint4);
+ btuint2uint4cmp 
+-----------------
+              -1
 (1 row)
 
 SELECT pg_typeof('1'::uint2 + '1'::uint4);
@@ -5566,6 +5926,24 @@ SELECT '3'::uint2 > '4'::uint8;
  f
 (1 row)
 
+SELECT btuint2uint8cmp('1'::uint2, '1'::uint8);
+ btuint2uint8cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint2uint8cmp('5'::uint2, '2'::uint8);
+ btuint2uint8cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint2uint8cmp('3'::uint2, '4'::uint8);
+ btuint2uint8cmp 
+-----------------
+              -1
+(1 row)
+
 SELECT pg_typeof('1'::uint2 + '1'::uint8);
  pg_typeof 
 -----------
@@ -5798,6 +6176,24 @@ SELECT '3'::uint2 > '4'::int2;
  f
 (1 row)
 
+SELECT btuint2int2cmp('1'::uint2, '1'::int2);
+ btuint2int2cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint2int2cmp('5'::uint2, '2'::int2);
+ btuint2int2cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint2int2cmp('3'::uint2, '4'::int2);
+ btuint2int2cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::uint2 + '1'::int2);
  pg_typeof 
 -----------
@@ -6028,6 +6424,24 @@ SELECT '3'::uint2 > '4'::int4;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint2int4cmp('1'::uint2, '1'::int4);
+ btuint2int4cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint2int4cmp('5'::uint2, '2'::int4);
+ btuint2int4cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint2int4cmp('3'::uint2, '4'::int4);
+ btuint2int4cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::uint2 + '1'::int4);
@@ -6264,6 +6678,24 @@ SELECT '3'::uint2 > '4'::int8;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint2int8cmp('1'::uint2, '1'::int8);
+ btuint2int8cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint2int8cmp('5'::uint2, '2'::int8);
+ btuint2int8cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint2int8cmp('3'::uint2, '4'::int8);
+ btuint2int8cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::uint2 + '1'::int8);
@@ -6758,6 +7190,24 @@ SELECT '3'::uint4 > '4'::int1;
  f
 (1 row)
 
+SELECT btuint4int1cmp('1'::uint4, '1'::int1);
+ btuint4int1cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint4int1cmp('5'::uint4, '2'::int1);
+ btuint4int1cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint4int1cmp('3'::uint4, '4'::int1);
+ btuint4int1cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::uint4 + '1'::int1);
  pg_typeof 
 -----------
@@ -6988,6 +7438,24 @@ SELECT '3'::uint4 > '4'::uint1;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint4uint1cmp('1'::uint4, '1'::uint1);
+ btuint4uint1cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint4uint1cmp('5'::uint4, '2'::uint1);
+ btuint4uint1cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint4uint1cmp('3'::uint4, '4'::uint1);
+ btuint4uint1cmp 
+-----------------
+              -1
 (1 row)
 
 SELECT pg_typeof('1'::uint4 + '1'::uint1);
@@ -7222,6 +7690,24 @@ SELECT '3'::uint4 > '4'::uint2;
  f
 (1 row)
 
+SELECT btuint4uint2cmp('1'::uint4, '1'::uint2);
+ btuint4uint2cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint4uint2cmp('5'::uint4, '2'::uint2);
+ btuint4uint2cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint4uint2cmp('3'::uint4, '4'::uint2);
+ btuint4uint2cmp 
+-----------------
+              -1
+(1 row)
+
 SELECT pg_typeof('1'::uint4 + '1'::uint2);
  pg_typeof 
 -----------
@@ -7452,6 +7938,24 @@ SELECT '3'::uint4 > '4'::uint4;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint4uint4cmp('1'::uint4, '1'::uint4);
+ btuint4uint4cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint4uint4cmp('5'::uint4, '2'::uint4);
+ btuint4uint4cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint4uint4cmp('3'::uint4, '4'::uint4);
+ btuint4uint4cmp 
+-----------------
+              -1
 (1 row)
 
 SELECT pg_typeof('1'::uint4 + '1'::uint4);
@@ -7686,6 +8190,24 @@ SELECT '3'::uint4 > '4'::uint8;
  f
 (1 row)
 
+SELECT btuint4uint8cmp('1'::uint4, '1'::uint8);
+ btuint4uint8cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint4uint8cmp('5'::uint4, '2'::uint8);
+ btuint4uint8cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint4uint8cmp('3'::uint4, '4'::uint8);
+ btuint4uint8cmp 
+-----------------
+              -1
+(1 row)
+
 SELECT pg_typeof('1'::uint4 + '1'::uint8);
  pg_typeof 
 -----------
@@ -7916,6 +8438,24 @@ SELECT '3'::uint4 > '4'::int2;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint4int2cmp('1'::uint4, '1'::int2);
+ btuint4int2cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint4int2cmp('5'::uint4, '2'::int2);
+ btuint4int2cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint4int2cmp('3'::uint4, '4'::int2);
+ btuint4int2cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::uint4 + '1'::int2);
@@ -8150,6 +8690,24 @@ SELECT '3'::uint4 > '4'::int4;
  f
 (1 row)
 
+SELECT btuint4int4cmp('1'::uint4, '1'::int4);
+ btuint4int4cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint4int4cmp('5'::uint4, '2'::int4);
+ btuint4int4cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint4int4cmp('3'::uint4, '4'::int4);
+ btuint4int4cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::uint4 + '1'::int4);
  pg_typeof 
 -----------
@@ -8380,6 +8938,24 @@ SELECT '3'::uint4 > '4'::int8;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint4int8cmp('1'::uint4, '1'::int8);
+ btuint4int8cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint4int8cmp('5'::uint4, '2'::int8);
+ btuint4int8cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint4int8cmp('3'::uint4, '4'::int8);
+ btuint4int8cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::uint4 + '1'::int8);
@@ -8874,6 +9450,24 @@ SELECT '3'::uint8 > '4'::int1;
  f
 (1 row)
 
+SELECT btuint8int1cmp('1'::uint8, '1'::int1);
+ btuint8int1cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint8int1cmp('5'::uint8, '2'::int1);
+ btuint8int1cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint8int1cmp('3'::uint8, '4'::int1);
+ btuint8int1cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::uint8 + '1'::int1);
  pg_typeof 
 -----------
@@ -9104,6 +9698,24 @@ SELECT '3'::uint8 > '4'::uint1;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint8uint1cmp('1'::uint8, '1'::uint1);
+ btuint8uint1cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint8uint1cmp('5'::uint8, '2'::uint1);
+ btuint8uint1cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint8uint1cmp('3'::uint8, '4'::uint1);
+ btuint8uint1cmp 
+-----------------
+              -1
 (1 row)
 
 SELECT pg_typeof('1'::uint8 + '1'::uint1);
@@ -9338,6 +9950,24 @@ SELECT '3'::uint8 > '4'::uint2;
  f
 (1 row)
 
+SELECT btuint8uint2cmp('1'::uint8, '1'::uint2);
+ btuint8uint2cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint8uint2cmp('5'::uint8, '2'::uint2);
+ btuint8uint2cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint8uint2cmp('3'::uint8, '4'::uint2);
+ btuint8uint2cmp 
+-----------------
+              -1
+(1 row)
+
 SELECT pg_typeof('1'::uint8 + '1'::uint2);
  pg_typeof 
 -----------
@@ -9568,6 +10198,24 @@ SELECT '3'::uint8 > '4'::uint4;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint8uint4cmp('1'::uint8, '1'::uint4);
+ btuint8uint4cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint8uint4cmp('5'::uint8, '2'::uint4);
+ btuint8uint4cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint8uint4cmp('3'::uint8, '4'::uint4);
+ btuint8uint4cmp 
+-----------------
+              -1
 (1 row)
 
 SELECT pg_typeof('1'::uint8 + '1'::uint4);
@@ -9802,6 +10450,24 @@ SELECT '3'::uint8 > '4'::uint8;
  f
 (1 row)
 
+SELECT btuint8uint8cmp('1'::uint8, '1'::uint8);
+ btuint8uint8cmp 
+-----------------
+               0
+(1 row)
+
+SELECT btuint8uint8cmp('5'::uint8, '2'::uint8);
+ btuint8uint8cmp 
+-----------------
+               1
+(1 row)
+
+SELECT btuint8uint8cmp('3'::uint8, '4'::uint8);
+ btuint8uint8cmp 
+-----------------
+              -1
+(1 row)
+
 SELECT pg_typeof('1'::uint8 + '1'::uint8);
  pg_typeof 
 -----------
@@ -10032,6 +10698,24 @@ SELECT '3'::uint8 > '4'::int2;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint8int2cmp('1'::uint8, '1'::int2);
+ btuint8int2cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint8int2cmp('5'::uint8, '2'::int2);
+ btuint8int2cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint8int2cmp('3'::uint8, '4'::int2);
+ btuint8int2cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::uint8 + '1'::int2);
@@ -10266,6 +10950,24 @@ SELECT '3'::uint8 > '4'::int4;
  f
 (1 row)
 
+SELECT btuint8int4cmp('1'::uint8, '1'::int4);
+ btuint8int4cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint8int4cmp('5'::uint8, '2'::int4);
+ btuint8int4cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint8int4cmp('3'::uint8, '4'::int4);
+ btuint8int4cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::uint8 + '1'::int4);
  pg_typeof 
 -----------
@@ -10496,6 +11198,24 @@ SELECT '3'::uint8 > '4'::int8;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btuint8int8cmp('1'::uint8, '1'::int8);
+ btuint8int8cmp 
+----------------
+              0
+(1 row)
+
+SELECT btuint8int8cmp('5'::uint8, '2'::int8);
+ btuint8int8cmp 
+----------------
+              1
+(1 row)
+
+SELECT btuint8int8cmp('3'::uint8, '4'::int8);
+ btuint8int8cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::uint8 + '1'::int8);
@@ -10990,6 +11710,24 @@ SELECT '3'::int2 > '4'::int1;
  f
 (1 row)
 
+SELECT btint2int1cmp('1'::int2, '1'::int1);
+ btint2int1cmp 
+---------------
+             0
+(1 row)
+
+SELECT btint2int1cmp('5'::int2, '2'::int1);
+ btint2int1cmp 
+---------------
+             1
+(1 row)
+
+SELECT btint2int1cmp('3'::int2, '4'::int1);
+ btint2int1cmp 
+---------------
+            -1
+(1 row)
+
 SELECT pg_typeof('1'::int2 + '1'::int1);
  pg_typeof 
 -----------
@@ -11224,6 +11962,24 @@ SELECT '3'::int2 > '4'::uint1;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btint2uint1cmp('1'::int2, '1'::uint1);
+ btint2uint1cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint2uint1cmp('5'::int2, '2'::uint1);
+ btint2uint1cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint2uint1cmp('3'::int2, '4'::uint1);
+ btint2uint1cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::int2 + '1'::uint1);
@@ -11462,6 +12218,24 @@ SELECT '3'::int2 > '4'::uint2;
  f
 (1 row)
 
+SELECT btint2uint2cmp('1'::int2, '1'::uint2);
+ btint2uint2cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint2uint2cmp('5'::int2, '2'::uint2);
+ btint2uint2cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint2uint2cmp('3'::int2, '4'::uint2);
+ btint2uint2cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::int2 + '1'::uint2);
  pg_typeof 
 -----------
@@ -11694,6 +12468,24 @@ SELECT '3'::int2 > '4'::uint4;
  f
 (1 row)
 
+SELECT btint2uint4cmp('1'::int2, '1'::uint4);
+ btint2uint4cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint2uint4cmp('5'::int2, '2'::uint4);
+ btint2uint4cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint2uint4cmp('3'::int2, '4'::uint4);
+ btint2uint4cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::int2 + '1'::uint4);
  pg_typeof 
 -----------
@@ -11924,6 +12716,24 @@ SELECT '3'::int2 > '4'::uint8;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btint2uint8cmp('1'::int2, '1'::uint8);
+ btint2uint8cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint2uint8cmp('5'::int2, '2'::uint8);
+ btint2uint8cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint2uint8cmp('3'::int2, '4'::uint8);
+ btint2uint8cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::int2 + '1'::uint8);
@@ -12422,6 +13232,24 @@ SELECT '3'::int4 > '4'::int1;
  f
 (1 row)
 
+SELECT btint4int1cmp('1'::int4, '1'::int1);
+ btint4int1cmp 
+---------------
+             0
+(1 row)
+
+SELECT btint4int1cmp('5'::int4, '2'::int1);
+ btint4int1cmp 
+---------------
+             1
+(1 row)
+
+SELECT btint4int1cmp('3'::int4, '4'::int1);
+ btint4int1cmp 
+---------------
+            -1
+(1 row)
+
 SELECT pg_typeof('1'::int4 + '1'::int1);
  pg_typeof 
 -----------
@@ -12656,6 +13484,24 @@ SELECT '3'::int4 > '4'::uint1;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btint4uint1cmp('1'::int4, '1'::uint1);
+ btint4uint1cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint4uint1cmp('5'::int4, '2'::uint1);
+ btint4uint1cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint4uint1cmp('3'::int4, '4'::uint1);
+ btint4uint1cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::int4 + '1'::uint1);
@@ -12894,6 +13740,24 @@ SELECT '3'::int4 > '4'::uint2;
  f
 (1 row)
 
+SELECT btint4uint2cmp('1'::int4, '1'::uint2);
+ btint4uint2cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint4uint2cmp('5'::int4, '2'::uint2);
+ btint4uint2cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint4uint2cmp('3'::int4, '4'::uint2);
+ btint4uint2cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::int4 + '1'::uint2);
  pg_typeof 
 -----------
@@ -13130,6 +13994,24 @@ SELECT '3'::int4 > '4'::uint4;
  f
 (1 row)
 
+SELECT btint4uint4cmp('1'::int4, '1'::uint4);
+ btint4uint4cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint4uint4cmp('5'::int4, '2'::uint4);
+ btint4uint4cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint4uint4cmp('3'::int4, '4'::uint4);
+ btint4uint4cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::int4 + '1'::uint4);
  pg_typeof 
 -----------
@@ -13360,6 +14242,24 @@ SELECT '3'::int4 > '4'::uint8;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btint4uint8cmp('1'::int4, '1'::uint8);
+ btint4uint8cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint4uint8cmp('5'::int4, '2'::uint8);
+ btint4uint8cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint4uint8cmp('3'::int4, '4'::uint8);
+ btint4uint8cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::int4 + '1'::uint8);
@@ -13854,6 +14754,24 @@ SELECT '3'::int8 > '4'::int1;
  f
 (1 row)
 
+SELECT btint8int1cmp('1'::int8, '1'::int1);
+ btint8int1cmp 
+---------------
+             0
+(1 row)
+
+SELECT btint8int1cmp('5'::int8, '2'::int1);
+ btint8int1cmp 
+---------------
+             1
+(1 row)
+
+SELECT btint8int1cmp('3'::int8, '4'::int1);
+ btint8int1cmp 
+---------------
+            -1
+(1 row)
+
 SELECT pg_typeof('1'::int8 + '1'::int1);
  pg_typeof 
 -----------
@@ -14088,6 +15006,24 @@ SELECT '3'::int8 > '4'::uint1;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btint8uint1cmp('1'::int8, '1'::uint1);
+ btint8uint1cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint8uint1cmp('5'::int8, '2'::uint1);
+ btint8uint1cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint8uint1cmp('3'::int8, '4'::uint1);
+ btint8uint1cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::int8 + '1'::uint1);
@@ -14326,6 +15262,24 @@ SELECT '3'::int8 > '4'::uint2;
  f
 (1 row)
 
+SELECT btint8uint2cmp('1'::int8, '1'::uint2);
+ btint8uint2cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint8uint2cmp('5'::int8, '2'::uint2);
+ btint8uint2cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint8uint2cmp('3'::int8, '4'::uint2);
+ btint8uint2cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::int8 + '1'::uint2);
  pg_typeof 
 -----------
@@ -14562,6 +15516,24 @@ SELECT '3'::int8 > '4'::uint4;
  f
 (1 row)
 
+SELECT btint8uint4cmp('1'::int8, '1'::uint4);
+ btint8uint4cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint8uint4cmp('5'::int8, '2'::uint4);
+ btint8uint4cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint8uint4cmp('3'::int8, '4'::uint4);
+ btint8uint4cmp 
+----------------
+             -1
+(1 row)
+
 SELECT pg_typeof('1'::int8 + '1'::uint4);
  pg_typeof 
 -----------
@@ -14796,6 +15768,24 @@ SELECT '3'::int8 > '4'::uint8;
  ?column? 
 ----------
  f
+(1 row)
+
+SELECT btint8uint8cmp('1'::int8, '1'::uint8);
+ btint8uint8cmp 
+----------------
+              0
+(1 row)
+
+SELECT btint8uint8cmp('5'::int8, '2'::uint8);
+ btint8uint8cmp 
+----------------
+              1
+(1 row)
+
+SELECT btint8uint8cmp('3'::int8, '4'::uint8);
+ btint8uint8cmp 
+----------------
+             -1
 (1 row)
 
 SELECT pg_typeof('1'::int8 + '1'::uint8);

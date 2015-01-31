@@ -115,7 +115,7 @@ f_operators_c.write('#include <fmgr.h>\n\n')
 f_operators_c.write('#include "uint.h"\n\n')
 
 
-def write_c_function(f, funcname, leftarg, rightarg, op, rettype, c_check='', intermediate_type=None):
+def write_op_c_function(f, funcname, leftarg, rightarg, op, rettype, c_check='', intermediate_type=None):
     f.write("""
 PG_FUNCTION_INFO_V1(%s);
 Datum
@@ -185,7 +185,54 @@ def write_sql_operator(f, funcname, leftarg, rightarg, op, rettype):
     if op in ['=']:
         f.write("    HASHES,\n")
         f.write("    MERGES,\n")
-    f.write("    PROCEDURE = %s\n);\n" % funcname)
+    f.write("    PROCEDURE = %s\n);\n\n" % funcname)
+
+
+def write_cmp_c_function(f, leftarg, rightarg):
+    funcname = 'bt' + coalesce(leftarg, '') + coalesce(rightarg, '') + 'cmp'
+    f.write("""
+PG_FUNCTION_INFO_V1(%s);
+Datum
+%s(PG_FUNCTION_ARGS)
+{
+	%s		a = PG_GETARG_%s(0);
+	%s		b = PG_GETARG_%s(1);
+
+	if (a > b)
+		PG_RETURN_INT32(1);
+	else if (a == b)
+		PG_RETURN_INT32(0);
+	else
+		PG_RETURN_INT32(-1);
+}
+""" % (funcname, funcname,
+       c_types[leftarg], c_types[leftarg].upper(),
+       c_types[rightarg], c_types[rightarg].upper()))
+
+
+def write_cmp_sql_function(f, leftarg, rightarg):
+    funcname = 'bt' + coalesce(leftarg, '') + coalesce(rightarg, '') + 'cmp'
+    f.write("CREATE FUNCTION %s(%s, %s) RETURNS integer IMMUTABLE STRICT LANGUAGE C AS '$libdir/uint', '%s';\n\n"
+            % (funcname, leftarg, rightarg, funcname))
+
+
+def write_opclasses_sql(f, typ):
+    f.write("""CREATE OPERATOR CLASS %s_ops
+    DEFAULT FOR TYPE %s USING btree AS
+        OPERATOR        1       < ,
+        OPERATOR        2       <= ,
+        OPERATOR        3       = ,
+        OPERATOR        4       >= ,
+        OPERATOR        5       > ,
+        FUNCTION        1       bt%s%scmp(%s, %s);
+
+""" % (typ, typ, typ, typ, typ, typ))
+    f.write("""CREATE OPERATOR CLASS %s_ops
+    DEFAULT FOR TYPE %s USING hash AS
+        OPERATOR        1       =,
+        FUNCTION        1       hash%s(%s);
+
+""" % (typ, typ, typ, typ))
 
 
 def coalesce(*args):
@@ -194,7 +241,7 @@ def coalesce(*args):
 
 def write_code(f_c, f_sql, leftarg, rightarg, op, rettype, c_check='', intermediate_type=None):
     funcname = coalesce(leftarg, '') + coalesce(rightarg, '') + op_words[op]
-    write_c_function(f_c, funcname, leftarg, rightarg, op, rettype, c_check, intermediate_type)
+    write_op_c_function(f_c, funcname, leftarg, rightarg, op, rettype, c_check, intermediate_type)
     write_sql_operator(f_sql, funcname, leftarg, rightarg, op, rettype)
 
 
@@ -213,6 +260,12 @@ for leftarg in new_types + old_types:
             f_test_operators_sql.write("SELECT '5'::%s %s '2'::%s;\n" % (leftarg, op, rightarg))
             f_test_operators_sql.write("SELECT '3'::%s %s '4'::%s;\n" % (leftarg, op, rightarg))
         f_test_operators_sql.write("\n")
+
+        write_cmp_c_function(f_operators_c, leftarg, rightarg)
+        write_cmp_sql_function(f_operators_sql, leftarg, rightarg)
+        f_test_operators_sql.write("SELECT bt%s%scmp('1'::%s, '1'::%s);\n" % (leftarg, rightarg, leftarg, rightarg))
+        f_test_operators_sql.write("SELECT bt%s%scmp('5'::%s, '2'::%s);\n" % (leftarg, rightarg, leftarg, rightarg))
+        f_test_operators_sql.write("SELECT bt%s%scmp('3'::%s, '4'::%s);\n" % (leftarg, rightarg, leftarg, rightarg))
 
         for op in arithmetic_ops:
             args = sorted([leftarg, rightarg], key=lambda x: (type_bits(x), type_unsigned(x)))
@@ -267,6 +320,8 @@ for arg in new_types:
         f_test_operators_sql.write("SELECT '6'::%s %s 3;\n" % (arg, op))
 
     f_test_operators_sql.write("\n")
+
+    write_opclasses_sql(f_operators_sql, arg)
 
 
 f_operators_c.close()
