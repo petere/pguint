@@ -112,7 +112,7 @@ Datum
 
 
 def write_sql_operator(f, funcname, leftarg, rightarg, op, rettype):
-    f.write("CREATE FUNCTION %s(%s) RETURNS %s IMMUTABLE LANGUAGE C AS '$libdir/uint', '%s';\n\n" \
+    f.write("CREATE FUNCTION %s(%s) RETURNS %s IMMUTABLE STRICT LANGUAGE C AS '$libdir/uint', '%s';\n\n" \
             % (funcname, ', '.join([x for x in [leftarg, rightarg] if x]), rettype, funcname))
 
     f.write("CREATE OPERATOR %s (\n" % op)
