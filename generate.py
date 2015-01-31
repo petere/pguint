@@ -129,7 +129,18 @@ Datum
     if rightarg:
         f.write("\t%s arg2 = PG_GETARG_%s(%d);\n" % (c_types[rightarg], c_types[rightarg].upper(), argcount))
         argcount += 1
-    f.write("\t%s result = " % c_types[intermediate_type or rettype])
+    f.write("\t%s result;\n\n" % c_types[intermediate_type or rettype])
+    if op in ['/', '%']:
+        f.write("""	if (arg2 == 0)
+	{
+		ereport(ERROR,
+			(errcode(ERRCODE_DIVISION_BY_ZERO),
+			 errmsg("division by zero")));
+		PG_RETURN_NULL();
+	}
+
+""")
+    f.write("\tresult = ")
     if leftarg:
         if intermediate_type:
             f.write("(%s)" % c_types[intermediate_type])
@@ -237,6 +248,8 @@ for leftarg in new_types + old_types:
             f_test_operators_sql.write("SELECT '5'::%s %s '2'::%s;\n" % (leftarg, op, rightarg))
             if op in ['+', '*']:
                 f_test_operators_sql.write("SELECT '%s'::%s %s '%s'::%s;\n" % (max_values[leftarg], leftarg, op, max_values[rightarg], rightarg))
+            if op in ['/', '%']:
+                f_test_operators_sql.write("SELECT '5'::%s %s '0'::%s;\n" % (leftarg, op, rightarg))
         f_test_operators_sql.write("\n")
 
 for arg in new_types:
