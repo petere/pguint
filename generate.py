@@ -7,6 +7,49 @@ old_types = ['int2', 'int4', 'int8']
 comparison_ops = ['<', '<=', '=', '<>', '>=', '>']
 arithmetic_ops = ['+', '-', '*', '/', '%']
 
+commutators = {
+    '<': '>',
+    '<=': '>=',
+    '=': '=',
+    '<>': '<>',
+    '>=': '<=',
+    '>': '<',
+
+    '+': '+',
+    '*': '*',
+
+    '&': '&',
+    '|': '|',
+    '#': '#',
+}
+
+negators = {
+    '<': '>=',
+    '<=': '>',
+    '=': '<>',
+    '<>': '=',
+    '>=': '<',
+    '>': '<=',
+}
+
+restriction_estimators = {
+    '=': 'eqsel',
+    '<>': 'neqsel',
+    '<': 'scalarltsel',
+    '<=': 'scalarltsel',
+    '>': 'scalargtsel',
+    '>=': 'scalargtsel',
+}
+
+join_estimators = {
+    '=': 'eqjoinsel',
+    '<>': 'neqjoinsel',
+    '<': 'scalarltjoinsel',
+    '<=': 'scalarltjoinsel',
+    '>': 'scalargtjoinsel',
+    '>=': 'scalargtjoinsel',
+}
+
 op_words = {
     '<': 'lt', '<=': 'le', '=': 'eq', '<>': 'ne', '>=': 'ge', '>': 'gt',
     '+': 'pl', '-': 'mi', '*': 'mul', '/': 'div', '%': 'mod',
@@ -120,6 +163,17 @@ def write_sql_operator(f, funcname, leftarg, rightarg, op, rettype):
         f.write("    LEFTARG = %s,\n" % leftarg)
     if rightarg:
         f.write("    RIGHTARG = %s,\n" % rightarg)
+    if op in commutators:
+        f.write("    COMMUTATOR = %s,\n" % commutators[op])
+    if op in negators:
+        f.write("    NEGATOR = %s,\n" % negators[op])
+    if op in restriction_estimators:
+        f.write("    RESTRICT = %s,\n" % restriction_estimators[op])
+    if op in join_estimators:
+        f.write("    JOIN = %s,\n" % join_estimators[op])
+    if op in ['=']:
+        f.write("    HASHES,\n")
+        f.write("    MERGES,\n")
     f.write("    PROCEDURE = %s\n);\n" % funcname)
 
 
