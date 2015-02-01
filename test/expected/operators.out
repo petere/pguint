@@ -16326,6 +16326,66 @@ SELECT '6'::int1 >> 3;
  0
 (1 row)
 
+SELECT int1smaller('1'::int1, '1'::int1);
+ int1smaller 
+-------------
+ 1
+(1 row)
+
+SELECT int1smaller('5'::int1, '2'::int1);
+ int1smaller 
+-------------
+ 2
+(1 row)
+
+SELECT int1smaller('3'::int1, '4'::int1);
+ int1smaller 
+-------------
+ 3
+(1 row)
+
+SELECT min(val::int1) FROM (VALUES (3), (5), (1), (4)) AS _ (val);
+ min 
+-----
+ 1
+(1 row)
+
+SELECT int1larger('1'::int1, '1'::int1);
+ int1larger 
+------------
+ 1
+(1 row)
+
+SELECT int1larger('5'::int1, '2'::int1);
+ int1larger 
+------------
+ 5
+(1 row)
+
+SELECT int1larger('3'::int1, '4'::int1);
+ int1larger 
+------------
+ 4
+(1 row)
+
+SELECT max(val::int1) FROM (VALUES (3), (5), (1), (4)) AS _ (val);
+ max 
+-----
+ 5
+(1 row)
+
+SELECT bit_and(val::int1) FROM (VALUES (3), (6), (18)) AS _ (val);
+ bit_and 
+---------
+ 2
+(1 row)
+
+SELECT bit_or(val::int1) FROM (VALUES (9), (1), (4)) AS _ (val);
+ bit_or 
+--------
+ 13
+(1 row)
+
 SELECT '1'::uint1 & '1'::uint1;
  ?column? 
 ----------
@@ -16408,6 +16468,66 @@ SELECT '6'::uint1 >> 3;
  ?column? 
 ----------
  0
+(1 row)
+
+SELECT uint1smaller('1'::uint1, '1'::uint1);
+ uint1smaller 
+--------------
+ 1
+(1 row)
+
+SELECT uint1smaller('5'::uint1, '2'::uint1);
+ uint1smaller 
+--------------
+ 2
+(1 row)
+
+SELECT uint1smaller('3'::uint1, '4'::uint1);
+ uint1smaller 
+--------------
+ 3
+(1 row)
+
+SELECT min(val::uint1) FROM (VALUES (3), (5), (1), (4)) AS _ (val);
+ min 
+-----
+ 1
+(1 row)
+
+SELECT uint1larger('1'::uint1, '1'::uint1);
+ uint1larger 
+-------------
+ 1
+(1 row)
+
+SELECT uint1larger('5'::uint1, '2'::uint1);
+ uint1larger 
+-------------
+ 5
+(1 row)
+
+SELECT uint1larger('3'::uint1, '4'::uint1);
+ uint1larger 
+-------------
+ 4
+(1 row)
+
+SELECT max(val::uint1) FROM (VALUES (3), (5), (1), (4)) AS _ (val);
+ max 
+-----
+ 5
+(1 row)
+
+SELECT bit_and(val::uint1) FROM (VALUES (3), (6), (18)) AS _ (val);
+ bit_and 
+---------
+ 2
+(1 row)
+
+SELECT bit_or(val::uint1) FROM (VALUES (9), (1), (4)) AS _ (val);
+ bit_or 
+--------
+ 13
 (1 row)
 
 SELECT '1'::uint2 & '1'::uint2;
@@ -16494,6 +16614,66 @@ SELECT '6'::uint2 >> 3;
  0
 (1 row)
 
+SELECT uint2smaller('1'::uint2, '1'::uint2);
+ uint2smaller 
+--------------
+ 1
+(1 row)
+
+SELECT uint2smaller('5'::uint2, '2'::uint2);
+ uint2smaller 
+--------------
+ 2
+(1 row)
+
+SELECT uint2smaller('3'::uint2, '4'::uint2);
+ uint2smaller 
+--------------
+ 3
+(1 row)
+
+SELECT min(val::uint2) FROM (VALUES (3), (5), (1), (4)) AS _ (val);
+ min 
+-----
+ 1
+(1 row)
+
+SELECT uint2larger('1'::uint2, '1'::uint2);
+ uint2larger 
+-------------
+ 1
+(1 row)
+
+SELECT uint2larger('5'::uint2, '2'::uint2);
+ uint2larger 
+-------------
+ 5
+(1 row)
+
+SELECT uint2larger('3'::uint2, '4'::uint2);
+ uint2larger 
+-------------
+ 4
+(1 row)
+
+SELECT max(val::uint2) FROM (VALUES (3), (5), (1), (4)) AS _ (val);
+ max 
+-----
+ 5
+(1 row)
+
+SELECT bit_and(val::uint2) FROM (VALUES (3), (6), (18)) AS _ (val);
+ bit_and 
+---------
+ 2
+(1 row)
+
+SELECT bit_or(val::uint2) FROM (VALUES (9), (1), (4)) AS _ (val);
+ bit_or 
+--------
+ 13
+(1 row)
+
 SELECT '1'::uint4 & '1'::uint4;
  ?column? 
 ----------
@@ -16578,6 +16758,66 @@ SELECT '6'::uint4 >> 3;
  0
 (1 row)
 
+SELECT uint4smaller('1'::uint4, '1'::uint4);
+ uint4smaller 
+--------------
+ 1
+(1 row)
+
+SELECT uint4smaller('5'::uint4, '2'::uint4);
+ uint4smaller 
+--------------
+ 2
+(1 row)
+
+SELECT uint4smaller('3'::uint4, '4'::uint4);
+ uint4smaller 
+--------------
+ 3
+(1 row)
+
+SELECT min(val::uint4) FROM (VALUES (3), (5), (1), (4)) AS _ (val);
+ min 
+-----
+ 1
+(1 row)
+
+SELECT uint4larger('1'::uint4, '1'::uint4);
+ uint4larger 
+-------------
+ 1
+(1 row)
+
+SELECT uint4larger('5'::uint4, '2'::uint4);
+ uint4larger 
+-------------
+ 5
+(1 row)
+
+SELECT uint4larger('3'::uint4, '4'::uint4);
+ uint4larger 
+-------------
+ 4
+(1 row)
+
+SELECT max(val::uint4) FROM (VALUES (3), (5), (1), (4)) AS _ (val);
+ max 
+-----
+ 5
+(1 row)
+
+SELECT bit_and(val::uint4) FROM (VALUES (3), (6), (18)) AS _ (val);
+ bit_and 
+---------
+ 2
+(1 row)
+
+SELECT bit_or(val::uint4) FROM (VALUES (9), (1), (4)) AS _ (val);
+ bit_or 
+--------
+ 13
+(1 row)
+
 SELECT '1'::uint8 & '1'::uint8;
  ?column? 
 ----------
@@ -16660,5 +16900,65 @@ SELECT '6'::uint8 >> 3;
  ?column? 
 ----------
  0
+(1 row)
+
+SELECT uint8smaller('1'::uint8, '1'::uint8);
+ uint8smaller 
+--------------
+ 1
+(1 row)
+
+SELECT uint8smaller('5'::uint8, '2'::uint8);
+ uint8smaller 
+--------------
+ 2
+(1 row)
+
+SELECT uint8smaller('3'::uint8, '4'::uint8);
+ uint8smaller 
+--------------
+ 3
+(1 row)
+
+SELECT min(val::uint8) FROM (VALUES (3), (5), (1), (4)) AS _ (val);
+ min 
+-----
+ 1
+(1 row)
+
+SELECT uint8larger('1'::uint8, '1'::uint8);
+ uint8larger 
+-------------
+ 1
+(1 row)
+
+SELECT uint8larger('5'::uint8, '2'::uint8);
+ uint8larger 
+-------------
+ 5
+(1 row)
+
+SELECT uint8larger('3'::uint8, '4'::uint8);
+ uint8larger 
+-------------
+ 4
+(1 row)
+
+SELECT max(val::uint8) FROM (VALUES (3), (5), (1), (4)) AS _ (val);
+ max 
+-----
+ 5
+(1 row)
+
+SELECT bit_and(val::uint8) FROM (VALUES (3), (6), (18)) AS _ (val);
+ bit_and 
+---------
+ 2
+(1 row)
+
+SELECT bit_or(val::uint8) FROM (VALUES (9), (1), (4)) AS _ (val);
+ bit_or 
+--------
+ 13
 (1 row)
 

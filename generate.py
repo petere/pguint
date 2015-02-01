@@ -343,6 +343,23 @@ for arg in new_types:
 
     write_opclasses_sql(f_operators_sql, arg)
 
+    for agg, funcname, op in [('min', "%ssmaller" % arg, '<'),
+                              ('max', "%slarger" % arg, '>')]:
+        write_c_function(f_operators_c, funcname, [arg]*2, arg, "result = (arg1 %s arg2) ? arg1 : arg2;" % op)
+        write_sql_function(f_operators_sql, funcname, [arg]*2, arg)
+        f_test_operators_sql.write("SELECT %s('1'::%s, '1'::%s);\n" % (funcname, arg, arg))
+        f_test_operators_sql.write("SELECT %s('5'::%s, '2'::%s);\n" % (funcname, arg, arg))
+        f_test_operators_sql.write("SELECT %s('3'::%s, '4'::%s);\n" % (funcname, arg, arg))
+        f_operators_sql.write("CREATE AGGREGATE %s(%s) (SFUNC = %s, STYPE = %s, SORTOP = %s);\n\n"
+                              % (agg, arg, funcname, arg, op))
+        f_test_operators_sql.write("SELECT %s(val::%s) FROM (VALUES (3), (5), (1), (4)) AS _ (val);\n\n" % (agg, arg))
+
+    for agg, funcname in [('bit_and', "%sand" % (arg * 2)),
+                          ('bit_or', "%sor" % (arg * 2))]:
+        f_operators_sql.write("CREATE AGGREGATE %s(%s) (SFUNC = %s, STYPE = %s);\n\n"
+                              % (agg, arg, funcname, arg))
+    f_test_operators_sql.write("SELECT bit_and(val::%s) FROM (VALUES (3), (6), (18)) AS _ (val);\n\n" % arg)
+    f_test_operators_sql.write("SELECT bit_or(val::%s) FROM (VALUES (9), (1), (4)) AS _ (val);\n\n" % arg)
 
 f_operators_c.close()
 f_operators_sql.close()
