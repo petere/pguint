@@ -144,6 +144,13 @@ Datum
 """ % c_types[rettype].upper())
 
 
+def write_sql_function(f, funcname, argtypes, rettype, sql_funcname=None):
+    if not sql_funcname:
+        sql_funcname = funcname
+    f.write("CREATE FUNCTION %s(%s) RETURNS %s IMMUTABLE STRICT LANGUAGE C AS '$libdir/uint', '%s';\n\n"
+            % (sql_funcname, ', '.join([x for x in argtypes if x]), rettype, funcname))
+
+
 def write_op_c_function(f, funcname, leftarg, rightarg, op, rettype, c_check='', intermediate_type=None):
     body = ""
     if intermediate_type:
@@ -190,8 +197,7 @@ def write_sql_operator(f, funcname, leftarg, rightarg, op, rettype):
     if op == '%':
         # SQL standard requires a "mod" function rather than % operator
         sql_funcname = 'mod'
-    f.write("CREATE FUNCTION %s(%s) RETURNS %s IMMUTABLE STRICT LANGUAGE C AS '$libdir/uint', '%s';\n\n" \
-            % (sql_funcname, ', '.join([x for x in [leftarg, rightarg] if x]), rettype, funcname))
+    write_sql_function(f, funcname, [leftarg, rightarg], rettype, sql_funcname=sql_funcname)
 
     f.write("CREATE OPERATOR %s (\n" % op)
     if leftarg:
@@ -225,8 +231,7 @@ else
 
 def write_cmp_sql_function(f, leftarg, rightarg):
     funcname = 'bt' + coalesce(leftarg, '') + coalesce(rightarg, '') + 'cmp'
-    f.write("CREATE FUNCTION %s(%s, %s) RETURNS integer IMMUTABLE STRICT LANGUAGE C AS '$libdir/uint', '%s';\n\n"
-            % (funcname, leftarg, rightarg, funcname))
+    write_sql_function(f, funcname, [leftarg, rightarg], 'integer')
 
 
 def write_opclasses_sql(f, typ):
