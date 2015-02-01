@@ -115,54 +115,74 @@ f_operators_c.write('#include <fmgr.h>\n\n')
 f_operators_c.write('#include "uint.h"\n\n')
 
 
-def write_op_c_function(f, funcname, leftarg, rightarg, op, rettype, c_check='', intermediate_type=None):
+def write_c_function(f, funcname, argtypes, rettype, body):
     f.write("""
 PG_FUNCTION_INFO_V1(%s);
 Datum
 %s(PG_FUNCTION_ARGS)
 {
 """ % (funcname, funcname))
-    argcount = 0
-    if leftarg:
-        f.write("\t%s arg1 = PG_GETARG_%s(%d);\n" % (c_types[leftarg], c_types[leftarg].upper(), argcount))
-        argcount += 1
-    if rightarg:
-        f.write("\t%s arg2 = PG_GETARG_%s(%d);\n" % (c_types[rightarg], c_types[rightarg].upper(), argcount))
-        argcount += 1
-    f.write("\t%s result;\n\n" % c_types[intermediate_type or rettype])
-    if op in ['/', '%']:
-        f.write("""	if (arg2 == 0)
-	{
-		ereport(ERROR,
-			(errcode(ERRCODE_DIVISION_BY_ZERO),
-			 errmsg("division by zero")));
-		PG_RETURN_NULL();
-	}
-
-""")
-    f.write("\tresult = ")
-    if leftarg:
-        if intermediate_type:
-            f.write("(%s)" % c_types[intermediate_type])
-        f.write("arg1")
-    f.write(" " + c_operator(op) + " ")
-    if rightarg:
-        if intermediate_type:
-            f.write("(%s)" % c_types[intermediate_type])
-        f.write("arg2")
-    f.write(";\n")
-    if c_check:
-        f.write("""
-	if (%s)
-		ereport(ERROR,
-			(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
-			 errmsg("integer out of range")));
-""" % c_check)
-
+    argnum = 0;
+    argvar = 0;
+    for argtype in argtypes:
+        argvar += 1
+        if argtype is None:
+            continue
+        f.write("\t%s arg%d = PG_GETARG_%s(%d);\n"
+                % (c_types[argtype],
+                   argvar,
+                   c_types[argtype].upper(),
+                   argnum))
+        argnum += 1
+    f.write("\t%s result;\n" % c_types[rettype])
+    f.write("\n")
+    f.write("\t" + body.replace("\n", "\n\t").replace("\n\t\n", "\n\n"))
+    f.write("\n")
     f.write("""
 	PG_RETURN_%s(result);
 }
 """ % c_types[rettype].upper())
+
+
+def write_op_c_function(f, funcname, leftarg, rightarg, op, rettype, c_check='', intermediate_type=None):
+    body = ""
+    if intermediate_type:
+        body += "%s result2;\n\n" % c_types[intermediate_type]
+    if op in ['/', '%']:
+        body += """if (arg2 == 0)
+{
+	ereport(ERROR,
+		(errcode(ERRCODE_DIVISION_BY_ZERO),
+		 errmsg("division by zero")));
+	PG_RETURN_NULL();
+}
+
+"""
+    if intermediate_type:
+        body += "result2 = "
+    else:
+        body += "result = "
+    if leftarg:
+        if intermediate_type:
+            body += "(%s)" % c_types[intermediate_type]
+        body += "arg1"
+    body += " " + c_operator(op) + " "
+    if rightarg:
+        if intermediate_type:
+            body += "(%s)" % c_types[intermediate_type]
+        body += "arg2"
+    body += ";"
+    if c_check:
+        body += """
+
+if (%s)
+	ereport(ERROR,
+		(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+		 errmsg("integer out of range")));""" % c_check
+    if intermediate_type:
+        body += "\nresult = result2;"
+
+    write_c_function(f, funcname, [leftarg, rightarg], rettype, body)
 
 
 def write_sql_operator(f, funcname, leftarg, rightarg, op, rettype):
@@ -194,24 +214,13 @@ def write_sql_operator(f, funcname, leftarg, rightarg, op, rettype):
 
 def write_cmp_c_function(f, leftarg, rightarg):
     funcname = 'bt' + coalesce(leftarg, '') + coalesce(rightarg, '') + 'cmp'
-    f.write("""
-PG_FUNCTION_INFO_V1(%s);
-Datum
-%s(PG_FUNCTION_ARGS)
-{
-	%s		a = PG_GETARG_%s(0);
-	%s		b = PG_GETARG_%s(1);
-
-	if (a > b)
-		PG_RETURN_INT32(1);
-	else if (a == b)
-		PG_RETURN_INT32(0);
-	else
-		PG_RETURN_INT32(-1);
-}
-""" % (funcname, funcname,
-       c_types[leftarg], c_types[leftarg].upper(),
-       c_types[rightarg], c_types[rightarg].upper()))
+    write_c_function(f, funcname, [leftarg, rightarg], 'int4',
+                     """if (arg1 > arg2)
+	result = 1;
+else if (arg1 == arg2)
+	result = 0;
+else
+	result = -1;""")
 
 
 def write_cmp_sql_function(f, leftarg, rightarg):
@@ -291,7 +300,7 @@ for leftarg in new_types + old_types:
             if op == '*':
                 if type_bits(rettype) < 64:
                     intermediate_type = next_bigger_type(rettype)
-                    c_check = '(%s) result != result' % c_types[rettype]
+                    c_check = '(%s) result2 != result2' % c_types[rettype]
                 elif type_unsigned(rettype):
                     c_check = '(arg1 != ((uint32) arg1) || arg2 != ((uint32) arg2)) && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
                 else:
