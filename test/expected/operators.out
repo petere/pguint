@@ -16386,6 +16386,42 @@ SELECT bit_or(val::int1) FROM (VALUES (9), (1), (4)) AS _ (val);
  13
 (1 row)
 
+SELECT int1_sum(NULL::int4, NULL::int1);
+ int1_sum 
+----------
+         
+(1 row)
+
+SELECT int1_sum(NULL::int4, 1::int1);
+ int1_sum 
+----------
+        1
+(1 row)
+
+SELECT int1_sum(2::int4, NULL::int1);
+ int1_sum 
+----------
+        2
+(1 row)
+
+SELECT int1_sum(2::int4, 1::int1);
+ int1_sum 
+----------
+        3
+(1 row)
+
+SELECT sum(val::int1) FROM (SELECT NULL::int1 WHERE false) _ (val);
+ sum 
+-----
+    
+(1 row)
+
+SELECT sum(val::int1) FROM (VALUES (1), (null), (2), (5)) _ (val);
+ sum 
+-----
+   8
+(1 row)
+
 SELECT '1'::uint1 & '1'::uint1;
  ?column? 
 ----------
@@ -16528,6 +16564,42 @@ SELECT bit_or(val::uint1) FROM (VALUES (9), (1), (4)) AS _ (val);
  bit_or 
 --------
  13
+(1 row)
+
+SELECT uint1_sum(NULL::uint4, NULL::uint1);
+ uint1_sum 
+-----------
+ 
+(1 row)
+
+SELECT uint1_sum(NULL::uint4, 1::uint1);
+ uint1_sum 
+-----------
+ 1
+(1 row)
+
+SELECT uint1_sum(2::uint4, NULL::uint1);
+ uint1_sum 
+-----------
+ 2
+(1 row)
+
+SELECT uint1_sum(2::uint4, 1::uint1);
+ uint1_sum 
+-----------
+ 3
+(1 row)
+
+SELECT sum(val::uint1) FROM (SELECT NULL::uint1 WHERE false) _ (val);
+ sum 
+-----
+ 
+(1 row)
+
+SELECT sum(val::uint1) FROM (VALUES (1), (null), (2), (5)) _ (val);
+ sum 
+-----
+ 8
 (1 row)
 
 SELECT '1'::uint2 & '1'::uint2;
@@ -16674,6 +16746,42 @@ SELECT bit_or(val::uint2) FROM (VALUES (9), (1), (4)) AS _ (val);
  13
 (1 row)
 
+SELECT uint2_sum(NULL::uint8, NULL::uint2);
+ uint2_sum 
+-----------
+ 
+(1 row)
+
+SELECT uint2_sum(NULL::uint8, 1::uint2);
+ uint2_sum 
+-----------
+ 1
+(1 row)
+
+SELECT uint2_sum(2::uint8, NULL::uint2);
+ uint2_sum 
+-----------
+ 2
+(1 row)
+
+SELECT uint2_sum(2::uint8, 1::uint2);
+ uint2_sum 
+-----------
+ 3
+(1 row)
+
+SELECT sum(val::uint2) FROM (SELECT NULL::uint2 WHERE false) _ (val);
+ sum 
+-----
+ 
+(1 row)
+
+SELECT sum(val::uint2) FROM (VALUES (1), (null), (2), (5)) _ (val);
+ sum 
+-----
+ 8
+(1 row)
+
 SELECT '1'::uint4 & '1'::uint4;
  ?column? 
 ----------
@@ -16818,6 +16926,42 @@ SELECT bit_or(val::uint4) FROM (VALUES (9), (1), (4)) AS _ (val);
  13
 (1 row)
 
+SELECT uint4_sum(NULL::uint8, NULL::uint4);
+ uint4_sum 
+-----------
+ 
+(1 row)
+
+SELECT uint4_sum(NULL::uint8, 1::uint4);
+ uint4_sum 
+-----------
+ 1
+(1 row)
+
+SELECT uint4_sum(2::uint8, NULL::uint4);
+ uint4_sum 
+-----------
+ 2
+(1 row)
+
+SELECT uint4_sum(2::uint8, 1::uint4);
+ uint4_sum 
+-----------
+ 3
+(1 row)
+
+SELECT sum(val::uint4) FROM (SELECT NULL::uint4 WHERE false) _ (val);
+ sum 
+-----
+ 
+(1 row)
+
+SELECT sum(val::uint4) FROM (VALUES (1), (null), (2), (5)) _ (val);
+ sum 
+-----
+ 8
+(1 row)
+
 SELECT '1'::uint8 & '1'::uint8;
  ?column? 
 ----------
@@ -16960,5 +17104,41 @@ SELECT bit_or(val::uint8) FROM (VALUES (9), (1), (4)) AS _ (val);
  bit_or 
 --------
  13
+(1 row)
+
+SELECT uint8_sum(NULL::uint8, NULL::uint8);
+ uint8_sum 
+-----------
+ 
+(1 row)
+
+SELECT uint8_sum(NULL::uint8, 1::uint8);
+ uint8_sum 
+-----------
+ 1
+(1 row)
+
+SELECT uint8_sum(2::uint8, NULL::uint8);
+ uint8_sum 
+-----------
+ 2
+(1 row)
+
+SELECT uint8_sum(2::uint8, 1::uint8);
+ uint8_sum 
+-----------
+ 3
+(1 row)
+
+SELECT sum(val::uint8) FROM (SELECT NULL::uint8 WHERE false) _ (val);
+ sum 
+-----
+ 
+(1 row)
+
+SELECT sum(val::uint8) FROM (VALUES (1), (null), (2), (5)) _ (val);
+ sum 
+-----
+ 8
 (1 row)
 

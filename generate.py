@@ -144,11 +144,11 @@ Datum
 """ % c_types[rettype].upper())
 
 
-def write_sql_function(f, funcname, argtypes, rettype, sql_funcname=None):
+def write_sql_function(f, funcname, argtypes, rettype, sql_funcname=None, strict=True):
     if not sql_funcname:
         sql_funcname = funcname
-    f.write("CREATE FUNCTION %s(%s) RETURNS %s IMMUTABLE STRICT LANGUAGE C AS '$libdir/uint', '%s';\n\n"
-            % (sql_funcname, ', '.join([x for x in argtypes if x]), rettype, funcname))
+    f.write("CREATE FUNCTION %s(%s) RETURNS %s IMMUTABLE%s LANGUAGE C AS '$libdir/uint', '%s';\n\n"
+            % (sql_funcname, ', '.join([x for x in argtypes if x]), rettype, " STRICT" if strict else "", funcname))
 
 
 def write_op_c_function(f, funcname, leftarg, rightarg, op, rettype, c_check='', intermediate_type=None):
@@ -326,6 +326,14 @@ for leftarg in new_types + old_types:
                 f_test_operators_sql.write("SELECT mod('5'::%s, '2'::%s);\n" % (leftarg, rightarg))
         f_test_operators_sql.write("\n")
 
+sum_trans_types = {
+    'int1': 'int4',
+    'uint1': 'uint4',
+    'uint2': 'uint8',
+    'uint4': 'uint8',
+    'uint8': 'uint8',
+}
+
 for arg in new_types:
     for op in ['&', '|', '#']:
         write_code(f_operators_c, f_operators_sql, leftarg=arg, rightarg=arg, op=op, rettype=arg)
@@ -361,6 +369,20 @@ for arg in new_types:
                               % (agg, arg, funcname, arg))
     f_test_operators_sql.write("SELECT bit_and(val::%s) FROM (VALUES (3), (6), (18)) AS _ (val);\n\n" % arg)
     f_test_operators_sql.write("SELECT bit_or(val::%s) FROM (VALUES (9), (1), (4)) AS _ (val);\n\n" % arg)
+
+    sfunc = "{argtype}_sum".format(argtype=arg)
+    stype = sum_trans_types[arg]
+    write_sql_function(f_operators_sql, sfunc, [stype, arg], stype, strict=False)
+    f_operators_sql.write("CREATE AGGREGATE sum({arg}) (SFUNC = {sfunc}, STYPE = {stype});\n\n".format(arg=arg, sfunc=sfunc, stype=stype))
+    f_test_operators_sql.write("""
+SELECT {sfunc}(NULL::{stype}, NULL::{argtype});
+SELECT {sfunc}(NULL::{stype}, 1::{argtype});
+SELECT {sfunc}(2::{stype}, NULL::{argtype});
+SELECT {sfunc}(2::{stype}, 1::{argtype});
+
+SELECT sum(val::{argtype}) FROM (SELECT NULL::{argtype} WHERE false) _ (val);
+SELECT sum(val::{argtype}) FROM (VALUES (1), (null), (2), (5)) _ (val);
+""".format(sfunc=sfunc, argtype=arg, stype=stype))
 
 f_operators_c.close()
 f_operators_sql.close()

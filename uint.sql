@@ -206,21 +206,11 @@ CREATE FUNCTION uint4_avg_accum(_int8, uint4) RETURNS _int8
     LANGUAGE C
     AS '$libdir/uint', 'uint4_avg_accum';
 
-CREATE FUNCTION uint4_sum(int8, uint4) RETURNS int8
-    IMMUTABLE
-    LANGUAGE C
-    AS '$libdir/uint', 'uint4_sum';
-
 CREATE AGGREGATE avg(uint4) (
     SFUNC = uint4_avg_accum,
     STYPE = _int8,
     FINALFUNC = int8_avg,
     INITCOND = '{0,0}'
-);
-
-CREATE AGGREGATE sum(uint4) (
-    SFUNC = uint4_sum,
-    STYPE = int8
 );
 
 

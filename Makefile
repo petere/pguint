@@ -4,7 +4,7 @@ extension_version = 0
 
 EXTENSION = uint
 MODULE_big = uint
-OBJS = uint.o hash.o hex.o operators.o
+OBJS = uint.o hash.o hex.o operators.o aggregates.o
 DATA_built = uint--$(extension_version).sql
 
 REGRESS = init test hash hex operators

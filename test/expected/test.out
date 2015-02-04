@@ -128,12 +128,6 @@ SELECT avg(a) FROM test4;
  3.0000000000000000
 (1 row)
 
-SELECT sum(a) FROM test4;
- sum 
------
-  15
-(1 row)
-
 SELECT '55'::uint8;
  uint8 
 -------

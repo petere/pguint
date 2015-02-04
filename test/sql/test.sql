@@ -46,8 +46,6 @@ SELECT a FROM test4;
 
 SELECT avg(a) FROM test4;
 
-SELECT sum(a) FROM test4;
-
 
 SELECT '55'::uint8;
 SELECT ''::uint8;

@@ -25,7 +25,6 @@ PG_FUNCTION_INFO_V1(uint8out);
 PG_FUNCTION_INFO_V1(int1um);
 PG_FUNCTION_INFO_V1(uint4_avg_accum);
 PG_FUNCTION_INFO_V1(int8_avg);
-PG_FUNCTION_INFO_V1(uint4_sum);
 
 
 Datum
@@ -284,53 +283,4 @@ int8_avg(PG_FUNCTION_ARGS)
 							   Int64GetDatumFast(transdata->sum));
 
 	PG_RETURN_DATUM(DirectFunctionCall2(numeric_div, sumd, countd));
-}
-
-Datum
-uint4_sum(PG_FUNCTION_ARGS)
-{
-	int64		newval;
-
-	if (PG_ARGISNULL(0))
-	{
-		/* No non-null input seen so far... */
-		if (PG_ARGISNULL(1))
-			PG_RETURN_NULL();   /* still no non-null */
-		/* This is the first non-null input. */
-		newval = (int64) PG_GETARG_UINT32(1);
-		PG_RETURN_INT64(newval);
-	}
-
-	/*
-	 * If we're invoked as an aggregate, we can cheat and modify our first
-	 * parameter in-place to avoid palloc overhead. If not, we need to return
-	 * the new value of the transition variable. (If int8 is pass-by-value,
-	 * then of course this is useless as well as incorrect, so just ifdef it
-	 * out.)
-	 */
-#ifndef USE_FLOAT8_BYVAL		/* controls int8 too */
-	if (AggCheckCallContext(fcinfo, NULL))
-	{
-		int64	   *oldsum = (int64 *) PG_GETARG_POINTER(0);
-
-		/* Leave the running sum unchanged in the new input is null */
-		if (!PG_ARGISNULL(1))
-			*oldsum = *oldsum + (int64) PG_GETARG_UINT32(1);
-
-		PG_RETURN_POINTER(oldsum);
-	}
-	else
-#endif
-	{
-		int64		oldsum = PG_GETARG_INT64(0);
-
-		/* Leave sum unchanged if new input is null. */
-		if (PG_ARGISNULL(1))
-			PG_RETURN_INT64(oldsum);
-
-		/* OK to do the addition. */
-		newval = oldsum + (int64) PG_GETARG_UINT32(1);
-
-		PG_RETURN_INT64(newval);
-	}
 }
