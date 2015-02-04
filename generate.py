@@ -122,8 +122,8 @@ Datum
 %s(PG_FUNCTION_ARGS)
 {
 """ % (funcname, funcname))
-    argnum = 0;
-    argvar = 0;
+    argnum = 0
+    argvar = 0
     for argtype in argtypes:
         argvar += 1
         if argtype is None:
@@ -318,7 +318,8 @@ for leftarg in new_types + old_types:
             f_test_operators_sql.write("SELECT '3'::%s %s '4'::%s;\n" % (leftarg, op, rightarg))
             f_test_operators_sql.write("SELECT '5'::%s %s '2'::%s;\n" % (leftarg, op, rightarg))
             if op in ['+', '*']:
-                f_test_operators_sql.write("SELECT '%s'::%s %s '%s'::%s;\n" % (max_values[leftarg], leftarg, op, max_values[rightarg], rightarg))
+                f_test_operators_sql.write("SELECT '%s'::%s %s '%s'::%s;\n"
+                                           % (max_values[leftarg], leftarg, op, max_values[rightarg], rightarg))
             if op in ['/', '%']:
                 f_test_operators_sql.write("SELECT '5'::%s %s '0'::%s;\n" % (leftarg, op, rightarg))
             if op in ['%']:
@@ -326,7 +327,7 @@ for leftarg in new_types + old_types:
         f_test_operators_sql.write("\n")
 
 for arg in new_types:
-    for op in ['&', '|','#']:
+    for op in ['&', '|', '#']:
         write_code(f_operators_c, f_operators_sql, leftarg=arg, rightarg=arg, op=op, rettype=arg)
         f_test_operators_sql.write("SELECT '1'::%s %s '1'::%s;\n" % (arg, op, arg))
         f_test_operators_sql.write("SELECT '5'::%s %s '2'::%s;\n" % (arg, op, arg))
