@@ -2,11 +2,13 @@ CREATE TYPE int1;
 
 CREATE FUNCTION int1in(cstring) RETURNS int1
     IMMUTABLE
+    STRICT
     LANGUAGE C
     AS '$libdir/uint', 'int1in';
 
 CREATE FUNCTION int1out(int1) RETURNS cstring
     IMMUTABLE
+    STRICT
     LANGUAGE C
     AS '$libdir/uint', 'int1out';
 
@@ -39,11 +41,13 @@ CREATE TYPE uint1;
 
 CREATE FUNCTION uint1in(cstring) RETURNS uint1
     IMMUTABLE
+    STRICT
     LANGUAGE C
     AS '$libdir/uint', 'uint1in';
 
 CREATE FUNCTION uint1out(uint1) RETURNS cstring
     IMMUTABLE
+    STRICT
     LANGUAGE C
     AS '$libdir/uint', 'uint1out';
 
@@ -76,11 +80,13 @@ CREATE TYPE uint2;
 
 CREATE FUNCTION uint2in(cstring) RETURNS uint2
     IMMUTABLE
+    STRICT
     LANGUAGE C
     AS '$libdir/uint', 'uint2in';
 
 CREATE FUNCTION uint2out(uint2) RETURNS cstring
     IMMUTABLE
+    STRICT
     LANGUAGE C
     AS '$libdir/uint', 'uint2out';
 
@@ -113,11 +119,13 @@ CREATE TYPE uint4;
 
 CREATE FUNCTION uint4in(cstring) RETURNS uint4
     IMMUTABLE
+    STRICT
     LANGUAGE C
     AS '$libdir/uint', 'uint4in';
 
 CREATE FUNCTION uint4out(uint4) RETURNS cstring
     IMMUTABLE
+    STRICT
     LANGUAGE C
     AS '$libdir/uint', 'uint4out';
 
@@ -150,11 +158,13 @@ CREATE TYPE uint8;
 
 CREATE FUNCTION uint8in(cstring) RETURNS uint8
     IMMUTABLE
+    STRICT
     LANGUAGE C
     AS '$libdir/uint', 'uint8in';
 
 CREATE FUNCTION uint8out(uint8) RETURNS cstring
     IMMUTABLE
+    STRICT
     LANGUAGE C
     AS '$libdir/uint', 'uint8out';
 
