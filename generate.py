@@ -334,6 +334,14 @@ sum_trans_types = {
     'uint8': 'uint8',
 }
 
+avg_trans_types = {
+    'int1': '_int8',
+    'uint1': '_int8',
+    'uint2': '_int8',
+    'uint4': '_int8',
+    'uint8': '_int8',
+}
+
 for arg in new_types:
     for op in ['&', '|', '#']:
         write_code(f_operators_c, f_operators_sql, leftarg=arg, rightarg=arg, op=op, rettype=arg)
@@ -382,6 +390,15 @@ SELECT {sfunc}(2::{stype}, 1::{argtype});
 
 SELECT sum(val::{argtype}) FROM (SELECT NULL::{argtype} WHERE false) _ (val);
 SELECT sum(val::{argtype}) FROM (VALUES (1), (null), (2), (5)) _ (val);
+""".format(sfunc=sfunc, argtype=arg, stype=stype))
+
+    sfunc = "{argtype}_avg_accum".format(argtype=arg)
+    stype = avg_trans_types[arg]
+    write_sql_function(f_operators_sql, sfunc, [stype, arg], stype)
+    f_operators_sql.write("CREATE AGGREGATE avg({arg}) (SFUNC = {sfunc}, STYPE = {stype}, FINALFUNC = int8_avg, INITCOND = '{{0,0}}');\n\n".format(arg=arg, sfunc=sfunc, stype=stype))
+    f_test_operators_sql.write("""
+SELECT avg(val::{argtype}) FROM (SELECT NULL::{argtype} WHERE false) _ (val);
+SELECT avg(val::{argtype}) FROM (VALUES (1), (null), (2), (5), (6)) _ (val);
 """.format(sfunc=sfunc, argtype=arg, stype=stype))
 
 f_operators_c.close()

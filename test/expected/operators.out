@@ -16422,6 +16422,18 @@ SELECT sum(val::int1) FROM (VALUES (1), (null), (2), (5)) _ (val);
    8
 (1 row)
 
+SELECT avg(val::int1) FROM (SELECT NULL::int1 WHERE false) _ (val);
+ avg 
+-----
+    
+(1 row)
+
+SELECT avg(val::int1) FROM (VALUES (1), (null), (2), (5), (6)) _ (val);
+        avg         
+--------------------
+ 3.5000000000000000
+(1 row)
+
 SELECT '1'::uint1 & '1'::uint1;
  ?column? 
 ----------
@@ -16600,6 +16612,18 @@ SELECT sum(val::uint1) FROM (VALUES (1), (null), (2), (5)) _ (val);
  sum 
 -----
  8
+(1 row)
+
+SELECT avg(val::uint1) FROM (SELECT NULL::uint1 WHERE false) _ (val);
+ avg 
+-----
+    
+(1 row)
+
+SELECT avg(val::uint1) FROM (VALUES (1), (null), (2), (5), (6)) _ (val);
+        avg         
+--------------------
+ 3.5000000000000000
 (1 row)
 
 SELECT '1'::uint2 & '1'::uint2;
@@ -16782,6 +16806,18 @@ SELECT sum(val::uint2) FROM (VALUES (1), (null), (2), (5)) _ (val);
  8
 (1 row)
 
+SELECT avg(val::uint2) FROM (SELECT NULL::uint2 WHERE false) _ (val);
+ avg 
+-----
+    
+(1 row)
+
+SELECT avg(val::uint2) FROM (VALUES (1), (null), (2), (5), (6)) _ (val);
+        avg         
+--------------------
+ 3.5000000000000000
+(1 row)
+
 SELECT '1'::uint4 & '1'::uint4;
  ?column? 
 ----------
@@ -16962,6 +16998,18 @@ SELECT sum(val::uint4) FROM (VALUES (1), (null), (2), (5)) _ (val);
  8
 (1 row)
 
+SELECT avg(val::uint4) FROM (SELECT NULL::uint4 WHERE false) _ (val);
+ avg 
+-----
+    
+(1 row)
+
+SELECT avg(val::uint4) FROM (VALUES (1), (null), (2), (5), (6)) _ (val);
+        avg         
+--------------------
+ 3.5000000000000000
+(1 row)
+
 SELECT '1'::uint8 & '1'::uint8;
  ?column? 
 ----------
@@ -17140,5 +17188,17 @@ SELECT sum(val::uint8) FROM (VALUES (1), (null), (2), (5)) _ (val);
  sum 
 -----
  8
+(1 row)
+
+SELECT avg(val::uint8) FROM (SELECT NULL::uint8 WHERE false) _ (val);
+ avg 
+-----
+    
+(1 row)
+
+SELECT avg(val::uint8) FROM (VALUES (1), (null), (2), (5), (6)) _ (val);
+        avg         
+--------------------
+ 3.5000000000000000
 (1 row)
 

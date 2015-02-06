@@ -201,19 +201,6 @@ CREATE OPERATOR - (
 );
 
 
-CREATE FUNCTION uint4_avg_accum(_int8, uint4) RETURNS _int8
-    STRICT IMMUTABLE
-    LANGUAGE C
-    AS '$libdir/uint', 'uint4_avg_accum';
-
-CREATE AGGREGATE avg(uint4) (
-    SFUNC = uint4_avg_accum,
-    STYPE = _int8,
-    FINALFUNC = int8_avg,
-    INITCOND = '{0,0}'
-);
-
-
 CREATE CAST (int1 AS uint1) WITH INOUT AS ASSIGNMENT;
 CREATE CAST (int1 AS uint2) WITH INOUT AS IMPLICIT;
 CREATE CAST (int1 AS uint4) WITH INOUT AS IMPLICIT;
