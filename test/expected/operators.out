@@ -17202,3 +17202,766 @@ SELECT avg(val::uint8) FROM (VALUES (1), (null), (2), (5), (6)) _ (val);
  3.5000000000000000
 (1 row)
 
+CREATE TABLE test_int1 (x int1 UNIQUE);
+INSERT INTO test_int1 VALUES (1), (2), (3), (4), (5), (null);
+SET enable_seqscan = off;
+SET enable_bitmapscan = off;
+EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::int1;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int1_x_key on test_int1
+   Index Cond: (x = '3'::int1)
+(2 rows)
+
+SELECT * FROM test_int1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::uint1;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int1_x_key on test_int1
+   Filter: (x = '3'::uint1)
+(2 rows)
+
+SELECT * FROM test_int1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::uint2;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int1_x_key on test_int1
+   Filter: (x = '3'::uint2)
+(2 rows)
+
+SELECT * FROM test_int1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::uint4;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int1_x_key on test_int1
+   Filter: (x = '3'::uint4)
+(2 rows)
+
+SELECT * FROM test_int1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::uint8;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int1_x_key on test_int1
+   Filter: (x = '3'::uint8)
+(2 rows)
+
+SELECT * FROM test_int1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::int2;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int1_x_key on test_int1
+   Filter: (x = 3::smallint)
+(2 rows)
+
+SELECT * FROM test_int1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::int4;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int1_x_key on test_int1
+   Filter: (x = 3)
+(2 rows)
+
+SELECT * FROM test_int1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::int8;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int1_x_key on test_int1
+   Filter: (x = 3::bigint)
+(2 rows)
+
+SELECT * FROM test_int1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+RESET enable_seqscan;
+RESET enable_bitmapscan;
+CREATE TABLE test_uint1 (x uint1 UNIQUE);
+INSERT INTO test_uint1 VALUES (1), (2), (3), (4), (5), (null);
+SET enable_seqscan = off;
+SET enable_bitmapscan = off;
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::int1;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint1_x_key on test_uint1
+   Filter: (x = '3'::int1)
+(2 rows)
+
+SELECT * FROM test_uint1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::uint1;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint1_x_key on test_uint1
+   Index Cond: (x = '3'::uint1)
+(2 rows)
+
+SELECT * FROM test_uint1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::uint2;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint1_x_key on test_uint1
+   Filter: (x = '3'::uint2)
+(2 rows)
+
+SELECT * FROM test_uint1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::uint4;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint1_x_key on test_uint1
+   Filter: (x = '3'::uint4)
+(2 rows)
+
+SELECT * FROM test_uint1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::uint8;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint1_x_key on test_uint1
+   Filter: (x = '3'::uint8)
+(2 rows)
+
+SELECT * FROM test_uint1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::int2;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint1_x_key on test_uint1
+   Filter: (x = 3::smallint)
+(2 rows)
+
+SELECT * FROM test_uint1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::int4;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint1_x_key on test_uint1
+   Filter: (x = 3)
+(2 rows)
+
+SELECT * FROM test_uint1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::int8;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint1_x_key on test_uint1
+   Filter: (x = 3::bigint)
+(2 rows)
+
+SELECT * FROM test_uint1 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+RESET enable_seqscan;
+RESET enable_bitmapscan;
+CREATE TABLE test_uint2 (x uint2 UNIQUE);
+INSERT INTO test_uint2 VALUES (1), (2), (3), (4), (5), (null);
+SET enable_seqscan = off;
+SET enable_bitmapscan = off;
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::int1;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint2_x_key on test_uint2
+   Filter: (x = '3'::int1)
+(2 rows)
+
+SELECT * FROM test_uint2 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::uint1;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint2_x_key on test_uint2
+   Filter: (x = '3'::uint1)
+(2 rows)
+
+SELECT * FROM test_uint2 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::uint2;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint2_x_key on test_uint2
+   Index Cond: (x = '3'::uint2)
+(2 rows)
+
+SELECT * FROM test_uint2 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::uint4;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint2_x_key on test_uint2
+   Filter: (x = '3'::uint4)
+(2 rows)
+
+SELECT * FROM test_uint2 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::uint8;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint2_x_key on test_uint2
+   Filter: (x = '3'::uint8)
+(2 rows)
+
+SELECT * FROM test_uint2 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::int2;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint2_x_key on test_uint2
+   Filter: (x = 3::smallint)
+(2 rows)
+
+SELECT * FROM test_uint2 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::int4;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint2_x_key on test_uint2
+   Filter: (x = 3)
+(2 rows)
+
+SELECT * FROM test_uint2 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::int8;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint2_x_key on test_uint2
+   Filter: (x = 3::bigint)
+(2 rows)
+
+SELECT * FROM test_uint2 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+RESET enable_seqscan;
+RESET enable_bitmapscan;
+CREATE TABLE test_uint4 (x uint4 UNIQUE);
+INSERT INTO test_uint4 VALUES (1), (2), (3), (4), (5), (null);
+SET enable_seqscan = off;
+SET enable_bitmapscan = off;
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::int1;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint4_x_key on test_uint4
+   Filter: (x = '3'::int1)
+(2 rows)
+
+SELECT * FROM test_uint4 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::uint1;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint4_x_key on test_uint4
+   Filter: (x = '3'::uint1)
+(2 rows)
+
+SELECT * FROM test_uint4 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::uint2;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint4_x_key on test_uint4
+   Filter: (x = '3'::uint2)
+(2 rows)
+
+SELECT * FROM test_uint4 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::uint4;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint4_x_key on test_uint4
+   Index Cond: (x = '3'::uint4)
+(2 rows)
+
+SELECT * FROM test_uint4 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::uint8;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint4_x_key on test_uint4
+   Filter: (x = '3'::uint8)
+(2 rows)
+
+SELECT * FROM test_uint4 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::int2;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint4_x_key on test_uint4
+   Filter: (x = 3::smallint)
+(2 rows)
+
+SELECT * FROM test_uint4 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::int4;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint4_x_key on test_uint4
+   Filter: (x = 3)
+(2 rows)
+
+SELECT * FROM test_uint4 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::int8;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint4_x_key on test_uint4
+   Filter: (x = 3::bigint)
+(2 rows)
+
+SELECT * FROM test_uint4 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+RESET enable_seqscan;
+RESET enable_bitmapscan;
+CREATE TABLE test_uint8 (x uint8 UNIQUE);
+INSERT INTO test_uint8 VALUES (1), (2), (3), (4), (5), (null);
+SET enable_seqscan = off;
+SET enable_bitmapscan = off;
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::int1;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint8_x_key on test_uint8
+   Filter: (x = '3'::int1)
+(2 rows)
+
+SELECT * FROM test_uint8 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::uint1;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint8_x_key on test_uint8
+   Filter: (x = '3'::uint1)
+(2 rows)
+
+SELECT * FROM test_uint8 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::uint2;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint8_x_key on test_uint8
+   Filter: (x = '3'::uint2)
+(2 rows)
+
+SELECT * FROM test_uint8 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::uint4;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint8_x_key on test_uint8
+   Filter: (x = '3'::uint4)
+(2 rows)
+
+SELECT * FROM test_uint8 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::uint8;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint8_x_key on test_uint8
+   Index Cond: (x = '3'::uint8)
+(2 rows)
+
+SELECT * FROM test_uint8 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::int2;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint8_x_key on test_uint8
+   Filter: (x = 3::smallint)
+(2 rows)
+
+SELECT * FROM test_uint8 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::int4;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint8_x_key on test_uint8
+   Filter: (x = 3)
+(2 rows)
+
+SELECT * FROM test_uint8 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::int8;
+                      QUERY PLAN                      
+------------------------------------------------------
+ Index Only Scan using test_uint8_x_key on test_uint8
+   Filter: (x = 3::bigint)
+(2 rows)
+
+SELECT * FROM test_uint8 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+RESET enable_seqscan;
+RESET enable_bitmapscan;
+CREATE TABLE test_int2 (x int2 UNIQUE);
+INSERT INTO test_int2 VALUES (1), (2), (3), (4), (5), (null);
+SET enable_seqscan = off;
+SET enable_bitmapscan = off;
+EXPLAIN (COSTS OFF) SELECT * FROM test_int2 WHERE x = 3::int1;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int2_x_key on test_int2
+   Filter: (x = '3'::int1)
+(2 rows)
+
+SELECT * FROM test_int2 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int2 WHERE x = 3::uint1;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int2_x_key on test_int2
+   Filter: (x = '3'::uint1)
+(2 rows)
+
+SELECT * FROM test_int2 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int2 WHERE x = 3::uint2;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int2_x_key on test_int2
+   Filter: (x = '3'::uint2)
+(2 rows)
+
+SELECT * FROM test_int2 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int2 WHERE x = 3::uint4;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int2_x_key on test_int2
+   Filter: (x = '3'::uint4)
+(2 rows)
+
+SELECT * FROM test_int2 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int2 WHERE x = 3::uint8;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int2_x_key on test_int2
+   Filter: (x = '3'::uint8)
+(2 rows)
+
+SELECT * FROM test_int2 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+RESET enable_seqscan;
+RESET enable_bitmapscan;
+CREATE TABLE test_int4 (x int4 UNIQUE);
+INSERT INTO test_int4 VALUES (1), (2), (3), (4), (5), (null);
+SET enable_seqscan = off;
+SET enable_bitmapscan = off;
+EXPLAIN (COSTS OFF) SELECT * FROM test_int4 WHERE x = 3::int1;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int4_x_key on test_int4
+   Filter: (x = '3'::int1)
+(2 rows)
+
+SELECT * FROM test_int4 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int4 WHERE x = 3::uint1;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int4_x_key on test_int4
+   Filter: (x = '3'::uint1)
+(2 rows)
+
+SELECT * FROM test_int4 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int4 WHERE x = 3::uint2;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int4_x_key on test_int4
+   Filter: (x = '3'::uint2)
+(2 rows)
+
+SELECT * FROM test_int4 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int4 WHERE x = 3::uint4;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int4_x_key on test_int4
+   Filter: (x = '3'::uint4)
+(2 rows)
+
+SELECT * FROM test_int4 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int4 WHERE x = 3::uint8;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int4_x_key on test_int4
+   Filter: (x = '3'::uint8)
+(2 rows)
+
+SELECT * FROM test_int4 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+RESET enable_seqscan;
+RESET enable_bitmapscan;
+CREATE TABLE test_int8 (x int8 UNIQUE);
+INSERT INTO test_int8 VALUES (1), (2), (3), (4), (5), (null);
+SET enable_seqscan = off;
+SET enable_bitmapscan = off;
+EXPLAIN (COSTS OFF) SELECT * FROM test_int8 WHERE x = 3::int1;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int8_x_key on test_int8
+   Filter: (x = '3'::int1)
+(2 rows)
+
+SELECT * FROM test_int8 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int8 WHERE x = 3::uint1;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int8_x_key on test_int8
+   Filter: (x = '3'::uint1)
+(2 rows)
+
+SELECT * FROM test_int8 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int8 WHERE x = 3::uint2;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int8_x_key on test_int8
+   Filter: (x = '3'::uint2)
+(2 rows)
+
+SELECT * FROM test_int8 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int8 WHERE x = 3::uint4;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int8_x_key on test_int8
+   Filter: (x = '3'::uint4)
+(2 rows)
+
+SELECT * FROM test_int8 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+EXPLAIN (COSTS OFF) SELECT * FROM test_int8 WHERE x = 3::uint8;
+                     QUERY PLAN                     
+----------------------------------------------------
+ Index Only Scan using test_int8_x_key on test_int8
+   Filter: (x = '3'::uint8)
+(2 rows)
+
+SELECT * FROM test_int8 WHERE x = 3;
+ x 
+---
+ 3
+(1 row)
+
+RESET enable_seqscan;
+RESET enable_bitmapscan;
