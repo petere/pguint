@@ -17202,7 +17202,8 @@ SELECT avg(val::uint8) FROM (VALUES (1), (null), (2), (5), (6)) _ (val);
  3.5000000000000000
 (1 row)
 
-CREATE TABLE test_int1 (x int1 UNIQUE);
+CREATE TABLE test_int1 (x int1);
+CREATE UNIQUE INDEX test_int1_x_key ON test_int1 USING btree (x);
 INSERT INTO test_int1 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
@@ -17312,7 +17313,8 @@ SELECT * FROM test_int1 WHERE x = 3;
 
 RESET enable_seqscan;
 RESET enable_bitmapscan;
-CREATE TABLE test_uint1 (x uint1 UNIQUE);
+CREATE TABLE test_uint1 (x uint1);
+CREATE UNIQUE INDEX test_uint1_x_key ON test_uint1 USING btree (x);
 INSERT INTO test_uint1 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
@@ -17422,7 +17424,8 @@ SELECT * FROM test_uint1 WHERE x = 3;
 
 RESET enable_seqscan;
 RESET enable_bitmapscan;
-CREATE TABLE test_uint2 (x uint2 UNIQUE);
+CREATE TABLE test_uint2 (x uint2);
+CREATE UNIQUE INDEX test_uint2_x_key ON test_uint2 USING btree (x);
 INSERT INTO test_uint2 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
@@ -17532,7 +17535,8 @@ SELECT * FROM test_uint2 WHERE x = 3;
 
 RESET enable_seqscan;
 RESET enable_bitmapscan;
-CREATE TABLE test_uint4 (x uint4 UNIQUE);
+CREATE TABLE test_uint4 (x uint4);
+CREATE UNIQUE INDEX test_uint4_x_key ON test_uint4 USING btree (x);
 INSERT INTO test_uint4 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
@@ -17642,7 +17646,8 @@ SELECT * FROM test_uint4 WHERE x = 3;
 
 RESET enable_seqscan;
 RESET enable_bitmapscan;
-CREATE TABLE test_uint8 (x uint8 UNIQUE);
+CREATE TABLE test_uint8 (x uint8);
+CREATE UNIQUE INDEX test_uint8_x_key ON test_uint8 USING btree (x);
 INSERT INTO test_uint8 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
@@ -17752,7 +17757,8 @@ SELECT * FROM test_uint8 WHERE x = 3;
 
 RESET enable_seqscan;
 RESET enable_bitmapscan;
-CREATE TABLE test_int2 (x int2 UNIQUE);
+CREATE TABLE test_int2 (x int2);
+CREATE UNIQUE INDEX test_int2_x_key ON test_int2 USING btree (x);
 INSERT INTO test_int2 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
@@ -17823,7 +17829,8 @@ SELECT * FROM test_int2 WHERE x = 3;
 
 RESET enable_seqscan;
 RESET enable_bitmapscan;
-CREATE TABLE test_int4 (x int4 UNIQUE);
+CREATE TABLE test_int4 (x int4);
+CREATE UNIQUE INDEX test_int4_x_key ON test_int4 USING btree (x);
 INSERT INTO test_int4 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
@@ -17894,7 +17901,8 @@ SELECT * FROM test_int4 WHERE x = 3;
 
 RESET enable_seqscan;
 RESET enable_bitmapscan;
-CREATE TABLE test_int8 (x int8 UNIQUE);
+CREATE TABLE test_int8 (x int8);
+CREATE UNIQUE INDEX test_int8_x_key ON test_int8 USING btree (x);
 INSERT INTO test_int8 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;

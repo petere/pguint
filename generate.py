@@ -412,7 +412,8 @@ op_fam_hash_elements = []
 
 for lefttype in new_types + old_types:
     f_test_operators_sql.write("""
-CREATE TABLE test_{typ} (x {typ} UNIQUE);
+CREATE TABLE test_{typ} (x {typ});
+CREATE UNIQUE INDEX test_{typ}_x_key ON test_{typ} USING btree (x);
 INSERT INTO test_{typ} VALUES (1), (2), (3), (4), (5), (null);
 
 SET enable_seqscan = off;
