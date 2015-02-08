@@ -139,7 +139,7 @@ Datum
     f.write("\t" + body.replace("\n", "\n\t").replace("\n\t\n", "\n\n"))
     f.write("\n")
     f.write("""
-	PG_RETURN_{0}(result);
+\tPG_RETURN_{0}(result);
 }}
 """.format(c_types[rettype].upper()))
 
@@ -147,7 +147,8 @@ Datum
 def write_sql_function(f, funcname, argtypes, rettype, sql_funcname=None, strict=True):
     if not sql_funcname:
         sql_funcname = funcname
-    f.write("CREATE FUNCTION {sql_funcname}({argtypes}) RETURNS {rettype} IMMUTABLE{strict} LANGUAGE C AS '$libdir/uint', '{funcname}';\n\n"
+    f.write("CREATE FUNCTION {sql_funcname}({argtypes}) RETURNS {rettype}"
+            " IMMUTABLE{strict} LANGUAGE C AS '$libdir/uint', '{funcname}';\n\n"
             .format(sql_funcname=sql_funcname,
                     argtypes=', '.join([x for x in argtypes if x]),
                     rettype=rettype,
@@ -162,10 +163,10 @@ def write_op_c_function(f, funcname, leftarg, rightarg, op, rettype, c_check='',
     if op in ['/', '%']:
         body += """if (arg2 == 0)
 {
-	ereport(ERROR,
-		(errcode(ERRCODE_DIVISION_BY_ZERO),
-		 errmsg("division by zero")));
-	PG_RETURN_NULL();
+\tereport(ERROR,
+\t\t(errcode(ERRCODE_DIVISION_BY_ZERO),
+\t\t errmsg("division by zero")));
+\tPG_RETURN_NULL();
 }
 
 """
@@ -187,9 +188,9 @@ def write_op_c_function(f, funcname, leftarg, rightarg, op, rettype, c_check='',
         body += """
 
 if ({0})
-	ereport(ERROR,
-		(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
-		 errmsg("integer out of range")));""".format(c_check)
+\tereport(ERROR,
+\t\t(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+\t\t errmsg("integer out of range")));""".format(c_check)
     if intermediate_type:
         body += "\nresult = result2;"
 
@@ -226,11 +227,11 @@ def write_cmp_c_function(f, leftarg, rightarg):
     funcname = 'bt' + coalesce(leftarg, '') + coalesce(rightarg, '') + 'cmp'
     write_c_function(f, funcname, [leftarg, rightarg], 'int4',
                      """if (arg1 > arg2)
-	result = 1;
+\tresult = 1;
 else if (arg1 == arg2)
-	result = 0;
+\tresult = 0;
 else
-	result = -1;""")
+\tresult = -1;""")
 
 
 def write_cmp_sql_function(f, leftarg, rightarg):
@@ -316,9 +317,11 @@ SELECT bt{lefttype}{righttype}cmp('3'::{lefttype}, '4'::{righttype});
                     intermediate_type = next_bigger_type(rettype)
                     c_check = '({0}) result2 != result2'.format(c_types[rettype])
                 elif type_unsigned(rettype):
-                    c_check = '(arg1 != ((uint32) arg1) || arg2 != ((uint32) arg2)) && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
+                    c_check = '(arg1 != ((uint32) arg1) || arg2 != ((uint32) arg2))' \
+                              ' && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
                 else:
-                    c_check = '(arg1 != ((int32) arg1) || arg2 != ((int32) arg2)) && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
+                    c_check = '(arg1 != ((int32) arg1) || arg2 != ((int32) arg2))' \
+                              ' && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
             else:
                 intermediate_type = None
             write_code(f_operators_c, f_operators_sql, leftarg, rightarg, op, rettype, c_check, intermediate_type)
@@ -381,7 +384,8 @@ SELECT '6'::{typ} {op} 3;
 
     for agg, funcname, op in [('min', arg + "smaller", '<'),
                               ('max', arg + "larger", '>')]:
-        write_c_function(f_operators_c, funcname, [arg]*2, arg, "result = (arg1 {op} arg2) ? arg1 : arg2;".format(op=op))
+        write_c_function(f_operators_c, funcname, [arg]*2, arg,
+                         body="result = (arg1 {op} arg2) ? arg1 : arg2;".format(op=op))
         write_sql_function(f_operators_sql, funcname, [arg]*2, arg)
         f_test_operators_sql.write("""\
 SELECT {funcname}('1'::{typ}, '1'::{typ});
@@ -397,13 +401,16 @@ SELECT {funcname}('3'::{typ}, '4'::{typ});
                           ('bit_or', arg + arg + "or")]:
         f_operators_sql.write("CREATE AGGREGATE {agg}({typ}) (SFUNC = {sfunc}, STYPE = {stype});\n\n"
                               .format(agg=agg, typ=arg, sfunc=funcname, stype=arg))
-    f_test_operators_sql.write("SELECT bit_and(val::{typ}) FROM (VALUES (3), (6), (18)) AS _ (val);\n\n".format(typ=arg))
-    f_test_operators_sql.write("SELECT bit_or(val::{typ}) FROM (VALUES (9), (1), (4)) AS _ (val);\n\n".format(typ=arg))
+    f_test_operators_sql.write("SELECT bit_and(val::{typ}) FROM (VALUES (3), (6), (18)) AS _ (val);\n\n"
+                               .format(typ=arg))
+    f_test_operators_sql.write("SELECT bit_or(val::{typ}) FROM (VALUES (9), (1), (4)) AS _ (val);\n\n"
+                               .format(typ=arg))
 
     sfunc = "{argtype}_sum".format(argtype=arg)
     stype = sum_trans_types[arg]
     write_sql_function(f_operators_sql, sfunc, [stype, arg], stype, strict=False)
-    f_operators_sql.write("CREATE AGGREGATE sum({arg}) (SFUNC = {sfunc}, STYPE = {stype});\n\n".format(arg=arg, sfunc=sfunc, stype=stype))
+    f_operators_sql.write("CREATE AGGREGATE sum({arg}) (SFUNC = {sfunc}, STYPE = {stype});\n\n"
+                          .format(arg=arg, sfunc=sfunc, stype=stype))
     f_test_operators_sql.write("""
 SELECT {sfunc}(NULL::{stype}, NULL::{argtype});
 SELECT {sfunc}(NULL::{stype}, 1::{argtype});
@@ -417,17 +424,19 @@ SELECT sum(val::{argtype}) FROM (VALUES (1), (null), (2), (5)) _ (val);
     sfunc = "{argtype}_avg_accum".format(argtype=arg)
     stype = avg_trans_types[arg]
     write_sql_function(f_operators_sql, sfunc, [stype, arg], stype)
-    f_operators_sql.write("CREATE AGGREGATE avg({arg}) (SFUNC = {sfunc}, STYPE = {stype}, FINALFUNC = int8_avg, INITCOND = '{{0,0}}');\n\n".format(arg=arg, sfunc=sfunc, stype=stype))
+    f_operators_sql.write("CREATE AGGREGATE avg({arg}) (SFUNC = {sfunc}, STYPE = {stype}, FINALFUNC = int8_avg,"
+                          " INITCOND = '{{0,0}}');\n\n"
+                          .format(arg=arg, sfunc=sfunc, stype=stype))
     f_test_operators_sql.write("""
 SELECT avg(val::{argtype}) FROM (SELECT NULL::{argtype} WHERE false) _ (val);
 SELECT avg(val::{argtype}) FROM (VALUES (1), (null), (2), (5), (6)) _ (val);
 """.format(sfunc=sfunc, argtype=arg, stype=stype))
 
-#f_operators_sql.write("""
-#CREATE OPERATOR FAMILY uinteger_ops USING btree;
-#CREATE OPERATOR FAMILY uinteger_ops USING hash;
+# f_operators_sql.write("""
+# CREATE OPERATOR FAMILY uinteger_ops USING btree;
+# CREATE OPERATOR FAMILY uinteger_ops USING hash;
 #
-#""")
+# """)
 
 op_fam_btree_elements = []
 op_fam_hash_elements = []
@@ -469,12 +478,12 @@ RESET enable_seqscan;
 RESET enable_bitmapscan;
 """)
 
-#f_operators_sql.write("ALTER OPERATOR FAMILY uinteger_ops USING btree ADD\n"
-#                      + ",\n".join(op_fam_btree_elements)
-#                      + ";\n\n")
-#f_operators_sql.write("ALTER OPERATOR FAMILY uinteger_ops USING hash ADD\n"
-#                      + ",\n".join(op_fam_hash_elements)
-#                      + ";\n\n")
+# f_operators_sql.write("ALTER OPERATOR FAMILY uinteger_ops USING btree ADD\n"
+#                       + ",\n".join(op_fam_btree_elements)
+#                       + ";\n\n")
+# f_operators_sql.write("ALTER OPERATOR FAMILY uinteger_ops USING hash ADD\n"
+#                       + ",\n".join(op_fam_hash_elements)
+#                       + ";\n\n")
 
 f_operators_c.close()
 f_operators_sql.close()
