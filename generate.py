@@ -430,7 +430,7 @@ SELECT sum(val::{argtype}) FROM (VALUES (1), (null), (2), (5)) _ (val);
     f_test_operators_sql.write("""
 SELECT avg(val::{argtype}) FROM (SELECT NULL::{argtype} WHERE false) _ (val);
 SELECT avg(val::{argtype}) FROM (VALUES (1), (null), (2), (5), (6)) _ (val);
-""".format(sfunc=sfunc, argtype=arg, stype=stype))
+""".format(argtype=arg))
 
 # f_operators_sql.write("""
 # CREATE OPERATOR FAMILY uinteger_ops USING btree;
