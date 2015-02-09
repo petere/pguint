@@ -1,0 +1,9 @@
+[MESSAGES CONTROL]
+disable=R,invalid-name,missing-docstring
+
+[REPORTS]
+output-format=colorized
+reports=no
+
+[FORMAT]
+max-line-length=120
