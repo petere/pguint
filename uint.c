@@ -31,10 +31,11 @@ int1out(PG_FUNCTION_ARGS)
 }
 
 uint32
-pg_atou(const char *s, int size, int c)
+pg_atou(const char *s, int size)
 {
 	unsigned long int result;
-	bool	out_of_range = false;
+	bool		out_of_range = false;
+	char	   *badp;
 
 	if (s == NULL)
 		elog(ERROR, "NULL pointer");
@@ -51,7 +52,8 @@ pg_atou(const char *s, int size, int c)
 						s)));
 
 	errno = 0;
-	result = strtoul(s, NULL, 10);
+	result = strtoul(s, &badp, 10);
+
 	switch (size)
 	{
 		case sizeof(uint32):
@@ -79,6 +81,15 @@ pg_atou(const char *s, int size, int c)
 				(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
 				 errmsg("value \"%s\" is out of range for type uint%d", s, size)));
 
+	while (*badp && isspace((unsigned char) *badp))
+		badp++;
+
+	if (*badp)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+				 errmsg("invalid input syntax for unsigned integer: \"%s\"",
+						s)));
+
 	return result;
 }
 
@@ -88,7 +99,7 @@ uint1in(PG_FUNCTION_ARGS)
 {
 	char	   *s = PG_GETARG_CSTRING(0);
 
-	PG_RETURN_UINT8(pg_atou(s, sizeof(uint8), '\0'));
+	PG_RETURN_UINT8(pg_atou(s, sizeof(uint8)));
 }
 
 PG_FUNCTION_INFO_V1(uint1out);
@@ -108,7 +119,7 @@ uint2in(PG_FUNCTION_ARGS)
 {
 	char	   *s = PG_GETARG_CSTRING(0);
 
-	PG_RETURN_UINT16(pg_atou(s, sizeof(uint16), '\0'));
+	PG_RETURN_UINT16(pg_atou(s, sizeof(uint16)));
 }
 
 PG_FUNCTION_INFO_V1(uint2out);
@@ -128,7 +139,7 @@ uint4in(PG_FUNCTION_ARGS)
 {
 	char	   *s = PG_GETARG_CSTRING(0);
 
-	PG_RETURN_UINT32(pg_atou(s, sizeof(uint32), '\0'));
+	PG_RETURN_UINT32(pg_atou(s, sizeof(uint32)));
 }
 
 PG_FUNCTION_INFO_V1(uint4out);
@@ -148,6 +159,7 @@ uint8in(PG_FUNCTION_ARGS)
 {
 	char	   *s = PG_GETARG_CSTRING(0);
 	unsigned long long int result;
+	char	   *badp;
 
 	if (s == NULL)
 		elog(ERROR, "NULL pointer");
@@ -163,7 +175,22 @@ uint8in(PG_FUNCTION_ARGS)
 				 errmsg("invalid input syntax for unsigned integer: \"%s\"",
 						s)));
 
-	result = strtoull(s, NULL, 10);
+	errno = 0;
+	result = strtoull(s, &badp, 10);
+
+	if (errno == ERANGE)
+		ereport(ERROR,
+				(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+				 errmsg("value \"%s\" is out of range for type uint%d", s, 8)));
+
+	while (*badp && isspace((unsigned char) *badp))
+		badp++;
+
+	if (*badp)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+				 errmsg("invalid input syntax for unsigned integer: \"%s\"",
+						s)));
 
 	PG_RETURN_UINT64(result);
 }

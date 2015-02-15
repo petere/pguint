@@ -104,6 +104,8 @@ too_big = {
     'int1': '200',
     'uint1': '300',
     'uint2': '70000',
+    'uint4': '5000000000',
+    'uint8': '20000000000000000000',
 }
 
 
@@ -299,6 +301,8 @@ def main():
 SELECT '55'::{typ};
 SELECT '-55'::{typ};
 SELECT ''::{typ};
+SELECT 'x'::{typ};
+SELECT '55 x'::{typ};
 """.format(typ=argtype))
         if argtype in too_big:
             f_test_operators_sql.write("SELECT '{num}'::{typ};\n".format(typ=argtype, num=too_big[argtype]))

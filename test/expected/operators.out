@@ -14,6 +14,14 @@ SELECT ''::int1;
 ERROR:  invalid input syntax for integer: ""
 LINE 1: SELECT ''::int1;
                ^
+SELECT 'x'::int1;
+ERROR:  invalid input syntax for integer: "x"
+LINE 1: SELECT 'x'::int1;
+               ^
+SELECT '55 x'::int1;
+ERROR:  invalid input syntax for integer: "55 x"
+LINE 1: SELECT '55 x'::int1;
+               ^
 SELECT '200'::int1;
 ERROR:  value "200" is out of range for 8-bit integer
 LINE 1: SELECT '200'::int1;
@@ -49,6 +57,14 @@ SELECT ''::uint1;
 ERROR:  invalid input syntax for unsigned integer: ""
 LINE 1: SELECT ''::uint1;
                ^
+SELECT 'x'::uint1;
+ERROR:  invalid input syntax for unsigned integer: "x"
+LINE 1: SELECT 'x'::uint1;
+               ^
+SELECT '55 x'::uint1;
+ERROR:  invalid input syntax for unsigned integer: "55 x"
+LINE 1: SELECT '55 x'::uint1;
+               ^
 SELECT '300'::uint1;
 ERROR:  value "300" is out of range for type uint1
 LINE 1: SELECT '300'::uint1;
@@ -79,6 +95,14 @@ LINE 1: SELECT '-55'::uint2;
 SELECT ''::uint2;
 ERROR:  invalid input syntax for unsigned integer: ""
 LINE 1: SELECT ''::uint2;
+               ^
+SELECT 'x'::uint2;
+ERROR:  invalid input syntax for unsigned integer: "x"
+LINE 1: SELECT 'x'::uint2;
+               ^
+SELECT '55 x'::uint2;
+ERROR:  invalid input syntax for unsigned integer: "55 x"
+LINE 1: SELECT '55 x'::uint2;
                ^
 SELECT '70000'::uint2;
 ERROR:  value "70000" is out of range for type uint2
@@ -111,6 +135,18 @@ SELECT ''::uint4;
 ERROR:  invalid input syntax for unsigned integer: ""
 LINE 1: SELECT ''::uint4;
                ^
+SELECT 'x'::uint4;
+ERROR:  invalid input syntax for unsigned integer: "x"
+LINE 1: SELECT 'x'::uint4;
+               ^
+SELECT '55 x'::uint4;
+ERROR:  invalid input syntax for unsigned integer: "55 x"
+LINE 1: SELECT '55 x'::uint4;
+               ^
+SELECT '5000000000'::uint4;
+ERROR:  value "5000000000" is out of range for type uint4
+LINE 1: SELECT '5000000000'::uint4;
+               ^
 CREATE TABLE test_uint4 (a uint4);
 INSERT INTO test_uint4 VALUES (1), (2), (3), (4), (5);
 SELECT a FROM test_uint4;
@@ -137,6 +173,18 @@ LINE 1: SELECT '-55'::uint8;
 SELECT ''::uint8;
 ERROR:  invalid input syntax for unsigned integer: ""
 LINE 1: SELECT ''::uint8;
+               ^
+SELECT 'x'::uint8;
+ERROR:  invalid input syntax for unsigned integer: "x"
+LINE 1: SELECT 'x'::uint8;
+               ^
+SELECT '55 x'::uint8;
+ERROR:  invalid input syntax for unsigned integer: "55 x"
+LINE 1: SELECT '55 x'::uint8;
+               ^
+SELECT '20000000000000000000'::uint8;
+ERROR:  value "20000000000000000000" is out of range for type uint8
+LINE 1: SELECT '20000000000000000000'::uint8;
                ^
 CREATE TABLE test_uint8 (a uint8);
 INSERT INTO test_uint8 VALUES (1), (2), (3), (4), (5);
