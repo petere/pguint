@@ -9,43 +9,17 @@
 
 PG_MODULE_MAGIC;
 
+
 PG_FUNCTION_INFO_V1(int1in);
-PG_FUNCTION_INFO_V1(int1out);
-PG_FUNCTION_INFO_V1(uint1in);
-PG_FUNCTION_INFO_V1(uint1out);
-PG_FUNCTION_INFO_V1(uint2in);
-PG_FUNCTION_INFO_V1(uint2out);
-PG_FUNCTION_INFO_V1(uint4in);
-PG_FUNCTION_INFO_V1(uint4out);
-PG_FUNCTION_INFO_V1(uint8in);
-PG_FUNCTION_INFO_V1(uint8out);
-PG_FUNCTION_INFO_V1(int1um);
-
-
 Datum
 int1in(PG_FUNCTION_ARGS)
 {
 	char	   *s = PG_GETARG_CSTRING(0);
-	long int	result;
 
-	if (s == NULL)
-		elog(ERROR, "NULL pointer");
-	if (*s == 0)
-		ereport(ERROR,
-				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
-				 errmsg("invalid input syntax for integer: \"%s\"",
-						s)));
-
-	errno = 0;
-	result = strtol(s, NULL, 10);
-	if (errno == ERANGE || result > SCHAR_MAX || result < SCHAR_MIN)
-		ereport(ERROR,
-				(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
-				 errmsg("value \"%s\" is out of range for type int1", s)));
-
-	PG_RETURN_INT8(result);
+	PG_RETURN_INT8(pg_atoi(s, sizeof(int8), '\0'));
 }
 
+PG_FUNCTION_INFO_V1(int1out);
 Datum
 int1out(PG_FUNCTION_ARGS)
 {
@@ -56,6 +30,7 @@ int1out(PG_FUNCTION_ARGS)
 	PG_RETURN_CSTRING(result);
 }
 
+PG_FUNCTION_INFO_V1(uint1in);
 Datum
 uint1in(PG_FUNCTION_ARGS)
 {
@@ -86,6 +61,7 @@ uint1in(PG_FUNCTION_ARGS)
 	PG_RETURN_UINT8(result);
 }
 
+PG_FUNCTION_INFO_V1(uint1out);
 Datum
 uint1out(PG_FUNCTION_ARGS)
 {
@@ -96,6 +72,7 @@ uint1out(PG_FUNCTION_ARGS)
 	PG_RETURN_CSTRING(result);
 }
 
+PG_FUNCTION_INFO_V1(uint2in);
 Datum
 uint2in(PG_FUNCTION_ARGS)
 {
@@ -126,6 +103,7 @@ uint2in(PG_FUNCTION_ARGS)
 	PG_RETURN_UINT16(result);
 }
 
+PG_FUNCTION_INFO_V1(uint2out);
 Datum
 uint2out(PG_FUNCTION_ARGS)
 {
@@ -136,6 +114,7 @@ uint2out(PG_FUNCTION_ARGS)
 	PG_RETURN_CSTRING(result);
 }
 
+PG_FUNCTION_INFO_V1(uint4in);
 Datum
 uint4in(PG_FUNCTION_ARGS)
 {
@@ -161,6 +140,7 @@ uint4in(PG_FUNCTION_ARGS)
 	PG_RETURN_UINT32(result);
 }
 
+PG_FUNCTION_INFO_V1(uint4out);
 Datum
 uint4out(PG_FUNCTION_ARGS)
 {
@@ -171,6 +151,7 @@ uint4out(PG_FUNCTION_ARGS)
 	PG_RETURN_CSTRING(result);
 }
 
+PG_FUNCTION_INFO_V1(uint8in);
 Datum
 uint8in(PG_FUNCTION_ARGS)
 {
@@ -196,6 +177,7 @@ uint8in(PG_FUNCTION_ARGS)
 	PG_RETURN_UINT64(result);
 }
 
+PG_FUNCTION_INFO_V1(uint8out);
 Datum
 uint8out(PG_FUNCTION_ARGS)
 {
@@ -206,6 +188,7 @@ uint8out(PG_FUNCTION_ARGS)
 	PG_RETURN_CSTRING(result);
 }
 
+PG_FUNCTION_INFO_V1(int1um);
 Datum
 int1um(PG_FUNCTION_ARGS)
 {

@@ -100,6 +100,12 @@ max_values = {
     'uint8': '18446744073709551615',
 }
 
+too_big = {
+    'int1': '200',
+    'uint1': '300',
+    'uint2': '70000',
+}
+
 
 def next_bigger_type(typ):
     m = re.match(r'(\w+)(\d+)', typ)
@@ -287,6 +293,25 @@ def main():
 #include "uint.h"
 
 """)
+
+    for argtype in new_types:
+        f_test_operators_sql.write("""\
+SELECT '55'::{typ};
+SELECT '-55'::{typ};
+SELECT ''::{typ};
+""".format(typ=argtype))
+        if argtype in too_big:
+            f_test_operators_sql.write("SELECT '{num}'::{typ};\n".format(typ=argtype, num=too_big[argtype]))
+            if not type_unsigned(argtype):
+                f_test_operators_sql.write("SELECT '-{num}'::{typ};\n".format(typ=argtype, num=too_big[argtype]))
+        f_test_operators_sql.write("""\
+
+CREATE TABLE test_{typ} (a {typ});
+INSERT INTO test_{typ} VALUES ({vals[0]}), ({vals[1]}), ({vals[2]}), ({vals[3]}), ({vals[4]});
+SELECT a FROM test_{typ};
+DROP TABLE test_{typ};
+
+""".format(typ=argtype, vals=(range(1, 6) if type_unsigned(argtype) else range(-2, 3))))
 
     for leftarg in new_types + old_types:
         for op in comparison_ops + arithmetic_ops:

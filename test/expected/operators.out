@@ -1,3 +1,156 @@
+SELECT '55'::int1;
+ int1 
+------
+ 55
+(1 row)
+
+SELECT '-55'::int1;
+ int1 
+------
+ -55
+(1 row)
+
+SELECT ''::int1;
+ERROR:  invalid input syntax for integer: ""
+LINE 1: SELECT ''::int1;
+               ^
+SELECT '200'::int1;
+ERROR:  value "200" is out of range for 8-bit integer
+LINE 1: SELECT '200'::int1;
+               ^
+SELECT '-200'::int1;
+ERROR:  value "-200" is out of range for 8-bit integer
+LINE 1: SELECT '-200'::int1;
+               ^
+CREATE TABLE test_int1 (a int1);
+INSERT INTO test_int1 VALUES (-2), (-1), (0), (1), (2);
+SELECT a FROM test_int1;
+ a  
+----
+ -2
+ -1
+ 0
+ 1
+ 2
+(5 rows)
+
+DROP TABLE test_int1;
+SELECT '55'::uint1;
+ uint1 
+-------
+ 55
+(1 row)
+
+SELECT '-55'::uint1;
+ERROR:  invalid input syntax for unsigned integer: "-55"
+LINE 1: SELECT '-55'::uint1;
+               ^
+SELECT ''::uint1;
+ERROR:  invalid input syntax for unsigned integer: ""
+LINE 1: SELECT ''::uint1;
+               ^
+SELECT '300'::uint1;
+ERROR:  value "300" is out of range for type uint1
+LINE 1: SELECT '300'::uint1;
+               ^
+CREATE TABLE test_uint1 (a uint1);
+INSERT INTO test_uint1 VALUES (1), (2), (3), (4), (5);
+SELECT a FROM test_uint1;
+ a 
+---
+ 1
+ 2
+ 3
+ 4
+ 5
+(5 rows)
+
+DROP TABLE test_uint1;
+SELECT '55'::uint2;
+ uint2 
+-------
+ 55
+(1 row)
+
+SELECT '-55'::uint2;
+ERROR:  invalid input syntax for unsigned integer: "-55"
+LINE 1: SELECT '-55'::uint2;
+               ^
+SELECT ''::uint2;
+ERROR:  invalid input syntax for unsigned integer: ""
+LINE 1: SELECT ''::uint2;
+               ^
+SELECT '70000'::uint2;
+ERROR:  value "70000" is out of range for type uint2
+LINE 1: SELECT '70000'::uint2;
+               ^
+CREATE TABLE test_uint2 (a uint2);
+INSERT INTO test_uint2 VALUES (1), (2), (3), (4), (5);
+SELECT a FROM test_uint2;
+ a 
+---
+ 1
+ 2
+ 3
+ 4
+ 5
+(5 rows)
+
+DROP TABLE test_uint2;
+SELECT '55'::uint4;
+ uint4 
+-------
+ 55
+(1 row)
+
+SELECT '-55'::uint4;
+ERROR:  invalid input syntax for unsigned integer: "-55"
+LINE 1: SELECT '-55'::uint4;
+               ^
+SELECT ''::uint4;
+ERROR:  invalid input syntax for unsigned integer: ""
+LINE 1: SELECT ''::uint4;
+               ^
+CREATE TABLE test_uint4 (a uint4);
+INSERT INTO test_uint4 VALUES (1), (2), (3), (4), (5);
+SELECT a FROM test_uint4;
+ a 
+---
+ 1
+ 2
+ 3
+ 4
+ 5
+(5 rows)
+
+DROP TABLE test_uint4;
+SELECT '55'::uint8;
+ uint8 
+-------
+ 55
+(1 row)
+
+SELECT '-55'::uint8;
+ERROR:  invalid input syntax for unsigned integer: "-55"
+LINE 1: SELECT '-55'::uint8;
+               ^
+SELECT ''::uint8;
+ERROR:  invalid input syntax for unsigned integer: ""
+LINE 1: SELECT ''::uint8;
+               ^
+CREATE TABLE test_uint8 (a uint8);
+INSERT INTO test_uint8 VALUES (1), (2), (3), (4), (5);
+SELECT a FROM test_uint8;
+ a 
+---
+ 1
+ 2
+ 3
+ 4
+ 5
+(5 rows)
+
+DROP TABLE test_uint8;
 SELECT '2'::int1 < 5;
  ?column? 
 ----------
