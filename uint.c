@@ -24,7 +24,7 @@ Datum
 int1out(PG_FUNCTION_ARGS)
 {
 	int8		arg1 = PG_GETARG_INT8(0);
-	char	   *result = (char *) palloc(11);	/* 10 digits, '\0' */
+	char	   *result = palloc(5);		/* sign, 3 digits, '\0' */
 
 	sprintf(result, "%d", arg1);
 	PG_RETURN_CSTRING(result);
@@ -107,7 +107,7 @@ Datum
 uint1out(PG_FUNCTION_ARGS)
 {
 	uint8		arg1 = PG_GETARG_UINT8(0);
-	char	   *result = (char *) palloc(11);	/* 10 digits, '\0' */
+	char	   *result = palloc(4);		/* 3 digits, '\0' */
 
 	sprintf(result, "%u", arg1);
 	PG_RETURN_CSTRING(result);
@@ -127,7 +127,7 @@ Datum
 uint2out(PG_FUNCTION_ARGS)
 {
 	uint16		arg1 = PG_GETARG_UINT16(0);
-	char	   *result = (char *) palloc(11);	/* 10 digits, '\0' */
+	char	   *result = palloc(6);		/* 5 digits, '\0' */
 
 	sprintf(result, "%u", arg1);
 	PG_RETURN_CSTRING(result);
@@ -147,7 +147,7 @@ Datum
 uint4out(PG_FUNCTION_ARGS)
 {
 	uint32		arg1 = PG_GETARG_UINT32(0);
-	char	   *result = (char *) palloc(11);	/* 10 digits, '\0' */
+	char	   *result = palloc(11);	/* 10 digits, '\0' */
 
 	sprintf(result, "%u", arg1);
 	PG_RETURN_CSTRING(result);
@@ -200,7 +200,7 @@ Datum
 uint8out(PG_FUNCTION_ARGS)
 {
 	uint64		arg1 = PG_GETARG_UINT64(0);
-	char	   *result = (char *) palloc(21);	/* 20 digits, '\0' */
+	char	   *result = palloc(21);	/* 20 digits, '\0' */
 
 	sprintf(result, "%"PRIu64, arg1);
 	PG_RETURN_CSTRING(result);

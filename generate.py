@@ -89,6 +89,10 @@ def type_unsigned(typ):
     return typ.startswith('u')
 
 
+min_values = {
+    'int1': '-128',
+}
+
 max_values = {
     'int1': '127',
     'int2': '32767',
@@ -305,8 +309,10 @@ SELECT 'x'::{typ};
 SELECT '55 x'::{typ};
 """.format(typ=argtype))
         if argtype in too_big:
+            f_test_operators_sql.write("SELECT '{num}'::{typ};\n".format(typ=argtype, num=max_values[argtype]))
             f_test_operators_sql.write("SELECT '{num}'::{typ};\n".format(typ=argtype, num=too_big[argtype]))
             if not type_unsigned(argtype):
+                f_test_operators_sql.write("SELECT '{num}'::{typ};\n".format(typ=argtype, num=min_values[argtype]))
                 f_test_operators_sql.write("SELECT '-{num}'::{typ};\n".format(typ=argtype, num=too_big[argtype]))
         f_test_operators_sql.write("""\
 

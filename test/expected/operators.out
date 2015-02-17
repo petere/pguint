@@ -22,10 +22,22 @@ SELECT '55 x'::int1;
 ERROR:  invalid input syntax for integer: "55 x"
 LINE 1: SELECT '55 x'::int1;
                ^
+SELECT '127'::int1;
+ int1 
+------
+ 127
+(1 row)
+
 SELECT '200'::int1;
 ERROR:  value "200" is out of range for 8-bit integer
 LINE 1: SELECT '200'::int1;
                ^
+SELECT '-128'::int1;
+ int1 
+------
+ -128
+(1 row)
+
 SELECT '-200'::int1;
 ERROR:  value "-200" is out of range for 8-bit integer
 LINE 1: SELECT '-200'::int1;
@@ -65,6 +77,12 @@ SELECT '55 x'::uint1;
 ERROR:  invalid input syntax for unsigned integer: "55 x"
 LINE 1: SELECT '55 x'::uint1;
                ^
+SELECT '255'::uint1;
+ uint1 
+-------
+ 255
+(1 row)
+
 SELECT '300'::uint1;
 ERROR:  value "300" is out of range for type uint1
 LINE 1: SELECT '300'::uint1;
@@ -104,6 +122,12 @@ SELECT '55 x'::uint2;
 ERROR:  invalid input syntax for unsigned integer: "55 x"
 LINE 1: SELECT '55 x'::uint2;
                ^
+SELECT '65535'::uint2;
+ uint2 
+-------
+ 65535
+(1 row)
+
 SELECT '70000'::uint2;
 ERROR:  value "70000" is out of range for type uint2
 LINE 1: SELECT '70000'::uint2;
@@ -143,6 +167,12 @@ SELECT '55 x'::uint4;
 ERROR:  invalid input syntax for unsigned integer: "55 x"
 LINE 1: SELECT '55 x'::uint4;
                ^
+SELECT '4294967295'::uint4;
+   uint4    
+------------
+ 4294967295
+(1 row)
+
 SELECT '5000000000'::uint4;
 ERROR:  value "5000000000" is out of range for type uint4
 LINE 1: SELECT '5000000000'::uint4;
@@ -182,6 +212,12 @@ SELECT '55 x'::uint8;
 ERROR:  invalid input syntax for unsigned integer: "55 x"
 LINE 1: SELECT '55 x'::uint8;
                ^
+SELECT '18446744073709551615'::uint8;
+        uint8         
+----------------------
+ 18446744073709551615
+(1 row)
+
 SELECT '20000000000000000000'::uint8;
 ERROR:  value "20000000000000000000" is out of range for type uint8
 LINE 1: SELECT '20000000000000000000'::uint8;
