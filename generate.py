@@ -420,8 +420,27 @@ SELECT '5'::{lefttype} {op} '2'::{righttype};
 
                 f_test_operators_sql.write("\n")
 
-                f_operators_sql.write("CREATE CAST ({lefttype} AS {righttype}) WITH INOUT AS {context};\n\n"
+                c_funcname = leftarg + "_to_" + rightarg
+                sql_funcname = rightarg
+                body = "result = arg1;"
+                if type_bits(leftarg) >= type_bits(rightarg):
+                    body += """
+if (({c_type}) result != arg1)
+\tereport(ERROR,
+\t\t(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+\t\t errmsg("{typ} out of range")));""".format(c_type=c_types[leftarg], typ=rightarg)
+                if type_unsigned(leftarg) != type_unsigned(rightarg):
+                    body += """
+if (!SAMESIGN(result, arg1))
+\tereport(ERROR,
+\t\t(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+\t\t errmsg("{typ} out of range")));""".format(c_type=c_types[leftarg], typ=rightarg)
+                write_c_function(f_operators_c, c_funcname, [leftarg], rightarg, body)
+                write_sql_function(f_operators_sql, c_funcname, [leftarg], rightarg, sql_funcname=sql_funcname)
+                f_operators_sql.write("CREATE CAST ({lefttype} AS {righttype}) WITH FUNCTION {func}({arg}) AS {context};\n\n"
                                       .format(lefttype=leftarg, righttype=rightarg,
+                                              func=sql_funcname,
+                                              arg=leftarg,
                                               context=("IMPLICIT" if type_bits(leftarg) < type_bits(rightarg)
                                                        else "ASSIGNMENT")))
 

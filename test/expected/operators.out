@@ -1022,7 +1022,7 @@ SELECT CAST('5'::int1 AS uint1);
 (1 row)
 
 SELECT CAST('-5'::int1 AS uint1);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint1 out of range
 SELECT '1'::int1 < '1'::uint2;
  ?column? 
 ----------
@@ -1286,7 +1286,7 @@ SELECT CAST('5'::int1 AS uint2);
 (1 row)
 
 SELECT CAST('-5'::int1 AS uint2);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint2 out of range
 SELECT '1'::int1 < '1'::uint4;
  ?column? 
 ----------
@@ -1550,7 +1550,7 @@ SELECT CAST('5'::int1 AS uint4);
 (1 row)
 
 SELECT CAST('-5'::int1 AS uint4);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint4 out of range
 SELECT '1'::int1 < '1'::uint8;
  ?column? 
 ----------
@@ -1814,7 +1814,7 @@ SELECT CAST('5'::int1 AS uint8);
 (1 row)
 
 SELECT CAST('-5'::int1 AS uint8);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint8 out of range
 SELECT '1'::int1 < '1'::int2;
  ?column? 
 ----------
@@ -3158,7 +3158,7 @@ SELECT CAST('5'::uint1 AS int1);
 (1 row)
 
 SELECT CAST('200'::uint1 AS int1);
-ERROR:  value "200" is out of range for 8-bit integer
+ERROR:  int1 out of range
 SELECT '1'::uint1 < '1'::uint1;
  ?column? 
 ----------
@@ -5526,7 +5526,7 @@ SELECT CAST('5'::uint2 AS int1);
 (1 row)
 
 SELECT CAST('200'::uint2 AS int1);
-ERROR:  value "200" is out of range for 8-bit integer
+ERROR:  int1 out of range
 SELECT '1'::uint2 < '1'::uint1;
  ?column? 
 ----------
@@ -5790,7 +5790,7 @@ SELECT CAST('5'::uint2 AS uint1);
 (1 row)
 
 SELECT CAST('300'::uint2 AS uint1);
-ERROR:  value "300" is out of range for type uint1
+ERROR:  uint1 out of range
 SELECT '1'::uint2 < '1'::uint2;
  ?column? 
 ----------
@@ -6834,7 +6834,7 @@ SELECT CAST('5'::uint2 AS int2);
 (1 row)
 
 SELECT CAST('40000'::uint2 AS int2);
-ERROR:  value "40000" is out of range for type smallint
+ERROR:  int2 out of range
 SELECT '1'::uint2 < '1'::int4;
  ?column? 
 ----------
@@ -7886,7 +7886,7 @@ SELECT CAST('5'::uint4 AS int1);
 (1 row)
 
 SELECT CAST('200'::uint4 AS int1);
-ERROR:  value "200" is out of range for 8-bit integer
+ERROR:  int1 out of range
 SELECT '1'::uint4 < '1'::uint1;
  ?column? 
 ----------
@@ -8150,7 +8150,7 @@ SELECT CAST('5'::uint4 AS uint1);
 (1 row)
 
 SELECT CAST('300'::uint4 AS uint1);
-ERROR:  value "300" is out of range for type uint1
+ERROR:  uint1 out of range
 SELECT '1'::uint4 < '1'::uint2;
  ?column? 
 ----------
@@ -8414,7 +8414,7 @@ SELECT CAST('5'::uint4 AS uint2);
 (1 row)
 
 SELECT CAST('70000'::uint4 AS uint2);
-ERROR:  value "70000" is out of range for type uint2
+ERROR:  uint2 out of range
 SELECT '1'::uint4 < '1'::uint4;
  ?column? 
 ----------
@@ -9196,7 +9196,7 @@ SELECT CAST('5'::uint4 AS int2);
 (1 row)
 
 SELECT CAST('40000'::uint4 AS int2);
-ERROR:  value "40000" is out of range for type smallint
+ERROR:  int2 out of range
 SELECT '1'::uint4 < '1'::int4;
  ?column? 
 ----------
@@ -9460,7 +9460,7 @@ SELECT CAST('5'::uint4 AS int4);
 (1 row)
 
 SELECT CAST('3000000000'::uint4 AS int4);
-ERROR:  value "3000000000" is out of range for type integer
+ERROR:  int4 out of range
 SELECT '1'::uint4 < '1'::int8;
  ?column? 
 ----------
@@ -10246,7 +10246,7 @@ SELECT CAST('5'::uint8 AS int1);
 (1 row)
 
 SELECT CAST('200'::uint8 AS int1);
-ERROR:  value "200" is out of range for 8-bit integer
+ERROR:  int1 out of range
 SELECT '1'::uint8 < '1'::uint1;
  ?column? 
 ----------
@@ -10510,7 +10510,7 @@ SELECT CAST('5'::uint8 AS uint1);
 (1 row)
 
 SELECT CAST('300'::uint8 AS uint1);
-ERROR:  value "300" is out of range for type uint1
+ERROR:  uint1 out of range
 SELECT '1'::uint8 < '1'::uint2;
  ?column? 
 ----------
@@ -10774,7 +10774,7 @@ SELECT CAST('5'::uint8 AS uint2);
 (1 row)
 
 SELECT CAST('70000'::uint8 AS uint2);
-ERROR:  value "70000" is out of range for type uint2
+ERROR:  uint2 out of range
 SELECT '1'::uint8 < '1'::uint4;
  ?column? 
 ----------
@@ -11038,7 +11038,7 @@ SELECT CAST('5'::uint8 AS uint4);
 (1 row)
 
 SELECT CAST('5000000000'::uint8 AS uint4);
-ERROR:  value "5000000000" is out of range for type uint4
+ERROR:  uint4 out of range
 SELECT '1'::uint8 < '1'::uint8;
  ?column? 
 ----------
@@ -11558,7 +11558,7 @@ SELECT CAST('5'::uint8 AS int2);
 (1 row)
 
 SELECT CAST('40000'::uint8 AS int2);
-ERROR:  value "40000" is out of range for type smallint
+ERROR:  int2 out of range
 SELECT '1'::uint8 < '1'::int4;
  ?column? 
 ----------
@@ -11822,7 +11822,7 @@ SELECT CAST('5'::uint8 AS int4);
 (1 row)
 
 SELECT CAST('3000000000'::uint8 AS int4);
-ERROR:  value "3000000000" is out of range for type integer
+ERROR:  int4 out of range
 SELECT '1'::uint8 < '1'::int8;
  ?column? 
 ----------
@@ -12086,7 +12086,7 @@ SELECT CAST('5'::uint8 AS int8);
 (1 row)
 
 SELECT CAST('10000000000000000000'::uint8 AS int8);
-ERROR:  value "10000000000000000000" is out of range for type bigint
+ERROR:  int8 out of range
 SELECT '2'::int2 < 5;
  ?column? 
 ----------
@@ -12614,7 +12614,7 @@ SELECT CAST('5'::int2 AS int1);
 (1 row)
 
 SELECT CAST('200'::int2 AS int1);
-ERROR:  value "200" is out of range for 8-bit integer
+ERROR:  int1 out of range
 SELECT CAST('-5'::int2 AS int1);
  int1 
 ------
@@ -12622,7 +12622,7 @@ SELECT CAST('-5'::int2 AS int1);
 (1 row)
 
 SELECT CAST('-200'::int2 AS int1);
-ERROR:  value "-200" is out of range for 8-bit integer
+ERROR:  int1 out of range
 SELECT '1'::int2 < '1'::uint1;
  ?column? 
 ----------
@@ -12890,9 +12890,9 @@ SELECT CAST('5'::int2 AS uint1);
 (1 row)
 
 SELECT CAST('300'::int2 AS uint1);
-ERROR:  value "300" is out of range for type uint1
+ERROR:  uint1 out of range
 SELECT CAST('-5'::int2 AS uint1);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint1 out of range
 SELECT '1'::int2 < '1'::uint2;
  ?column? 
 ----------
@@ -13156,7 +13156,7 @@ SELECT CAST('5'::int2 AS uint2);
 (1 row)
 
 SELECT CAST('-5'::int2 AS uint2);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint2 out of range
 SELECT '1'::int2 < '1'::uint4;
  ?column? 
 ----------
@@ -13420,7 +13420,7 @@ SELECT CAST('5'::int2 AS uint4);
 (1 row)
 
 SELECT CAST('-5'::int2 AS uint4);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint4 out of range
 SELECT '1'::int2 < '1'::uint8;
  ?column? 
 ----------
@@ -13684,7 +13684,7 @@ SELECT CAST('5'::int2 AS uint8);
 (1 row)
 
 SELECT CAST('-5'::int2 AS uint8);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint8 out of range
 SELECT '2'::int4 < 5;
  ?column? 
 ----------
@@ -14216,7 +14216,7 @@ SELECT CAST('5'::int4 AS int1);
 (1 row)
 
 SELECT CAST('200'::int4 AS int1);
-ERROR:  value "200" is out of range for 8-bit integer
+ERROR:  int1 out of range
 SELECT CAST('-5'::int4 AS int1);
  int1 
 ------
@@ -14224,7 +14224,7 @@ SELECT CAST('-5'::int4 AS int1);
 (1 row)
 
 SELECT CAST('-200'::int4 AS int1);
-ERROR:  value "-200" is out of range for 8-bit integer
+ERROR:  int1 out of range
 SELECT '1'::int4 < '1'::uint1;
  ?column? 
 ----------
@@ -14492,9 +14492,9 @@ SELECT CAST('5'::int4 AS uint1);
 (1 row)
 
 SELECT CAST('300'::int4 AS uint1);
-ERROR:  value "300" is out of range for type uint1
+ERROR:  uint1 out of range
 SELECT CAST('-5'::int4 AS uint1);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint1 out of range
 SELECT '1'::int4 < '1'::uint2;
  ?column? 
 ----------
@@ -14762,9 +14762,9 @@ SELECT CAST('5'::int4 AS uint2);
 (1 row)
 
 SELECT CAST('70000'::int4 AS uint2);
-ERROR:  value "70000" is out of range for type uint2
+ERROR:  uint2 out of range
 SELECT CAST('-5'::int4 AS uint2);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint2 out of range
 SELECT '1'::int4 < '1'::uint4;
  ?column? 
 ----------
@@ -15028,7 +15028,7 @@ SELECT CAST('5'::int4 AS uint4);
 (1 row)
 
 SELECT CAST('-5'::int4 AS uint4);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint4 out of range
 SELECT '1'::int4 < '1'::uint8;
  ?column? 
 ----------
@@ -15292,7 +15292,7 @@ SELECT CAST('5'::int4 AS uint8);
 (1 row)
 
 SELECT CAST('-5'::int4 AS uint8);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint8 out of range
 SELECT '2'::int8 < 5;
  ?column? 
 ----------
@@ -15820,7 +15820,7 @@ SELECT CAST('5'::int8 AS int1);
 (1 row)
 
 SELECT CAST('200'::int8 AS int1);
-ERROR:  value "200" is out of range for 8-bit integer
+ERROR:  int1 out of range
 SELECT CAST('-5'::int8 AS int1);
  int1 
 ------
@@ -15828,7 +15828,7 @@ SELECT CAST('-5'::int8 AS int1);
 (1 row)
 
 SELECT CAST('-200'::int8 AS int1);
-ERROR:  value "-200" is out of range for 8-bit integer
+ERROR:  int1 out of range
 SELECT '1'::int8 < '1'::uint1;
  ?column? 
 ----------
@@ -16096,9 +16096,9 @@ SELECT CAST('5'::int8 AS uint1);
 (1 row)
 
 SELECT CAST('300'::int8 AS uint1);
-ERROR:  value "300" is out of range for type uint1
+ERROR:  uint1 out of range
 SELECT CAST('-5'::int8 AS uint1);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint1 out of range
 SELECT '1'::int8 < '1'::uint2;
  ?column? 
 ----------
@@ -16366,9 +16366,9 @@ SELECT CAST('5'::int8 AS uint2);
 (1 row)
 
 SELECT CAST('70000'::int8 AS uint2);
-ERROR:  value "70000" is out of range for type uint2
+ERROR:  uint2 out of range
 SELECT CAST('-5'::int8 AS uint2);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint2 out of range
 SELECT '1'::int8 < '1'::uint4;
  ?column? 
 ----------
@@ -16636,9 +16636,9 @@ SELECT CAST('5'::int8 AS uint4);
 (1 row)
 
 SELECT CAST('5000000000'::int8 AS uint4);
-ERROR:  value "5000000000" is out of range for type uint4
+ERROR:  uint4 out of range
 SELECT CAST('-5'::int8 AS uint4);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint4 out of range
 SELECT '1'::int8 < '1'::uint8;
  ?column? 
 ----------
@@ -16902,7 +16902,7 @@ SELECT CAST('5'::int8 AS uint8);
 (1 row)
 
 SELECT CAST('-5'::int8 AS uint8);
-ERROR:  invalid input syntax for unsigned integer: "-5"
+ERROR:  uint8 out of range
 SELECT '1'::int1 & '1'::int1;
  ?column? 
 ----------
