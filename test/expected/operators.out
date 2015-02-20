@@ -1015,6 +1015,14 @@ SELECT mod('5'::int1, '2'::uint1);
  1
 (1 row)
 
+SELECT CAST('5'::int1 AS uint1);
+ uint1 
+-------
+ 5
+(1 row)
+
+SELECT CAST('-5'::int1 AS uint1);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int1 < '1'::uint2;
  ?column? 
 ----------
@@ -1271,6 +1279,14 @@ SELECT mod('5'::int1, '2'::uint2);
  1
 (1 row)
 
+SELECT CAST('5'::int1 AS uint2);
+ uint2 
+-------
+ 5
+(1 row)
+
+SELECT CAST('-5'::int1 AS uint2);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int1 < '1'::uint4;
  ?column? 
 ----------
@@ -1527,6 +1543,14 @@ SELECT mod('5'::int1, '2'::uint4);
  1
 (1 row)
 
+SELECT CAST('5'::int1 AS uint4);
+ uint4 
+-------
+ 5
+(1 row)
+
+SELECT CAST('-5'::int1 AS uint4);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int1 < '1'::uint8;
  ?column? 
 ----------
@@ -1783,6 +1807,14 @@ SELECT mod('5'::int1, '2'::uint8);
  1
 (1 row)
 
+SELECT CAST('5'::int1 AS uint8);
+ uint8 
+-------
+ 5
+(1 row)
+
+SELECT CAST('-5'::int1 AS uint8);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int1 < '1'::int2;
  ?column? 
 ----------
@@ -2041,6 +2073,18 @@ SELECT mod('5'::int1, '2'::int2);
  mod 
 -----
    1
+(1 row)
+
+SELECT CAST('5'::int1 AS int2);
+ int2 
+------
+    5
+(1 row)
+
+SELECT CAST('-5'::int1 AS int2);
+ int2 
+------
+   -5
 (1 row)
 
 SELECT '1'::int1 < '1'::int4;
@@ -2303,6 +2347,18 @@ SELECT mod('5'::int1, '2'::int4);
    1
 (1 row)
 
+SELECT CAST('5'::int1 AS int4);
+ int4 
+------
+    5
+(1 row)
+
+SELECT CAST('-5'::int1 AS int4);
+ int4 
+------
+   -5
+(1 row)
+
 SELECT '1'::int1 < '1'::int8;
  ?column? 
 ----------
@@ -2561,6 +2617,18 @@ SELECT mod('5'::int1, '2'::int8);
  mod 
 -----
    1
+(1 row)
+
+SELECT CAST('5'::int1 AS int8);
+ int8 
+------
+    5
+(1 row)
+
+SELECT CAST('-5'::int1 AS int8);
+ int8 
+------
+   -5
 (1 row)
 
 SELECT '2'::uint1 < 5;
@@ -3083,6 +3151,14 @@ SELECT mod('5'::uint1, '2'::int1);
  1
 (1 row)
 
+SELECT CAST('5'::uint1 AS int1);
+ int1 
+------
+ 5
+(1 row)
+
+SELECT CAST('200'::uint1 AS int1);
+ERROR:  value "200" is out of range for 8-bit integer
 SELECT '1'::uint1 < '1'::uint1;
  ?column? 
 ----------
@@ -3595,6 +3671,12 @@ SELECT mod('5'::uint1, '2'::uint2);
  1
 (1 row)
 
+SELECT CAST('5'::uint1 AS uint2);
+ uint2 
+-------
+ 5
+(1 row)
+
 SELECT '1'::uint1 < '1'::uint4;
  ?column? 
 ----------
@@ -3851,6 +3933,12 @@ SELECT mod('5'::uint1, '2'::uint4);
  1
 (1 row)
 
+SELECT CAST('5'::uint1 AS uint4);
+ uint4 
+-------
+ 5
+(1 row)
+
 SELECT '1'::uint1 < '1'::uint8;
  ?column? 
 ----------
@@ -4105,6 +4193,12 @@ SELECT mod('5'::uint1, '2'::uint8);
  mod 
 -----
  1
+(1 row)
+
+SELECT CAST('5'::uint1 AS uint8);
+ uint8 
+-------
+ 5
 (1 row)
 
 SELECT '1'::uint1 < '1'::int2;
@@ -4367,6 +4461,12 @@ SELECT mod('5'::uint1, '2'::int2);
    1
 (1 row)
 
+SELECT CAST('5'::uint1 AS int2);
+ int2 
+------
+    5
+(1 row)
+
 SELECT '1'::uint1 < '1'::int4;
  ?column? 
 ----------
@@ -4627,6 +4727,12 @@ SELECT mod('5'::uint1, '2'::int4);
    1
 (1 row)
 
+SELECT CAST('5'::uint1 AS int4);
+ int4 
+------
+    5
+(1 row)
+
 SELECT '1'::uint1 < '1'::int8;
  ?column? 
 ----------
@@ -4885,6 +4991,12 @@ SELECT mod('5'::uint1, '2'::int8);
  mod 
 -----
    1
+(1 row)
+
+SELECT CAST('5'::uint1 AS int8);
+ int8 
+------
+    5
 (1 row)
 
 SELECT '2'::uint2 < 5;
@@ -5407,6 +5519,14 @@ SELECT mod('5'::uint2, '2'::int1);
  1
 (1 row)
 
+SELECT CAST('5'::uint2 AS int1);
+ int1 
+------
+ 5
+(1 row)
+
+SELECT CAST('200'::uint2 AS int1);
+ERROR:  value "200" is out of range for 8-bit integer
 SELECT '1'::uint2 < '1'::uint1;
  ?column? 
 ----------
@@ -5663,6 +5783,14 @@ SELECT mod('5'::uint2, '2'::uint1);
  1
 (1 row)
 
+SELECT CAST('5'::uint2 AS uint1);
+ uint1 
+-------
+ 5
+(1 row)
+
+SELECT CAST('300'::uint2 AS uint1);
+ERROR:  value "300" is out of range for type uint1
 SELECT '1'::uint2 < '1'::uint2;
  ?column? 
 ----------
@@ -6175,6 +6303,12 @@ SELECT mod('5'::uint2, '2'::uint4);
  1
 (1 row)
 
+SELECT CAST('5'::uint2 AS uint4);
+ uint4 
+-------
+ 5
+(1 row)
+
 SELECT '1'::uint2 < '1'::uint8;
  ?column? 
 ----------
@@ -6429,6 +6563,12 @@ SELECT mod('5'::uint2, '2'::uint8);
  mod 
 -----
  1
+(1 row)
+
+SELECT CAST('5'::uint2 AS uint8);
+ uint8 
+-------
+ 5
 (1 row)
 
 SELECT '1'::uint2 < '1'::int2;
@@ -6687,6 +6827,14 @@ SELECT mod('5'::uint2, '2'::int2);
  1
 (1 row)
 
+SELECT CAST('5'::uint2 AS int2);
+ int2 
+------
+    5
+(1 row)
+
+SELECT CAST('40000'::uint2 AS int2);
+ERROR:  value "40000" is out of range for type smallint
 SELECT '1'::uint2 < '1'::int4;
  ?column? 
 ----------
@@ -6947,6 +7095,12 @@ SELECT mod('5'::uint2, '2'::int4);
    1
 (1 row)
 
+SELECT CAST('5'::uint2 AS int4);
+ int4 
+------
+    5
+(1 row)
+
 SELECT '1'::uint2 < '1'::int8;
  ?column? 
 ----------
@@ -7205,6 +7359,12 @@ SELECT mod('5'::uint2, '2'::int8);
  mod 
 -----
    1
+(1 row)
+
+SELECT CAST('5'::uint2 AS int8);
+ int8 
+------
+    5
 (1 row)
 
 SELECT '2'::uint4 < 5;
@@ -7719,6 +7879,14 @@ SELECT mod('5'::uint4, '2'::int1);
  1
 (1 row)
 
+SELECT CAST('5'::uint4 AS int1);
+ int1 
+------
+ 5
+(1 row)
+
+SELECT CAST('200'::uint4 AS int1);
+ERROR:  value "200" is out of range for 8-bit integer
 SELECT '1'::uint4 < '1'::uint1;
  ?column? 
 ----------
@@ -7975,6 +8143,14 @@ SELECT mod('5'::uint4, '2'::uint1);
  1
 (1 row)
 
+SELECT CAST('5'::uint4 AS uint1);
+ uint1 
+-------
+ 5
+(1 row)
+
+SELECT CAST('300'::uint4 AS uint1);
+ERROR:  value "300" is out of range for type uint1
 SELECT '1'::uint4 < '1'::uint2;
  ?column? 
 ----------
@@ -8231,6 +8407,14 @@ SELECT mod('5'::uint4, '2'::uint2);
  1
 (1 row)
 
+SELECT CAST('5'::uint4 AS uint2);
+ uint2 
+-------
+ 5
+(1 row)
+
+SELECT CAST('70000'::uint4 AS uint2);
+ERROR:  value "70000" is out of range for type uint2
 SELECT '1'::uint4 < '1'::uint4;
  ?column? 
 ----------
@@ -8743,6 +8927,12 @@ SELECT mod('5'::uint4, '2'::uint8);
  1
 (1 row)
 
+SELECT CAST('5'::uint4 AS uint8);
+ uint8 
+-------
+ 5
+(1 row)
+
 SELECT '1'::uint4 < '1'::int2;
  ?column? 
 ----------
@@ -8999,6 +9189,14 @@ SELECT mod('5'::uint4, '2'::int2);
  1
 (1 row)
 
+SELECT CAST('5'::uint4 AS int2);
+ int2 
+------
+    5
+(1 row)
+
+SELECT CAST('40000'::uint4 AS int2);
+ERROR:  value "40000" is out of range for type smallint
 SELECT '1'::uint4 < '1'::int4;
  ?column? 
 ----------
@@ -9255,6 +9453,14 @@ SELECT mod('5'::uint4, '2'::int4);
  1
 (1 row)
 
+SELECT CAST('5'::uint4 AS int4);
+ int4 
+------
+    5
+(1 row)
+
+SELECT CAST('3000000000'::uint4 AS int4);
+ERROR:  value "3000000000" is out of range for type integer
 SELECT '1'::uint4 < '1'::int8;
  ?column? 
 ----------
@@ -9513,6 +9719,12 @@ SELECT mod('5'::uint4, '2'::int8);
  mod 
 -----
    1
+(1 row)
+
+SELECT CAST('5'::uint4 AS int8);
+ int8 
+------
+    5
 (1 row)
 
 SELECT '2'::uint8 < 5;
@@ -10027,6 +10239,14 @@ SELECT mod('5'::uint8, '2'::int1);
  1
 (1 row)
 
+SELECT CAST('5'::uint8 AS int1);
+ int1 
+------
+ 5
+(1 row)
+
+SELECT CAST('200'::uint8 AS int1);
+ERROR:  value "200" is out of range for 8-bit integer
 SELECT '1'::uint8 < '1'::uint1;
  ?column? 
 ----------
@@ -10283,6 +10503,14 @@ SELECT mod('5'::uint8, '2'::uint1);
  1
 (1 row)
 
+SELECT CAST('5'::uint8 AS uint1);
+ uint1 
+-------
+ 5
+(1 row)
+
+SELECT CAST('300'::uint8 AS uint1);
+ERROR:  value "300" is out of range for type uint1
 SELECT '1'::uint8 < '1'::uint2;
  ?column? 
 ----------
@@ -10539,6 +10767,14 @@ SELECT mod('5'::uint8, '2'::uint2);
  1
 (1 row)
 
+SELECT CAST('5'::uint8 AS uint2);
+ uint2 
+-------
+ 5
+(1 row)
+
+SELECT CAST('70000'::uint8 AS uint2);
+ERROR:  value "70000" is out of range for type uint2
 SELECT '1'::uint8 < '1'::uint4;
  ?column? 
 ----------
@@ -10795,6 +11031,14 @@ SELECT mod('5'::uint8, '2'::uint4);
  1
 (1 row)
 
+SELECT CAST('5'::uint8 AS uint4);
+ uint4 
+-------
+ 5
+(1 row)
+
+SELECT CAST('5000000000'::uint8 AS uint4);
+ERROR:  value "5000000000" is out of range for type uint4
 SELECT '1'::uint8 < '1'::uint8;
  ?column? 
 ----------
@@ -11307,6 +11551,14 @@ SELECT mod('5'::uint8, '2'::int2);
  1
 (1 row)
 
+SELECT CAST('5'::uint8 AS int2);
+ int2 
+------
+    5
+(1 row)
+
+SELECT CAST('40000'::uint8 AS int2);
+ERROR:  value "40000" is out of range for type smallint
 SELECT '1'::uint8 < '1'::int4;
  ?column? 
 ----------
@@ -11563,6 +11815,14 @@ SELECT mod('5'::uint8, '2'::int4);
  1
 (1 row)
 
+SELECT CAST('5'::uint8 AS int4);
+ int4 
+------
+    5
+(1 row)
+
+SELECT CAST('3000000000'::uint8 AS int4);
+ERROR:  value "3000000000" is out of range for type integer
 SELECT '1'::uint8 < '1'::int8;
  ?column? 
 ----------
@@ -11819,6 +12079,14 @@ SELECT mod('5'::uint8, '2'::int8);
  1
 (1 row)
 
+SELECT CAST('5'::uint8 AS int8);
+ int8 
+------
+    5
+(1 row)
+
+SELECT CAST('10000000000000000000'::uint8 AS int8);
+ERROR:  value "10000000000000000000" is out of range for type bigint
 SELECT '2'::int2 < 5;
  ?column? 
 ----------
@@ -12339,6 +12607,22 @@ SELECT mod('5'::int2, '2'::int1);
    1
 (1 row)
 
+SELECT CAST('5'::int2 AS int1);
+ int1 
+------
+ 5
+(1 row)
+
+SELECT CAST('200'::int2 AS int1);
+ERROR:  value "200" is out of range for 8-bit integer
+SELECT CAST('-5'::int2 AS int1);
+ int1 
+------
+ -5
+(1 row)
+
+SELECT CAST('-200'::int2 AS int1);
+ERROR:  value "-200" is out of range for 8-bit integer
 SELECT '1'::int2 < '1'::uint1;
  ?column? 
 ----------
@@ -12599,6 +12883,16 @@ SELECT mod('5'::int2, '2'::uint1);
    1
 (1 row)
 
+SELECT CAST('5'::int2 AS uint1);
+ uint1 
+-------
+ 5
+(1 row)
+
+SELECT CAST('300'::int2 AS uint1);
+ERROR:  value "300" is out of range for type uint1
+SELECT CAST('-5'::int2 AS uint1);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int2 < '1'::uint2;
  ?column? 
 ----------
@@ -12855,6 +13149,14 @@ SELECT mod('5'::int2, '2'::uint2);
  1
 (1 row)
 
+SELECT CAST('5'::int2 AS uint2);
+ uint2 
+-------
+ 5
+(1 row)
+
+SELECT CAST('-5'::int2 AS uint2);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int2 < '1'::uint4;
  ?column? 
 ----------
@@ -13111,6 +13413,14 @@ SELECT mod('5'::int2, '2'::uint4);
  1
 (1 row)
 
+SELECT CAST('5'::int2 AS uint4);
+ uint4 
+-------
+ 5
+(1 row)
+
+SELECT CAST('-5'::int2 AS uint4);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int2 < '1'::uint8;
  ?column? 
 ----------
@@ -13367,6 +13677,14 @@ SELECT mod('5'::int2, '2'::uint8);
  1
 (1 row)
 
+SELECT CAST('5'::int2 AS uint8);
+ uint8 
+-------
+ 5
+(1 row)
+
+SELECT CAST('-5'::int2 AS uint8);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '2'::int4 < 5;
  ?column? 
 ----------
@@ -13891,6 +14209,22 @@ SELECT mod('5'::int4, '2'::int1);
    1
 (1 row)
 
+SELECT CAST('5'::int4 AS int1);
+ int1 
+------
+ 5
+(1 row)
+
+SELECT CAST('200'::int4 AS int1);
+ERROR:  value "200" is out of range for 8-bit integer
+SELECT CAST('-5'::int4 AS int1);
+ int1 
+------
+ -5
+(1 row)
+
+SELECT CAST('-200'::int4 AS int1);
+ERROR:  value "-200" is out of range for 8-bit integer
 SELECT '1'::int4 < '1'::uint1;
  ?column? 
 ----------
@@ -14151,6 +14485,16 @@ SELECT mod('5'::int4, '2'::uint1);
    1
 (1 row)
 
+SELECT CAST('5'::int4 AS uint1);
+ uint1 
+-------
+ 5
+(1 row)
+
+SELECT CAST('300'::int4 AS uint1);
+ERROR:  value "300" is out of range for type uint1
+SELECT CAST('-5'::int4 AS uint1);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int4 < '1'::uint2;
  ?column? 
 ----------
@@ -14411,6 +14755,16 @@ SELECT mod('5'::int4, '2'::uint2);
    1
 (1 row)
 
+SELECT CAST('5'::int4 AS uint2);
+ uint2 
+-------
+ 5
+(1 row)
+
+SELECT CAST('70000'::int4 AS uint2);
+ERROR:  value "70000" is out of range for type uint2
+SELECT CAST('-5'::int4 AS uint2);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int4 < '1'::uint4;
  ?column? 
 ----------
@@ -14667,6 +15021,14 @@ SELECT mod('5'::int4, '2'::uint4);
  1
 (1 row)
 
+SELECT CAST('5'::int4 AS uint4);
+ uint4 
+-------
+ 5
+(1 row)
+
+SELECT CAST('-5'::int4 AS uint4);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int4 < '1'::uint8;
  ?column? 
 ----------
@@ -14923,6 +15285,14 @@ SELECT mod('5'::int4, '2'::uint8);
  1
 (1 row)
 
+SELECT CAST('5'::int4 AS uint8);
+ uint8 
+-------
+ 5
+(1 row)
+
+SELECT CAST('-5'::int4 AS uint8);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '2'::int8 < 5;
  ?column? 
 ----------
@@ -15443,6 +15813,22 @@ SELECT mod('5'::int8, '2'::int1);
    1
 (1 row)
 
+SELECT CAST('5'::int8 AS int1);
+ int1 
+------
+ 5
+(1 row)
+
+SELECT CAST('200'::int8 AS int1);
+ERROR:  value "200" is out of range for 8-bit integer
+SELECT CAST('-5'::int8 AS int1);
+ int1 
+------
+ -5
+(1 row)
+
+SELECT CAST('-200'::int8 AS int1);
+ERROR:  value "-200" is out of range for 8-bit integer
 SELECT '1'::int8 < '1'::uint1;
  ?column? 
 ----------
@@ -15703,6 +16089,16 @@ SELECT mod('5'::int8, '2'::uint1);
    1
 (1 row)
 
+SELECT CAST('5'::int8 AS uint1);
+ uint1 
+-------
+ 5
+(1 row)
+
+SELECT CAST('300'::int8 AS uint1);
+ERROR:  value "300" is out of range for type uint1
+SELECT CAST('-5'::int8 AS uint1);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int8 < '1'::uint2;
  ?column? 
 ----------
@@ -15963,6 +16359,16 @@ SELECT mod('5'::int8, '2'::uint2);
    1
 (1 row)
 
+SELECT CAST('5'::int8 AS uint2);
+ uint2 
+-------
+ 5
+(1 row)
+
+SELECT CAST('70000'::int8 AS uint2);
+ERROR:  value "70000" is out of range for type uint2
+SELECT CAST('-5'::int8 AS uint2);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int8 < '1'::uint4;
  ?column? 
 ----------
@@ -16223,6 +16629,16 @@ SELECT mod('5'::int8, '2'::uint4);
    1
 (1 row)
 
+SELECT CAST('5'::int8 AS uint4);
+ uint4 
+-------
+ 5
+(1 row)
+
+SELECT CAST('5000000000'::int8 AS uint4);
+ERROR:  value "5000000000" is out of range for type uint4
+SELECT CAST('-5'::int8 AS uint4);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int8 < '1'::uint8;
  ?column? 
 ----------
@@ -16479,6 +16895,14 @@ SELECT mod('5'::int8, '2'::uint8);
  1
 (1 row)
 
+SELECT CAST('5'::int8 AS uint8);
+ uint8 
+-------
+ 5
+(1 row)
+
+SELECT CAST('-5'::int8 AS uint8);
+ERROR:  invalid input syntax for unsigned integer: "-5"
 SELECT '1'::int1 & '1'::int1;
  ?column? 
 ----------

@@ -106,6 +106,9 @@ max_values = {
 
 too_big = {
     'int1': '200',
+    'int2': '40000',
+    'int4': '3000000000',
+    'int8': '10000000000000000000',
     'uint1': '300',
     'uint2': '70000',
     'uint4': '5000000000',
@@ -398,6 +401,23 @@ SELECT '5'::{lefttype} {op} '2'::{righttype};
                 if op in ['%']:
                     f_test_operators_sql.write("SELECT mod('5'::{lefttype}, '2'::{righttype});\n"
                                                .format(lefttype=leftarg, righttype=rightarg))
+            f_test_operators_sql.write("\n")
+
+            if leftarg != rightarg:
+                f_test_operators_sql.write("SELECT CAST('5'::{lefttype} AS {righttype});\n"
+                                           .format(lefttype=leftarg, righttype=rightarg))
+                if type_bits(leftarg) > type_bits(rightarg) \
+                   or (type_bits(leftarg) == type_bits(rightarg) and type_unsigned(leftarg)):
+                    f_test_operators_sql.write("SELECT CAST('{num}'::{lefttype} AS {righttype});\n"
+                                               .format(lefttype=leftarg, righttype=rightarg, num=too_big[rightarg]))
+                if not type_unsigned(leftarg):
+                    f_test_operators_sql.write("SELECT CAST('-5'::{lefttype} AS {righttype});\n"
+                                               .format(lefttype=leftarg, righttype=rightarg))
+                    if (not type_unsigned(leftarg) and not type_unsigned(rightarg)) \
+                       and type_bits(leftarg) > type_bits(rightarg):
+                        f_test_operators_sql.write("SELECT CAST('-{num}'::{lefttype} AS {righttype});\n"
+                                                   .format(lefttype=leftarg, righttype=rightarg, num=too_big[rightarg]))
+
             f_test_operators_sql.write("\n")
 
     for arg in new_types:
