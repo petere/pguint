@@ -418,7 +418,12 @@ SELECT '5'::{lefttype} {op} '2'::{righttype};
                         f_test_operators_sql.write("SELECT CAST('-{num}'::{lefttype} AS {righttype});\n"
                                                    .format(lefttype=leftarg, righttype=rightarg, num=too_big[rightarg]))
 
-            f_test_operators_sql.write("\n")
+                f_test_operators_sql.write("\n")
+
+                f_operators_sql.write("CREATE CAST ({lefttype} AS {righttype}) WITH INOUT AS {context};\n\n"
+                                      .format(lefttype=leftarg, righttype=rightarg,
+                                              context=("IMPLICIT" if type_bits(leftarg) < type_bits(rightarg)
+                                                       else "ASSIGNMENT")))
 
     for arg in new_types:
         for op in ['&', '|', '#']:
