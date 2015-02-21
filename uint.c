@@ -1,5 +1,6 @@
 #include <postgres.h>
 #include <fmgr.h>
+#include <utils/builtins.h>
 
 #include "uint.h"
 
@@ -30,7 +31,7 @@ int1out(PG_FUNCTION_ARGS)
 	PG_RETURN_CSTRING(result);
 }
 
-uint32
+static uint32
 pg_atou(const char *s, int size)
 {
 	unsigned long int result;
@@ -202,7 +203,7 @@ uint8out(PG_FUNCTION_ARGS)
 	uint64		arg1 = PG_GETARG_UINT64(0);
 	char	   *result = palloc(21);	/* 20 digits, '\0' */
 
-	sprintf(result, "%"PRIu64, arg1);
+	sprintf(result, "%"PRIu64, (uint64_t) arg1);
 	PG_RETURN_CSTRING(result);
 }
 
