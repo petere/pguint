@@ -276,7 +276,7 @@ bt{typ}sortsupport(PG_FUNCTION_ARGS)
 #endif
 \tPG_RETURN_VOID();
 }}
-""".format(typ=typ, ctype=c_types[typ], Ctype=c_types[typ].replace('u', 'U').replace('i','I')))
+""".format(typ=typ, ctype=c_types[typ], Ctype=c_types[typ].replace('u', 'U').replace('i', 'I')))
 
 
 def write_opclasses_sql(f, typ):
@@ -481,7 +481,8 @@ if (!SAMESIGN(result, arg1))
 \t\t errmsg("{typ} out of range")));""".format(c_type=c_types[leftarg], typ=rightarg)
                 write_c_function(f_operators_c, c_funcname, [leftarg], rightarg, body)
                 write_sql_function(f_operators_sql, c_funcname, [leftarg], rightarg, sql_funcname=sql_funcname)
-                f_operators_sql.write("CREATE CAST ({lefttype} AS {righttype}) WITH FUNCTION {func}({arg}) AS {context};\n\n"
+                f_operators_sql.write("CREATE CAST ({lefttype} AS {righttype}) "
+                                      "WITH FUNCTION {func}({arg}) AS {context};\n\n"
                                       .format(lefttype=leftarg, righttype=rightarg,
                                               func=sql_funcname,
                                               arg=leftarg,
