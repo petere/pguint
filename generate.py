@@ -325,6 +325,54 @@ avg_trans_types = {
 }
 
 
+def write_arithmetic_op(f_c, f_sql, f_test_sql, op, leftarg, rightarg):
+    args = sorted([leftarg, rightarg], key=lambda x: (type_bits(x), type_unsigned(x)))
+    rettype = args[-1]
+    if type_unsigned(rettype):
+        if op == '+':
+            c_check = 'result < arg1 || result < arg2'
+        elif op == '-':
+            c_check = 'result > arg1'
+        else:
+            c_check = ''
+    else:
+        if op == '+':
+            c_check = 'SAMESIGN(arg1, arg2) && !SAMESIGN(result, arg1)'
+        elif op == '-':
+            c_check = '!SAMESIGN(arg1, arg2) && !SAMESIGN(result, arg1)'
+        else:
+            c_check = ''
+    intermediate_type = None
+    if op == '*':
+        if type_bits(rettype) < 64:
+            intermediate_type = next_bigger_type(rettype)
+            c_check = '({0}) result2 != result2'.format(c_types[rettype])
+        elif type_unsigned(rettype):
+            c_check = '(arg1 != ((uint32) arg1) || arg2 != ((uint32) arg2))' \
+                      ' && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
+        else:
+            c_check = '(arg1 != ((int32) arg1) || arg2 != ((int32) arg2))' \
+                      ' && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
+    write_code(f_c, f_sql, leftarg, rightarg, op, rettype, c_check, intermediate_type)
+    f_test_sql.write("""\
+SELECT pg_typeof('1'::{lefttype} {op} '1'::{righttype});
+SELECT '1'::{lefttype} {op} '1'::{righttype};
+SELECT '3'::{lefttype} {op} '4'::{righttype};
+SELECT '5'::{lefttype} {op} '2'::{righttype};
+""".format(lefttype=leftarg, op=op, righttype=rightarg))
+    if op in ['+', '*']:
+        f_test_sql.write("SELECT '{max_left}'::{lefttype} {op} '{max_right}'::{righttype};\n"
+                         .format(lefttype=leftarg, op=op, righttype=rightarg,
+                                 max_left=max_values[leftarg],
+                                 max_right=max_values[rightarg]))
+    if op in ['/', '%']:
+        f_test_sql.write("SELECT '5'::{lefttype} {op} '0'::{righttype};\n"
+                         .format(lefttype=leftarg, op=op, righttype=rightarg))
+    if op in ['%']:
+        f_test_sql.write("SELECT mod('5'::{lefttype}, '2'::{righttype});\n"
+                         .format(lefttype=leftarg, righttype=rightarg))
+
+
 def main():
     f_operators_c = open('operators.c', 'w')
     f_operators_sql = open('operators.sql', 'w')
@@ -395,52 +443,8 @@ SELECT bt{lefttype}{righttype}cmp('3'::{lefttype}, '4'::{righttype});
 """.format(lefttype=leftarg, righttype=rightarg))
 
             for op in arithmetic_ops:
-                args = sorted([leftarg, rightarg], key=lambda x: (type_bits(x), type_unsigned(x)))
-                rettype = args[-1]
-                if type_unsigned(rettype):
-                    if op == '+':
-                        c_check = 'result < arg1 || result < arg2'
-                    elif op == '-':
-                        c_check = 'result > arg1'
-                    else:
-                        c_check = ''
-                else:
-                    if op == '+':
-                        c_check = 'SAMESIGN(arg1, arg2) && !SAMESIGN(result, arg1)'
-                    elif op == '-':
-                        c_check = '!SAMESIGN(arg1, arg2) && !SAMESIGN(result, arg1)'
-                    else:
-                        c_check = ''
-                if op == '*':
-                    if type_bits(rettype) < 64:
-                        intermediate_type = next_bigger_type(rettype)
-                        c_check = '({0}) result2 != result2'.format(c_types[rettype])
-                    elif type_unsigned(rettype):
-                        c_check = '(arg1 != ((uint32) arg1) || arg2 != ((uint32) arg2))' \
-                                  ' && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
-                    else:
-                        c_check = '(arg1 != ((int32) arg1) || arg2 != ((int32) arg2))' \
-                                  ' && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
-                else:
-                    intermediate_type = None
-                write_code(f_operators_c, f_operators_sql, leftarg, rightarg, op, rettype, c_check, intermediate_type)
-                f_test_operators_sql.write("""\
-SELECT pg_typeof('1'::{lefttype} {op} '1'::{righttype});
-SELECT '1'::{lefttype} {op} '1'::{righttype};
-SELECT '3'::{lefttype} {op} '4'::{righttype};
-SELECT '5'::{lefttype} {op} '2'::{righttype};
-""".format(lefttype=leftarg, op=op, righttype=rightarg))
-                if op in ['+', '*']:
-                    f_test_operators_sql.write("SELECT '{max_left}'::{lefttype} {op} '{max_right}'::{righttype};\n"
-                                               .format(lefttype=leftarg, op=op, righttype=rightarg,
-                                                       max_left=max_values[leftarg],
-                                                       max_right=max_values[rightarg]))
-                if op in ['/', '%']:
-                    f_test_operators_sql.write("SELECT '5'::{lefttype} {op} '0'::{righttype};\n"
-                                               .format(lefttype=leftarg, op=op, righttype=rightarg))
-                if op in ['%']:
-                    f_test_operators_sql.write("SELECT mod('5'::{lefttype}, '2'::{righttype});\n"
-                                               .format(lefttype=leftarg, righttype=rightarg))
+                write_arithmetic_op(f_operators_c, f_operators_sql, f_test_operators_sql,
+                                    op, leftarg, rightarg)
             f_test_operators_sql.write("\n")
 
             if leftarg != rightarg:
