@@ -245,6 +245,40 @@ def write_cmp_sql_function(f, leftarg, rightarg):
     write_sql_function(f, funcname, [leftarg, rightarg], 'integer')
 
 
+def write_sortsupport_c_function(f, typ):
+    f.write("""
+#ifdef HAVE_SORTSUPPORT
+
+static int
+bt{typ}fastcmp(Datum x, Datum y, SortSupport ssup)
+{{
+\t{ctype} a = DatumGet{Ctype}(x);
+\t{ctype} b = DatumGet{Ctype}(y);
+
+\tif (a > b)
+\t\treturn 1;
+\telse if (a == b)
+\t\treturn 0;
+\telse
+\t\treturn -1;
+}}
+
+#endif
+
+PG_FUNCTION_INFO_V1(bt{typ}sortsupport);
+Datum
+bt{typ}sortsupport(PG_FUNCTION_ARGS)
+{{
+#ifdef HAVE_SORTSUPPORT
+\tSortSupport ssup = (SortSupport) PG_GETARG_POINTER(0);
+
+\tssup->comparator = bt{typ}fastcmp;
+#endif
+\tPG_RETURN_VOID();
+}}
+""".format(typ=typ, ctype=c_types[typ], Ctype=c_types[typ].replace('u', 'U').replace('i','I')))
+
+
 def write_opclasses_sql(f, typ):
     f.write("""CREATE OPERATOR CLASS {typ}_ops
     DEFAULT FOR TYPE {typ} USING btree AS
@@ -253,7 +287,8 @@ def write_opclasses_sql(f, typ):
         OPERATOR        3       = ,
         OPERATOR        4       >= ,
         OPERATOR        5       > ,
-        FUNCTION        1       bt{typ}{typ}cmp({typ}, {typ});
+        FUNCTION        1       bt{typ}{typ}cmp({typ}, {typ}),
+        FUNCTION        2       bt{typ}sortsupport(internal);
 
 CREATE OPERATOR CLASS {typ}_ops
     DEFAULT FOR TYPE {typ} USING hash AS
@@ -301,6 +336,10 @@ def main():
 
 #include "uint.h"
 
+#ifdef HAVE_SORTSUPPORT
+#include <utils/sortsupport.h>
+#endif
+
 """)
 
     for argtype in new_types:
@@ -322,6 +361,7 @@ SELECT '55 x'::{typ};
 CREATE TABLE test_{typ} (a {typ});
 INSERT INTO test_{typ} VALUES ({vals[0]}), ({vals[1]}), ({vals[2]}), ({vals[3]}), ({vals[4]});
 SELECT a FROM test_{typ};
+SELECT a FROM test_{typ} ORDER BY a;
 DROP TABLE test_{typ};
 
 """.format(typ=argtype, vals=(range(1, 6) if type_unsigned(argtype) else range(-2, 3))))
@@ -464,6 +504,8 @@ SELECT '6'::{typ} {op} 3;
 
         f_test_operators_sql.write("\n")
 
+        write_sortsupport_c_function(f_operators_c, arg)
+        write_sql_function(f_operators_sql, 'bt' + arg + 'sortsupport', ['internal'], 'void')
         write_opclasses_sql(f_operators_sql, arg)
 
         for agg, funcname, op in [('min', arg + "smaller", '<'),

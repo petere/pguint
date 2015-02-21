@@ -1,5 +1,6 @@
 #include <postgres.h>
 #include <fmgr.h>
+#include <catalog/catversion.h>
 
 #define DatumGetInt8(X)		((int8) GET_1_BYTE(X))  /* XXX */
 #define DatumGetUInt64(X)	((uint64) GET_8_BYTES(X))
@@ -16,3 +17,10 @@
 #define PG_RETURN_UINT64(x)	return UInt64GetDatum(x)
 
 #define SAMESIGN(a,b)	(((a) < 0) == ((b) < 0))
+
+
+#if CATALOG_VERSION_NO >= 201112061
+#define HAVE_SORTSUPPORT 1
+#else
+#undef HAVE_SORTSUPPORT
+#endif
