@@ -1,5 +1,6 @@
 #include <postgres.h>
 #include <fmgr.h>
+#include <access/hash.h>
 
 #include "uint.h"
 
