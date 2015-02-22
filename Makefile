@@ -13,7 +13,7 @@ extension_version = 0
 
 EXTENSION = uint
 MODULE_big = uint
-OBJS = uint.o hash.o hex.o operators.o aggregates.o
+OBJS = uint.o hash.o hex.o magic.o operators.o aggregates.o
 DATA_built = uint--$(extension_version).sql
 
 REGRESS = init hash hex operators misc drop
