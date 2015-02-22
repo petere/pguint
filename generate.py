@@ -482,7 +482,7 @@ if (({c_type}) result != arg1)
 if (!SAMESIGN(result, arg1))
 \tereport(ERROR,
 \t\t(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
-\t\t errmsg("{typ} out of range")));""".format(c_type=c_types[leftarg], typ=rightarg)
+\t\t errmsg("{typ} out of range")));""".format(typ=rightarg)
                 write_c_function(f_c, c_funcname, [leftarg], rightarg, body)
                 write_sql_function(f_sql, c_funcname, [leftarg], rightarg, sql_funcname=sql_funcname)
                 f_sql.write("CREATE CAST ({lefttype} AS {righttype}) WITH FUNCTION {func}({arg}) AS {context};\n\n"
@@ -635,5 +635,4 @@ RESET enable_bitmapscan;
 
 
 if __name__ == '__main__':
-    m = re.match(r'\d+\.\d+', sys.argv[1])
-    main(pgversion=float(m.group(0)))
+    main(pgversion=float(re.match(r'\d+\.\d+', sys.argv[1]).group(0)))
