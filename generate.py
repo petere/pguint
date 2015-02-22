@@ -1,4 +1,5 @@
 import re
+import sys
 
 
 new_types = ['int1', 'uint1', 'uint2', 'uint4', 'uint8']
@@ -250,10 +251,9 @@ def write_cmp_sql_function(f, leftarg, rightarg):
     write_sql_function(f, funcname, [leftarg, rightarg], 'integer')
 
 
-def write_sortsupport_c_function(f, typ):
-    f.write("""
-#ifdef HAVE_SORTSUPPORT
-
+def write_sortsupport_c_function(f, typ, pgversion):
+    if pgversion >= 9.2:
+        f.write("""
 static int
 bt{typ}fastcmp(Datum x, Datum y, SortSupport ssup)
 {{
@@ -268,23 +268,19 @@ bt{typ}fastcmp(Datum x, Datum y, SortSupport ssup)
 \t\treturn -1;
 }}
 
-#endif
-
 PG_FUNCTION_INFO_V1(bt{typ}sortsupport);
 Datum
 bt{typ}sortsupport(PG_FUNCTION_ARGS)
 {{
-#ifdef HAVE_SORTSUPPORT
 \tSortSupport ssup = (SortSupport) PG_GETARG_POINTER(0);
 
 \tssup->comparator = bt{typ}fastcmp;
-#endif
 \tPG_RETURN_VOID();
 }}
 """.format(typ=typ, ctype=c_types[typ], Ctype=c_types[typ].replace('u', 'U').replace('i', 'I')))
 
 
-def write_opclasses_sql(f, typ):
+def write_opclasses_sql(f, typ, pgversion):
     f.write("""CREATE OPERATOR CLASS {typ}_ops
     DEFAULT FOR TYPE {typ} USING btree AS
         OPERATOR        1       < ,
@@ -292,8 +288,11 @@ def write_opclasses_sql(f, typ):
         OPERATOR        3       = ,
         OPERATOR        4       >= ,
         OPERATOR        5       > ,
-        FUNCTION        1       bt{typ}{typ}cmp({typ}, {typ}),
-        FUNCTION        2       bt{typ}sortsupport(internal);
+        FUNCTION        1       bt{typ}{typ}cmp({typ}, {typ})""".format(typ=typ))
+    if pgversion >= 9.2:
+        f.write(""",
+        FUNCTION        2       bt{typ}sortsupport(internal)""".format(typ=typ))
+    f.write(""";
 
 CREATE OPERATOR CLASS {typ}_ops
     DEFAULT FOR TYPE {typ} USING hash AS
@@ -378,7 +377,7 @@ SELECT '5'::{lefttype} {op} '2'::{righttype};
                          .format(lefttype=leftarg, righttype=rightarg))
 
 
-def main():
+def main(pgversion):
     f_operators_c = open('operators.c', 'w')
     f_operators_sql = open('operators.sql', 'w')
     f_test_operators_sql = open('test/sql/operators.sql', 'w')
@@ -389,9 +388,9 @@ def main():
 
 #include "uint.h"
 
-#ifdef HAVE_SORTSUPPORT
-#include <utils/sortsupport.h>
-#endif
+""")
+    if pgversion >= 9.2:
+        f_operators_c.write("""#include <utils/sortsupport.h>
 
 """)
 
@@ -514,9 +513,10 @@ SELECT '6'::{typ} {op} 3;
 
         f_test_operators_sql.write("\n")
 
-        write_sortsupport_c_function(f_operators_c, arg)
-        write_sql_function(f_operators_sql, 'bt' + arg + 'sortsupport', ['internal'], 'void')
-        write_opclasses_sql(f_operators_sql, arg)
+        write_sortsupport_c_function(f_operators_c, arg, pgversion)
+        if pgversion >= 9.2:
+            write_sql_function(f_operators_sql, 'bt' + arg + 'sortsupport', ['internal'], 'void')
+        write_opclasses_sql(f_operators_sql, arg, pgversion)
 
         for agg, funcname, op in [('min', arg + "smaller", '<'),
                                   ('max', arg + "larger", '>')]:
@@ -644,4 +644,5 @@ RESET enable_bitmapscan;
 
 
 if __name__ == '__main__':
-    main()
+    m = re.match(r'\d+\.\d+', sys.argv[1])
+    main(pgversion=float(m.group(0)))

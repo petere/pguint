@@ -17,10 +17,3 @@
 #define PG_RETURN_UINT64(x)	return UInt64GetDatum(x)
 
 #define SAMESIGN(a,b)	(((a) < 0) == ((b) < 0))
-
-
-#if CATALOG_VERSION_NO >= 201112061
-#define HAVE_SORTSUPPORT 1
-#else
-#undef HAVE_SORTSUPPORT
-#endif
