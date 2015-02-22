@@ -27,5 +27,12 @@ include $(PGXS)
 uint--$(extension_version).sql: uint.sql hash.sql hex.sql operators.sql
 	cat $^ >$@
 
+PYTHON ?= python
+
 operators.c operators.sql test/sql/operators.sql: generate.py
-	python $< $(pg_version)
+	$(PYTHON) $< $(pg_version)
+
+python-check: generate.py
+	pep8 $^
+	pyflakes $^
+	pylint $^

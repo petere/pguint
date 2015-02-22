@@ -606,12 +606,12 @@ RESET enable_seqscan;
 RESET enable_bitmapscan;
 """)
 
-    f_sql.write("ALTER OPERATOR FAMILY integer_ops USING btree ADD\n"
-                + ",\n".join(op_fam_btree_elements)
-                + ";\n\n")
-    f_sql.write("ALTER OPERATOR FAMILY integer_ops USING hash ADD\n"
-                + ",\n".join(op_fam_hash_elements)
-                + ";\n\n")
+    f_sql.write("ALTER OPERATOR FAMILY integer_ops USING btree ADD\n" +
+                ",\n".join(op_fam_btree_elements) +
+                ";\n\n")
+    f_sql.write("ALTER OPERATOR FAMILY integer_ops USING hash ADD\n" +
+                ",\n".join(op_fam_hash_elements) +
+                ";\n\n")
 
     # Unlike the other arithmetic operators, PostgreSQL supplies the %
     # operator only with same-type argument pairs and relies on type
