@@ -17931,98 +17931,98 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::int1;
    Index Cond: (x = '3'::int1)
 (2 rows)
 
-SELECT * FROM test_int1 WHERE x = 3;
+SELECT * FROM test_int1 WHERE x = 3::int1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::uint1;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int1
-   Filter: (x = '3'::uint1)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int1_x_key on test_int1
+   Index Cond: (x = '3'::uint1)
 (2 rows)
 
-SELECT * FROM test_int1 WHERE x = 3;
+SELECT * FROM test_int1 WHERE x = 3::uint1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::uint2;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int1
-   Filter: (x = '3'::uint2)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int1_x_key on test_int1
+   Index Cond: (x = '3'::uint2)
 (2 rows)
 
-SELECT * FROM test_int1 WHERE x = 3;
+SELECT * FROM test_int1 WHERE x = 3::uint2;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::uint4;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int1
-   Filter: (x = '3'::uint4)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int1_x_key on test_int1
+   Index Cond: (x = '3'::uint4)
 (2 rows)
 
-SELECT * FROM test_int1 WHERE x = 3;
+SELECT * FROM test_int1 WHERE x = 3::uint4;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::uint8;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int1
-   Filter: (x = '3'::uint8)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int1_x_key on test_int1
+   Index Cond: (x = '3'::uint8)
 (2 rows)
 
-SELECT * FROM test_int1 WHERE x = 3;
+SELECT * FROM test_int1 WHERE x = 3::uint8;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::int2;
-         QUERY PLAN          
------------------------------
- Seq Scan on test_int1
-   Filter: (x = 3::smallint)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int1_x_key on test_int1
+   Index Cond: (x = 3::smallint)
 (2 rows)
 
-SELECT * FROM test_int1 WHERE x = 3;
+SELECT * FROM test_int1 WHERE x = 3::int2;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::int4;
-      QUERY PLAN       
------------------------
- Seq Scan on test_int1
-   Filter: (x = 3)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int1_x_key on test_int1
+   Index Cond: (x = 3)
 (2 rows)
 
-SELECT * FROM test_int1 WHERE x = 3;
+SELECT * FROM test_int1 WHERE x = 3::int4;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::int8;
-        QUERY PLAN         
----------------------------
- Seq Scan on test_int1
-   Filter: (x = 3::bigint)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int1_x_key on test_int1
+   Index Cond: (x = 3::bigint)
 (2 rows)
 
-SELECT * FROM test_int1 WHERE x = 3;
+SELECT * FROM test_int1 WHERE x = 3::int8;
  x 
 ---
  3
@@ -18036,13 +18036,13 @@ INSERT INTO test_uint1 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::int1;
-        QUERY PLAN         
----------------------------
- Seq Scan on test_uint1
-   Filter: (x = '3'::int1)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint1_x_key on test_uint1
+   Index Cond: (x = '3'::int1)
 (2 rows)
 
-SELECT * FROM test_uint1 WHERE x = 3;
+SELECT * FROM test_uint1 WHERE x = 3::int1;
  x 
 ---
  3
@@ -18055,85 +18055,85 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::uint1;
    Index Cond: (x = '3'::uint1)
 (2 rows)
 
-SELECT * FROM test_uint1 WHERE x = 3;
+SELECT * FROM test_uint1 WHERE x = 3::uint1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::uint2;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_uint1
-   Filter: (x = '3'::uint2)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint1_x_key on test_uint1
+   Index Cond: (x = '3'::uint2)
 (2 rows)
 
-SELECT * FROM test_uint1 WHERE x = 3;
+SELECT * FROM test_uint1 WHERE x = 3::uint2;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::uint4;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_uint1
-   Filter: (x = '3'::uint4)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint1_x_key on test_uint1
+   Index Cond: (x = '3'::uint4)
 (2 rows)
 
-SELECT * FROM test_uint1 WHERE x = 3;
+SELECT * FROM test_uint1 WHERE x = 3::uint4;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::uint8;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_uint1
-   Filter: (x = '3'::uint8)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint1_x_key on test_uint1
+   Index Cond: (x = '3'::uint8)
 (2 rows)
 
-SELECT * FROM test_uint1 WHERE x = 3;
+SELECT * FROM test_uint1 WHERE x = 3::uint8;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::int2;
-         QUERY PLAN          
------------------------------
- Seq Scan on test_uint1
-   Filter: (x = 3::smallint)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint1_x_key on test_uint1
+   Index Cond: (x = 3::smallint)
 (2 rows)
 
-SELECT * FROM test_uint1 WHERE x = 3;
+SELECT * FROM test_uint1 WHERE x = 3::int2;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::int4;
-       QUERY PLAN       
-------------------------
- Seq Scan on test_uint1
-   Filter: (x = 3)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint1_x_key on test_uint1
+   Index Cond: (x = 3)
 (2 rows)
 
-SELECT * FROM test_uint1 WHERE x = 3;
+SELECT * FROM test_uint1 WHERE x = 3::int4;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::int8;
-        QUERY PLAN         
----------------------------
- Seq Scan on test_uint1
-   Filter: (x = 3::bigint)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint1_x_key on test_uint1
+   Index Cond: (x = 3::bigint)
 (2 rows)
 
-SELECT * FROM test_uint1 WHERE x = 3;
+SELECT * FROM test_uint1 WHERE x = 3::int8;
  x 
 ---
  3
@@ -18147,26 +18147,26 @@ INSERT INTO test_uint2 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::int1;
-        QUERY PLAN         
----------------------------
- Seq Scan on test_uint2
-   Filter: (x = '3'::int1)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint2_x_key on test_uint2
+   Index Cond: (x = '3'::int1)
 (2 rows)
 
-SELECT * FROM test_uint2 WHERE x = 3;
+SELECT * FROM test_uint2 WHERE x = 3::int1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::uint1;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_uint2
-   Filter: (x = '3'::uint1)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint2_x_key on test_uint2
+   Index Cond: (x = '3'::uint1)
 (2 rows)
 
-SELECT * FROM test_uint2 WHERE x = 3;
+SELECT * FROM test_uint2 WHERE x = 3::uint1;
  x 
 ---
  3
@@ -18179,72 +18179,72 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::uint2;
    Index Cond: (x = '3'::uint2)
 (2 rows)
 
-SELECT * FROM test_uint2 WHERE x = 3;
+SELECT * FROM test_uint2 WHERE x = 3::uint2;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::uint4;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_uint2
-   Filter: (x = '3'::uint4)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint2_x_key on test_uint2
+   Index Cond: (x = '3'::uint4)
 (2 rows)
 
-SELECT * FROM test_uint2 WHERE x = 3;
+SELECT * FROM test_uint2 WHERE x = 3::uint4;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::uint8;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_uint2
-   Filter: (x = '3'::uint8)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint2_x_key on test_uint2
+   Index Cond: (x = '3'::uint8)
 (2 rows)
 
-SELECT * FROM test_uint2 WHERE x = 3;
+SELECT * FROM test_uint2 WHERE x = 3::uint8;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::int2;
-         QUERY PLAN          
------------------------------
- Seq Scan on test_uint2
-   Filter: (x = 3::smallint)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint2_x_key on test_uint2
+   Index Cond: (x = 3::smallint)
 (2 rows)
 
-SELECT * FROM test_uint2 WHERE x = 3;
+SELECT * FROM test_uint2 WHERE x = 3::int2;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::int4;
-       QUERY PLAN       
-------------------------
- Seq Scan on test_uint2
-   Filter: (x = 3)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint2_x_key on test_uint2
+   Index Cond: (x = 3)
 (2 rows)
 
-SELECT * FROM test_uint2 WHERE x = 3;
+SELECT * FROM test_uint2 WHERE x = 3::int4;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::int8;
-        QUERY PLAN         
----------------------------
- Seq Scan on test_uint2
-   Filter: (x = 3::bigint)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint2_x_key on test_uint2
+   Index Cond: (x = 3::bigint)
 (2 rows)
 
-SELECT * FROM test_uint2 WHERE x = 3;
+SELECT * FROM test_uint2 WHERE x = 3::int8;
  x 
 ---
  3
@@ -18258,39 +18258,39 @@ INSERT INTO test_uint4 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::int1;
-        QUERY PLAN         
----------------------------
- Seq Scan on test_uint4
-   Filter: (x = '3'::int1)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint4_x_key on test_uint4
+   Index Cond: (x = '3'::int1)
 (2 rows)
 
-SELECT * FROM test_uint4 WHERE x = 3;
+SELECT * FROM test_uint4 WHERE x = 3::int1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::uint1;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_uint4
-   Filter: (x = '3'::uint1)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint4_x_key on test_uint4
+   Index Cond: (x = '3'::uint1)
 (2 rows)
 
-SELECT * FROM test_uint4 WHERE x = 3;
+SELECT * FROM test_uint4 WHERE x = 3::uint1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::uint2;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_uint4
-   Filter: (x = '3'::uint2)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint4_x_key on test_uint4
+   Index Cond: (x = '3'::uint2)
 (2 rows)
 
-SELECT * FROM test_uint4 WHERE x = 3;
+SELECT * FROM test_uint4 WHERE x = 3::uint2;
  x 
 ---
  3
@@ -18303,59 +18303,59 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::uint4;
    Index Cond: (x = '3'::uint4)
 (2 rows)
 
-SELECT * FROM test_uint4 WHERE x = 3;
+SELECT * FROM test_uint4 WHERE x = 3::uint4;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::uint8;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_uint4
-   Filter: (x = '3'::uint8)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint4_x_key on test_uint4
+   Index Cond: (x = '3'::uint8)
 (2 rows)
 
-SELECT * FROM test_uint4 WHERE x = 3;
+SELECT * FROM test_uint4 WHERE x = 3::uint8;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::int2;
-         QUERY PLAN          
------------------------------
- Seq Scan on test_uint4
-   Filter: (x = 3::smallint)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint4_x_key on test_uint4
+   Index Cond: (x = 3::smallint)
 (2 rows)
 
-SELECT * FROM test_uint4 WHERE x = 3;
+SELECT * FROM test_uint4 WHERE x = 3::int2;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::int4;
-       QUERY PLAN       
-------------------------
- Seq Scan on test_uint4
-   Filter: (x = 3)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint4_x_key on test_uint4
+   Index Cond: (x = 3)
 (2 rows)
 
-SELECT * FROM test_uint4 WHERE x = 3;
+SELECT * FROM test_uint4 WHERE x = 3::int4;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::int8;
-        QUERY PLAN         
----------------------------
- Seq Scan on test_uint4
-   Filter: (x = 3::bigint)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint4_x_key on test_uint4
+   Index Cond: (x = 3::bigint)
 (2 rows)
 
-SELECT * FROM test_uint4 WHERE x = 3;
+SELECT * FROM test_uint4 WHERE x = 3::int8;
  x 
 ---
  3
@@ -18369,52 +18369,52 @@ INSERT INTO test_uint8 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::int1;
-        QUERY PLAN         
----------------------------
- Seq Scan on test_uint8
-   Filter: (x = '3'::int1)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint8_x_key on test_uint8
+   Index Cond: (x = '3'::int1)
 (2 rows)
 
-SELECT * FROM test_uint8 WHERE x = 3;
+SELECT * FROM test_uint8 WHERE x = 3::int1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::uint1;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_uint8
-   Filter: (x = '3'::uint1)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint8_x_key on test_uint8
+   Index Cond: (x = '3'::uint1)
 (2 rows)
 
-SELECT * FROM test_uint8 WHERE x = 3;
+SELECT * FROM test_uint8 WHERE x = 3::uint1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::uint2;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_uint8
-   Filter: (x = '3'::uint2)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint8_x_key on test_uint8
+   Index Cond: (x = '3'::uint2)
 (2 rows)
 
-SELECT * FROM test_uint8 WHERE x = 3;
+SELECT * FROM test_uint8 WHERE x = 3::uint2;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::uint4;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_uint8
-   Filter: (x = '3'::uint4)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint8_x_key on test_uint8
+   Index Cond: (x = '3'::uint4)
 (2 rows)
 
-SELECT * FROM test_uint8 WHERE x = 3;
+SELECT * FROM test_uint8 WHERE x = 3::uint4;
  x 
 ---
  3
@@ -18427,46 +18427,46 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::uint8;
    Index Cond: (x = '3'::uint8)
 (2 rows)
 
-SELECT * FROM test_uint8 WHERE x = 3;
+SELECT * FROM test_uint8 WHERE x = 3::uint8;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::int2;
-         QUERY PLAN          
------------------------------
- Seq Scan on test_uint8
-   Filter: (x = 3::smallint)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint8_x_key on test_uint8
+   Index Cond: (x = 3::smallint)
 (2 rows)
 
-SELECT * FROM test_uint8 WHERE x = 3;
+SELECT * FROM test_uint8 WHERE x = 3::int2;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::int4;
-       QUERY PLAN       
-------------------------
- Seq Scan on test_uint8
-   Filter: (x = 3)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint8_x_key on test_uint8
+   Index Cond: (x = 3)
 (2 rows)
 
-SELECT * FROM test_uint8 WHERE x = 3;
+SELECT * FROM test_uint8 WHERE x = 3::int4;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::int8;
-        QUERY PLAN         
----------------------------
- Seq Scan on test_uint8
-   Filter: (x = 3::bigint)
+                   QUERY PLAN                    
+-------------------------------------------------
+ Index Scan using test_uint8_x_key on test_uint8
+   Index Cond: (x = 3::bigint)
 (2 rows)
 
-SELECT * FROM test_uint8 WHERE x = 3;
+SELECT * FROM test_uint8 WHERE x = 3::int8;
  x 
 ---
  3
@@ -18480,65 +18480,65 @@ INSERT INTO test_int2 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
 EXPLAIN (COSTS OFF) SELECT * FROM test_int2 WHERE x = 3::int1;
-        QUERY PLAN         
----------------------------
- Seq Scan on test_int2
-   Filter: (x = '3'::int1)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int2_x_key on test_int2
+   Index Cond: (x = '3'::int1)
 (2 rows)
 
-SELECT * FROM test_int2 WHERE x = 3;
+SELECT * FROM test_int2 WHERE x = 3::int1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int2 WHERE x = 3::uint1;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int2
-   Filter: (x = '3'::uint1)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int2_x_key on test_int2
+   Index Cond: (x = '3'::uint1)
 (2 rows)
 
-SELECT * FROM test_int2 WHERE x = 3;
+SELECT * FROM test_int2 WHERE x = 3::uint1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int2 WHERE x = 3::uint2;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int2
-   Filter: (x = '3'::uint2)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int2_x_key on test_int2
+   Index Cond: (x = '3'::uint2)
 (2 rows)
 
-SELECT * FROM test_int2 WHERE x = 3;
+SELECT * FROM test_int2 WHERE x = 3::uint2;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int2 WHERE x = 3::uint4;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int2
-   Filter: (x = '3'::uint4)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int2_x_key on test_int2
+   Index Cond: (x = '3'::uint4)
 (2 rows)
 
-SELECT * FROM test_int2 WHERE x = 3;
+SELECT * FROM test_int2 WHERE x = 3::uint4;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int2 WHERE x = 3::uint8;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int2
-   Filter: (x = '3'::uint8)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int2_x_key on test_int2
+   Index Cond: (x = '3'::uint8)
 (2 rows)
 
-SELECT * FROM test_int2 WHERE x = 3;
+SELECT * FROM test_int2 WHERE x = 3::uint8;
  x 
 ---
  3
@@ -18552,65 +18552,65 @@ INSERT INTO test_int4 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
 EXPLAIN (COSTS OFF) SELECT * FROM test_int4 WHERE x = 3::int1;
-        QUERY PLAN         
----------------------------
- Seq Scan on test_int4
-   Filter: (x = '3'::int1)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int4_x_key on test_int4
+   Index Cond: (x = '3'::int1)
 (2 rows)
 
-SELECT * FROM test_int4 WHERE x = 3;
+SELECT * FROM test_int4 WHERE x = 3::int1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int4 WHERE x = 3::uint1;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int4
-   Filter: (x = '3'::uint1)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int4_x_key on test_int4
+   Index Cond: (x = '3'::uint1)
 (2 rows)
 
-SELECT * FROM test_int4 WHERE x = 3;
+SELECT * FROM test_int4 WHERE x = 3::uint1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int4 WHERE x = 3::uint2;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int4
-   Filter: (x = '3'::uint2)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int4_x_key on test_int4
+   Index Cond: (x = '3'::uint2)
 (2 rows)
 
-SELECT * FROM test_int4 WHERE x = 3;
+SELECT * FROM test_int4 WHERE x = 3::uint2;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int4 WHERE x = 3::uint4;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int4
-   Filter: (x = '3'::uint4)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int4_x_key on test_int4
+   Index Cond: (x = '3'::uint4)
 (2 rows)
 
-SELECT * FROM test_int4 WHERE x = 3;
+SELECT * FROM test_int4 WHERE x = 3::uint4;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int4 WHERE x = 3::uint8;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int4
-   Filter: (x = '3'::uint8)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int4_x_key on test_int4
+   Index Cond: (x = '3'::uint8)
 (2 rows)
 
-SELECT * FROM test_int4 WHERE x = 3;
+SELECT * FROM test_int4 WHERE x = 3::uint8;
  x 
 ---
  3
@@ -18624,65 +18624,65 @@ INSERT INTO test_int8 VALUES (1), (2), (3), (4), (5), (null);
 SET enable_seqscan = off;
 SET enable_bitmapscan = off;
 EXPLAIN (COSTS OFF) SELECT * FROM test_int8 WHERE x = 3::int1;
-        QUERY PLAN         
----------------------------
- Seq Scan on test_int8
-   Filter: (x = '3'::int1)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int8_x_key on test_int8
+   Index Cond: (x = '3'::int1)
 (2 rows)
 
-SELECT * FROM test_int8 WHERE x = 3;
+SELECT * FROM test_int8 WHERE x = 3::int1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int8 WHERE x = 3::uint1;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int8
-   Filter: (x = '3'::uint1)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int8_x_key on test_int8
+   Index Cond: (x = '3'::uint1)
 (2 rows)
 
-SELECT * FROM test_int8 WHERE x = 3;
+SELECT * FROM test_int8 WHERE x = 3::uint1;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int8 WHERE x = 3::uint2;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int8
-   Filter: (x = '3'::uint2)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int8_x_key on test_int8
+   Index Cond: (x = '3'::uint2)
 (2 rows)
 
-SELECT * FROM test_int8 WHERE x = 3;
+SELECT * FROM test_int8 WHERE x = 3::uint2;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int8 WHERE x = 3::uint4;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int8
-   Filter: (x = '3'::uint4)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int8_x_key on test_int8
+   Index Cond: (x = '3'::uint4)
 (2 rows)
 
-SELECT * FROM test_int8 WHERE x = 3;
+SELECT * FROM test_int8 WHERE x = 3::uint4;
  x 
 ---
  3
 (1 row)
 
 EXPLAIN (COSTS OFF) SELECT * FROM test_int8 WHERE x = 3::uint8;
-         QUERY PLAN         
-----------------------------
- Seq Scan on test_int8
-   Filter: (x = '3'::uint8)
+                  QUERY PLAN                   
+-----------------------------------------------
+ Index Scan using test_int8_x_key on test_int8
+   Index Cond: (x = '3'::uint8)
 (2 rows)
 
-SELECT * FROM test_int8 WHERE x = 3;
+SELECT * FROM test_int8 WHERE x = 3::uint8;
  x 
 ---
  3

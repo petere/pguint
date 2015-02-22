@@ -282,7 +282,7 @@ bt{typ}sortsupport(PG_FUNCTION_ARGS)
 
 def write_opclasses_sql(f, typ, pgversion):
     f.write("""CREATE OPERATOR CLASS {typ}_ops
-    DEFAULT FOR TYPE {typ} USING btree AS
+    DEFAULT FOR TYPE {typ} USING btree FAMILY integer_ops AS
         OPERATOR        1       < ,
         OPERATOR        2       <= ,
         OPERATOR        3       = ,
@@ -295,7 +295,7 @@ def write_opclasses_sql(f, typ, pgversion):
     f.write(""";
 
 CREATE OPERATOR CLASS {typ}_ops
-    DEFAULT FOR TYPE {typ} USING hash AS
+    DEFAULT FOR TYPE {typ} USING hash FAMILY integer_ops AS
         OPERATOR        1       =,
         FUNCTION        1       hash{typ}({typ});
 
@@ -569,12 +569,6 @@ SELECT avg(val::{argtype}) FROM (SELECT NULL::{argtype} WHERE false) _ (val);
 SELECT avg(val::{argtype}) FROM (VALUES (1), (null), (2), (5), (6)) _ (val);
 """.format(argtype=arg))
 
-    # f_operators_sql.write("""
-    # CREATE OPERATOR FAMILY uinteger_ops USING btree;
-    # CREATE OPERATOR FAMILY uinteger_ops USING hash;
-    #
-    # """)
-
     op_fam_btree_elements = []
     op_fam_hash_elements = []
 
@@ -594,26 +588,33 @@ SET enable_bitmapscan = off;
 
             f_test_operators_sql.write("""
 EXPLAIN (COSTS OFF) SELECT * FROM test_{typ} WHERE x = 3::{typ2};
-SELECT * FROM test_{typ} WHERE x = 3;
+SELECT * FROM test_{typ} WHERE x = 3::{typ2};
 """.format(typ=lefttype, typ2=righttype))
 
-            op_fam_btree_elements.extend([s.format(type1=lefttype, type2=righttype) for s in [
-                "OPERATOR 1 <  ({type1}, {type2})",
-                "OPERATOR 2 <= ({type1}, {type2})",
-                "OPERATOR 3 =  ({type1}, {type2})",
-                "OPERATOR 4 >= ({type1}, {type2})",
-                "OPERATOR 5 >  ({type1}, {type2})",
-                "FUNCTION 1 bt{type1}{type2}cmp({type1}, {type2})",
-            ]])
-            op_fam_hash_elements.extend([s.format(type1=lefttype, type2=righttype) for s in [
-                "OPERATOR 1 = ({type1}, {type2})",
-            ]])
-            op_fam_hash_elements.append("FUNCTION 1 hash{type1}({type1})".format(type1=lefttype))
+            if lefttype != righttype:
+                op_fam_btree_elements.extend([s.format(type1=lefttype, type2=righttype) for s in [
+                    "OPERATOR 1 <  ({type1}, {type2})",
+                    "OPERATOR 2 <= ({type1}, {type2})",
+                    "OPERATOR 3 =  ({type1}, {type2})",
+                    "OPERATOR 4 >= ({type1}, {type2})",
+                    "OPERATOR 5 >  ({type1}, {type2})",
+                    "FUNCTION 1 bt{type1}{type2}cmp({type1}, {type2})",
+                ]])
+                op_fam_hash_elements.extend([s.format(type1=lefttype, type2=righttype) for s in [
+                    "OPERATOR 1 = ({type1}, {type2})",
+                ]])
 
         f_test_operators_sql.write("""
 RESET enable_seqscan;
 RESET enable_bitmapscan;
 """)
+
+    f_operators_sql.write("ALTER OPERATOR FAMILY integer_ops USING btree ADD\n"
+                          + ",\n".join(op_fam_btree_elements)
+                          + ";\n\n")
+    f_operators_sql.write("ALTER OPERATOR FAMILY integer_ops USING hash ADD\n"
+                          + ",\n".join(op_fam_hash_elements)
+                          + ";\n\n")
 
     # Unlike the other arithmetic operators, PostgreSQL supplies the %
     # operator only with same-type argument pairs and relies on type
@@ -630,13 +631,6 @@ RESET enable_bitmapscan;
                               ('int8', 'int4')):
         write_arithmetic_op(f_operators_c, f_operators_sql, f_test_operators_sql,
                             '%', leftarg, rightarg)
-
-    # f_operators_sql.write("ALTER OPERATOR FAMILY uinteger_ops USING btree ADD\n"
-    #                       + ",\n".join(op_fam_btree_elements)
-    #                       + ";\n\n")
-    # f_operators_sql.write("ALTER OPERATOR FAMILY uinteger_ops USING hash ADD\n"
-    #                       + ",\n".join(op_fam_hash_elements)
-    #                       + ";\n\n")
 
     f_operators_c.close()
     f_operators_sql.close()
