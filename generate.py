@@ -378,11 +378,11 @@ SELECT '5'::{lefttype} {op} '2'::{righttype};
 
 
 def main(pgversion):
-    f_operators_c = open('operators.c', 'w')
-    f_operators_sql = open('operators.sql', 'w')
-    f_test_operators_sql = open('test/sql/operators.sql', 'w')
+    f_c = open('operators.c', 'w')
+    f_sql = open('operators.sql', 'w')
+    f_test_sql = open('test/sql/operators.sql', 'w')
 
-    f_operators_c.write("""\
+    f_c.write("""\
 #include <postgres.h>
 #include <fmgr.h>
 
@@ -390,12 +390,12 @@ def main(pgversion):
 
 """)
     if pgversion >= 9.2:
-        f_operators_c.write("""#include <utils/sortsupport.h>
+        f_c.write("""#include <utils/sortsupport.h>
 
 """)
 
     for argtype in new_types:
-        f_test_operators_sql.write("""\
+        f_test_sql.write("""\
 SELECT '55'::{typ};
 SELECT '-55'::{typ};
 SELECT ''::{typ};
@@ -403,12 +403,12 @@ SELECT 'x'::{typ};
 SELECT '55 x'::{typ};
 """.format(typ=argtype))
         if argtype in too_big:
-            f_test_operators_sql.write("SELECT '{num}'::{typ};\n".format(typ=argtype, num=max_values[argtype]))
-            f_test_operators_sql.write("SELECT '{num}'::{typ};\n".format(typ=argtype, num=too_big[argtype]))
+            f_test_sql.write("SELECT '{num}'::{typ};\n".format(typ=argtype, num=max_values[argtype]))
+            f_test_sql.write("SELECT '{num}'::{typ};\n".format(typ=argtype, num=too_big[argtype]))
             if not type_unsigned(argtype):
-                f_test_operators_sql.write("SELECT '{num}'::{typ};\n".format(typ=argtype, num=min_values[argtype]))
-                f_test_operators_sql.write("SELECT '-{num}'::{typ};\n".format(typ=argtype, num=too_big[argtype]))
-        f_test_operators_sql.write("""\
+                f_test_sql.write("SELECT '{num}'::{typ};\n".format(typ=argtype, num=min_values[argtype]))
+                f_test_sql.write("SELECT '-{num}'::{typ};\n".format(typ=argtype, num=too_big[argtype]))
+        f_test_sql.write("""\
 
 CREATE TABLE test_{typ} (a {typ});
 INSERT INTO test_{typ} VALUES ({vals[0]}), ({vals[1]}), ({vals[2]}), ({vals[3]}), ({vals[4]});
@@ -420,7 +420,7 @@ DROP TABLE test_{typ};
 
     for leftarg in new_types + old_types:
         for op in comparison_ops + arithmetic_ops:
-            f_test_operators_sql.write("""\
+            f_test_sql.write("""\
 SELECT '2'::{typ} {op} 5;
 SELECT 2 {op} '5'::{typ};
 SELECT '5'::{typ} {op} 2;
@@ -430,43 +430,43 @@ SELECT 5 {op} '2'::{typ};
             if leftarg in old_types and rightarg in old_types:
                 continue
             for op in comparison_ops:
-                write_code(f_operators_c, f_operators_sql, leftarg, rightarg, op, rettype='boolean')
-                f_test_operators_sql.write("""\
+                write_code(f_c, f_sql, leftarg, rightarg, op, rettype='boolean')
+                f_test_sql.write("""\
 SELECT '1'::{lefttype} {op} '1'::{righttype};
 SELECT '5'::{lefttype} {op} '2'::{righttype};
 SELECT '3'::{lefttype} {op} '4'::{righttype};
 """.format(lefttype=leftarg, op=op, righttype=rightarg))
-            f_test_operators_sql.write("\n")
+            f_test_sql.write("\n")
 
-            write_cmp_c_function(f_operators_c, leftarg, rightarg)
-            write_cmp_sql_function(f_operators_sql, leftarg, rightarg)
-            f_test_operators_sql.write("""\
+            write_cmp_c_function(f_c, leftarg, rightarg)
+            write_cmp_sql_function(f_sql, leftarg, rightarg)
+            f_test_sql.write("""\
 SELECT bt{lefttype}{righttype}cmp('1'::{lefttype}, '1'::{righttype});
 SELECT bt{lefttype}{righttype}cmp('5'::{lefttype}, '2'::{righttype});
 SELECT bt{lefttype}{righttype}cmp('3'::{lefttype}, '4'::{righttype});
 """.format(lefttype=leftarg, righttype=rightarg))
 
             for op in arithmetic_ops:
-                write_arithmetic_op(f_operators_c, f_operators_sql, f_test_operators_sql,
+                write_arithmetic_op(f_c, f_sql, f_test_sql,
                                     op, leftarg, rightarg)
-            f_test_operators_sql.write("\n")
+            f_test_sql.write("\n")
 
             if leftarg != rightarg:
-                f_test_operators_sql.write("SELECT CAST('5'::{lefttype} AS {righttype});\n"
-                                           .format(lefttype=leftarg, righttype=rightarg))
+                f_test_sql.write("SELECT CAST('5'::{lefttype} AS {righttype});\n"
+                                 .format(lefttype=leftarg, righttype=rightarg))
                 if type_bits(leftarg) > type_bits(rightarg) \
                    or (type_bits(leftarg) == type_bits(rightarg) and type_unsigned(leftarg)):
-                    f_test_operators_sql.write("SELECT CAST('{num}'::{lefttype} AS {righttype});\n"
-                                               .format(lefttype=leftarg, righttype=rightarg, num=too_big[rightarg]))
+                    f_test_sql.write("SELECT CAST('{num}'::{lefttype} AS {righttype});\n"
+                                     .format(lefttype=leftarg, righttype=rightarg, num=too_big[rightarg]))
                 if not type_unsigned(leftarg):
-                    f_test_operators_sql.write("SELECT CAST('-5'::{lefttype} AS {righttype});\n"
-                                               .format(lefttype=leftarg, righttype=rightarg))
+                    f_test_sql.write("SELECT CAST('-5'::{lefttype} AS {righttype});\n"
+                                     .format(lefttype=leftarg, righttype=rightarg))
                     if (not type_unsigned(leftarg) and not type_unsigned(rightarg)) \
                        and type_bits(leftarg) > type_bits(rightarg):
-                        f_test_operators_sql.write("SELECT CAST('-{num}'::{lefttype} AS {righttype});\n"
-                                                   .format(lefttype=leftarg, righttype=rightarg, num=too_big[rightarg]))
+                        f_test_sql.write("SELECT CAST('-{num}'::{lefttype} AS {righttype});\n"
+                                         .format(lefttype=leftarg, righttype=rightarg, num=too_big[rightarg]))
 
-                f_test_operators_sql.write("\n")
+                f_test_sql.write("\n")
 
                 c_funcname = leftarg + "_to_" + rightarg
                 sql_funcname = rightarg
@@ -483,72 +483,69 @@ if (!SAMESIGN(result, arg1))
 \tereport(ERROR,
 \t\t(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
 \t\t errmsg("{typ} out of range")));""".format(c_type=c_types[leftarg], typ=rightarg)
-                write_c_function(f_operators_c, c_funcname, [leftarg], rightarg, body)
-                write_sql_function(f_operators_sql, c_funcname, [leftarg], rightarg, sql_funcname=sql_funcname)
-                f_operators_sql.write("CREATE CAST ({lefttype} AS {righttype}) "
-                                      "WITH FUNCTION {func}({arg}) AS {context};\n\n"
-                                      .format(lefttype=leftarg, righttype=rightarg,
-                                              func=sql_funcname,
-                                              arg=leftarg,
-                                              context=("IMPLICIT" if type_bits(leftarg) < type_bits(rightarg)
-                                                       else "ASSIGNMENT")))
+                write_c_function(f_c, c_funcname, [leftarg], rightarg, body)
+                write_sql_function(f_sql, c_funcname, [leftarg], rightarg, sql_funcname=sql_funcname)
+                f_sql.write("CREATE CAST ({lefttype} AS {righttype}) WITH FUNCTION {func}({arg}) AS {context};\n\n"
+                            .format(lefttype=leftarg, righttype=rightarg,
+                                    func=sql_funcname,
+                                    arg=leftarg,
+                                    context=("IMPLICIT" if type_bits(leftarg) < type_bits(rightarg) else "ASSIGNMENT")))
 
     for arg in new_types:
         for op in ['&', '|', '#']:
-            write_code(f_operators_c, f_operators_sql, leftarg=arg, rightarg=arg, op=op, rettype=arg)
-            f_test_operators_sql.write("""\
+            write_code(f_c, f_sql, leftarg=arg, rightarg=arg, op=op, rettype=arg)
+            f_test_sql.write("""\
 SELECT '1'::{lefttype} {op} '1'::{righttype};
 SELECT '5'::{lefttype} {op} '2'::{righttype};
 SELECT '5'::{lefttype} {op} '4'::{righttype};
 """.format(lefttype=arg, op=op, righttype=arg))
         for op in ['~']:
-            write_code(f_operators_c, f_operators_sql, leftarg=None, rightarg=arg, op=op, rettype=arg)
-            f_test_operators_sql.write("SELECT {op} '6'::{typ};\n".format(op=op, typ=arg))
+            write_code(f_c, f_sql, leftarg=None, rightarg=arg, op=op, rettype=arg)
+            f_test_sql.write("SELECT {op} '6'::{typ};\n".format(op=op, typ=arg))
         for op in ['<<', '>>']:
-            write_code(f_operators_c, f_operators_sql, leftarg=arg, rightarg='int4', op=op, rettype=arg)
-            f_test_operators_sql.write("""\
+            write_code(f_c, f_sql, leftarg=arg, rightarg='int4', op=op, rettype=arg)
+            f_test_sql.write("""\
 SELECT '6'::{typ} {op} 1;
 SELECT '6'::{typ} {op} 3;
 """.format(typ=arg, op=op))
 
-        f_test_operators_sql.write("\n")
+        f_test_sql.write("\n")
 
-        write_sortsupport_c_function(f_operators_c, arg, pgversion)
+        write_sortsupport_c_function(f_c, arg, pgversion)
         if pgversion >= 9.2:
-            write_sql_function(f_operators_sql, 'bt' + arg + 'sortsupport', ['internal'], 'void')
-        write_opclasses_sql(f_operators_sql, arg, pgversion)
+            write_sql_function(f_sql, 'bt' + arg + 'sortsupport', ['internal'], 'void')
+        write_opclasses_sql(f_sql, arg, pgversion)
 
         for agg, funcname, op in [('min', arg + "smaller", '<'),
                                   ('max', arg + "larger", '>')]:
-            write_c_function(f_operators_c, funcname, [arg]*2, arg,
+            write_c_function(f_c, funcname, [arg]*2, arg,
                              body="result = (arg1 {op} arg2) ? arg1 : arg2;".format(op=op))
-            write_sql_function(f_operators_sql, funcname, [arg]*2, arg)
-            f_test_operators_sql.write("""\
+            write_sql_function(f_sql, funcname, [arg]*2, arg)
+            f_test_sql.write("""\
 SELECT {funcname}('1'::{typ}, '1'::{typ});
 SELECT {funcname}('5'::{typ}, '2'::{typ});
 SELECT {funcname}('3'::{typ}, '4'::{typ});
 """.format(funcname=funcname, typ=arg))
-            f_operators_sql.write("CREATE AGGREGATE {agg}({typ}) (SFUNC = {sfunc}, STYPE = {stype},"
-                                  " SORTOP = {sortop});\n\n"
-                                  .format(agg=agg, typ=arg, sfunc=funcname, stype=arg, sortop=op))
-            f_test_operators_sql.write("SELECT {agg}(val::{typ}) FROM (VALUES (3), (5), (1), (4)) AS _ (val);\n\n"
-                                       .format(agg=agg, typ=arg))
+            f_sql.write("CREATE AGGREGATE {agg}({typ}) (SFUNC = {sfunc}, STYPE = {stype}, SORTOP = {sortop});\n\n"
+                        .format(agg=agg, typ=arg, sfunc=funcname, stype=arg, sortop=op))
+            f_test_sql.write("SELECT {agg}(val::{typ}) FROM (VALUES (3), (5), (1), (4)) AS _ (val);\n\n"
+                             .format(agg=agg, typ=arg))
 
         for agg, funcname in [('bit_and', arg + arg + "and"),
                               ('bit_or', arg + arg + "or")]:
-            f_operators_sql.write("CREATE AGGREGATE {agg}({typ}) (SFUNC = {sfunc}, STYPE = {stype});\n\n"
-                                  .format(agg=agg, typ=arg, sfunc=funcname, stype=arg))
-        f_test_operators_sql.write("SELECT bit_and(val::{typ}) FROM (VALUES (3), (6), (18)) AS _ (val);\n\n"
-                                   .format(typ=arg))
-        f_test_operators_sql.write("SELECT bit_or(val::{typ}) FROM (VALUES (9), (1), (4)) AS _ (val);\n\n"
-                                   .format(typ=arg))
+            f_sql.write("CREATE AGGREGATE {agg}({typ}) (SFUNC = {sfunc}, STYPE = {stype});\n\n"
+                        .format(agg=agg, typ=arg, sfunc=funcname, stype=arg))
+        f_test_sql.write("SELECT bit_and(val::{typ}) FROM (VALUES (3), (6), (18)) AS _ (val);\n\n"
+                         .format(typ=arg))
+        f_test_sql.write("SELECT bit_or(val::{typ}) FROM (VALUES (9), (1), (4)) AS _ (val);\n\n"
+                         .format(typ=arg))
 
         sfunc = "{argtype}_sum".format(argtype=arg)
         stype = sum_trans_types[arg]
-        write_sql_function(f_operators_sql, sfunc, [stype, arg], stype, strict=False)
-        f_operators_sql.write("CREATE AGGREGATE sum({arg}) (SFUNC = {sfunc}, STYPE = {stype});\n\n"
-                              .format(arg=arg, sfunc=sfunc, stype=stype))
-        f_test_operators_sql.write("""
+        write_sql_function(f_sql, sfunc, [stype, arg], stype, strict=False)
+        f_sql.write("CREATE AGGREGATE sum({arg}) (SFUNC = {sfunc}, STYPE = {stype});\n\n"
+                    .format(arg=arg, sfunc=sfunc, stype=stype))
+        f_test_sql.write("""
 SELECT {sfunc}(NULL::{stype}, NULL::{argtype});
 SELECT {sfunc}(NULL::{stype}, 1::{argtype});
 SELECT {sfunc}(2::{stype}, NULL::{argtype});
@@ -560,11 +557,11 @@ SELECT sum(val::{argtype}) FROM (VALUES (1), (null), (2), (5)) _ (val);
 
         sfunc = "{argtype}_avg_accum".format(argtype=arg)
         stype = avg_trans_types[arg]
-        write_sql_function(f_operators_sql, sfunc, [stype, arg], stype)
-        f_operators_sql.write("CREATE AGGREGATE avg({arg}) (SFUNC = {sfunc}, STYPE = {stype}, FINALFUNC = int8_avg,"
-                              " INITCOND = '{{0,0}}');\n\n"
-                              .format(arg=arg, sfunc=sfunc, stype=stype))
-        f_test_operators_sql.write("""
+        write_sql_function(f_sql, sfunc, [stype, arg], stype)
+        f_sql.write("CREATE AGGREGATE avg({arg}) (SFUNC = {sfunc}, STYPE = {stype}, FINALFUNC = int8_avg,"
+                    " INITCOND = '{{0,0}}');\n\n"
+                    .format(arg=arg, sfunc=sfunc, stype=stype))
+        f_test_sql.write("""
 SELECT avg(val::{argtype}) FROM (SELECT NULL::{argtype} WHERE false) _ (val);
 SELECT avg(val::{argtype}) FROM (VALUES (1), (null), (2), (5), (6)) _ (val);
 """.format(argtype=arg))
@@ -573,7 +570,7 @@ SELECT avg(val::{argtype}) FROM (VALUES (1), (null), (2), (5), (6)) _ (val);
     op_fam_hash_elements = []
 
     for lefttype in new_types + old_types:
-        f_test_operators_sql.write("""
+        f_test_sql.write("""
 CREATE TABLE test_{typ} (x {typ});
 CREATE UNIQUE INDEX test_{typ}_x_key ON test_{typ} USING btree (x);
 INSERT INTO test_{typ} VALUES (1), (2), (3), (4), (5), (null);
@@ -586,7 +583,7 @@ SET enable_bitmapscan = off;
             if lefttype in old_types and righttype in old_types:
                 continue
 
-            f_test_operators_sql.write("""
+            f_test_sql.write("""
 EXPLAIN (COSTS OFF) SELECT * FROM test_{typ} WHERE x = 3::{typ2};
 SELECT * FROM test_{typ} WHERE x = 3::{typ2};
 """.format(typ=lefttype, typ2=righttype))
@@ -604,17 +601,17 @@ SELECT * FROM test_{typ} WHERE x = 3::{typ2};
                     "OPERATOR 1 = ({type1}, {type2})",
                 ]])
 
-        f_test_operators_sql.write("""
+        f_test_sql.write("""
 RESET enable_seqscan;
 RESET enable_bitmapscan;
 """)
 
-    f_operators_sql.write("ALTER OPERATOR FAMILY integer_ops USING btree ADD\n"
-                          + ",\n".join(op_fam_btree_elements)
-                          + ";\n\n")
-    f_operators_sql.write("ALTER OPERATOR FAMILY integer_ops USING hash ADD\n"
-                          + ",\n".join(op_fam_hash_elements)
-                          + ";\n\n")
+    f_sql.write("ALTER OPERATOR FAMILY integer_ops USING btree ADD\n"
+                + ",\n".join(op_fam_btree_elements)
+                + ";\n\n")
+    f_sql.write("ALTER OPERATOR FAMILY integer_ops USING hash ADD\n"
+                + ",\n".join(op_fam_hash_elements)
+                + ";\n\n")
 
     # Unlike the other arithmetic operators, PostgreSQL supplies the %
     # operator only with same-type argument pairs and relies on type
@@ -629,12 +626,12 @@ RESET enable_bitmapscan;
                               ('int4', 'int2'),
                               ('int8', 'int2'),
                               ('int8', 'int4')):
-        write_arithmetic_op(f_operators_c, f_operators_sql, f_test_operators_sql,
+        write_arithmetic_op(f_c, f_sql, f_test_sql,
                             '%', leftarg, rightarg)
 
-    f_operators_c.close()
-    f_operators_sql.close()
-    f_test_operators_sql.close()
+    f_c.close()
+    f_sql.close()
+    f_test_sql.close()
 
 
 if __name__ == '__main__':
