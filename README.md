@@ -72,3 +72,13 @@ useful in practice.  There is no reason why it couldn't be.  Second,
 it is a challenge to the PostgreSQL extension mechanism.  In that
 area, there are various "interesting" problems that still need to be
 worked out.
+
+Testing
+-------
+
+In addition to the test suite of this module (`make installcheck`), it
+is useful to test this module by running the main PostgreSQL
+regression tests while this module is loaded, which should not fail.
+This will verify that the presence of the additional types and
+operators will not cause changes in the interpretation of expressions
+involving the existing types and operators.
