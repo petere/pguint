@@ -176,6 +176,11 @@ def write_op_c_function(f, funcname, leftarg, rightarg, op, rettype, c_check='',
 }
 
 """
+    if op == '%':
+        body += """if (arg2 == -1)
+\tPG_RETURN_{0}(0);
+
+""".format(c_types[rettype].upper())
     if intermediate_type:
         body += "result2 = "
     else:
@@ -609,6 +614,22 @@ SELECT * FROM test_{typ} WHERE x = 3;
 RESET enable_seqscan;
 RESET enable_bitmapscan;
 """)
+
+    # Unlike the other arithmetic operators, PostgreSQL supplies the %
+    # operator only with same-type argument pairs and relies on type
+    # promotion to support the other combinations.  Adding more
+    # integer types breaks those cases, and the PostgreSQL regression
+    # tests fail because of that.  We add the necessary remaining
+    # cross-type operators to unbreak this.
+    #
+    # See also this discussion:
+    # <http://www.postgresql.org/message-id/23982.1213723796@sss.pgh.pa.us>
+    for leftarg, rightarg in (('int2', 'int4'),
+                              ('int4', 'int2'),
+                              ('int8', 'int2'),
+                              ('int8', 'int4')):
+        write_arithmetic_op(f_operators_c, f_operators_sql, f_test_operators_sql,
+                            '%', leftarg, rightarg)
 
     # f_operators_sql.write("ALTER OPERATOR FAMILY uinteger_ops USING btree ADD\n"
     #                       + ",\n".join(op_fam_btree_elements)

@@ -12378,25 +12378,29 @@ SELECT 5 / '2'::int2;
 (1 row)
 
 SELECT '2'::int2 % 5;
-ERROR:  operator is not unique: smallint % integer
-LINE 1: SELECT '2'::int2 % 5;
-                         ^
-HINT:  Could not choose a best candidate operator. You might need to add explicit type casts.
+ ?column? 
+----------
+        2
+(1 row)
+
 SELECT 2 % '5'::int2;
-ERROR:  operator is not unique: integer % smallint
-LINE 1: SELECT 2 % '5'::int2;
-                 ^
-HINT:  Could not choose a best candidate operator. You might need to add explicit type casts.
+ ?column? 
+----------
+        2
+(1 row)
+
 SELECT '5'::int2 % 2;
-ERROR:  operator is not unique: smallint % integer
-LINE 1: SELECT '5'::int2 % 2;
-                         ^
-HINT:  Could not choose a best candidate operator. You might need to add explicit type casts.
+ ?column? 
+----------
+        1
+(1 row)
+
 SELECT 5 % '2'::int2;
-ERROR:  operator is not unique: integer % smallint
-LINE 1: SELECT 5 % '2'::int2;
-                 ^
-HINT:  Could not choose a best candidate operator. You might need to add explicit type casts.
+ ?column? 
+----------
+        1
+(1 row)
+
 SELECT '1'::int2 < '1'::int1;
  ?column? 
 ----------
@@ -15584,20 +15588,22 @@ SELECT 5 / '2'::int8;
 (1 row)
 
 SELECT '2'::int8 % 5;
-ERROR:  operator is not unique: bigint % integer
-LINE 1: SELECT '2'::int8 % 5;
-                         ^
-HINT:  Could not choose a best candidate operator. You might need to add explicit type casts.
+ ?column? 
+----------
+        2
+(1 row)
+
 SELECT 2 % '5'::int8;
 ERROR:  operator is not unique: integer % bigint
 LINE 1: SELECT 2 % '5'::int8;
                  ^
 HINT:  Could not choose a best candidate operator. You might need to add explicit type casts.
 SELECT '5'::int8 % 2;
-ERROR:  operator is not unique: bigint % integer
-LINE 1: SELECT '5'::int8 % 2;
-                         ^
-HINT:  Could not choose a best candidate operator. You might need to add explicit type casts.
+ ?column? 
+----------
+        1
+(1 row)
+
 SELECT 5 % '2'::int8;
 ERROR:  operator is not unique: integer % bigint
 LINE 1: SELECT 5 % '2'::int8;
@@ -18684,3 +18690,131 @@ SELECT * FROM test_int8 WHERE x = 3;
 
 RESET enable_seqscan;
 RESET enable_bitmapscan;
+SELECT pg_typeof('1'::int2 % '1'::int4);
+ pg_typeof 
+-----------
+ integer
+(1 row)
+
+SELECT '1'::int2 % '1'::int4;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int2 % '4'::int4;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int2 % '2'::int4;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '5'::int2 % '0'::int4;
+ERROR:  division by zero
+SELECT mod('5'::int2, '2'::int4);
+ mod 
+-----
+   1
+(1 row)
+
+SELECT pg_typeof('1'::int4 % '1'::int2);
+ pg_typeof 
+-----------
+ integer
+(1 row)
+
+SELECT '1'::int4 % '1'::int2;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int4 % '4'::int2;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int4 % '2'::int2;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '5'::int4 % '0'::int2;
+ERROR:  division by zero
+SELECT mod('5'::int4, '2'::int2);
+ mod 
+-----
+   1
+(1 row)
+
+SELECT pg_typeof('1'::int8 % '1'::int2);
+ pg_typeof 
+-----------
+ bigint
+(1 row)
+
+SELECT '1'::int8 % '1'::int2;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int8 % '4'::int2;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int8 % '2'::int2;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '5'::int8 % '0'::int2;
+ERROR:  division by zero
+SELECT mod('5'::int8, '2'::int2);
+ mod 
+-----
+   1
+(1 row)
+
+SELECT pg_typeof('1'::int8 % '1'::int4);
+ pg_typeof 
+-----------
+ bigint
+(1 row)
+
+SELECT '1'::int8 % '1'::int4;
+ ?column? 
+----------
+        0
+(1 row)
+
+SELECT '3'::int8 % '4'::int4;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int8 % '2'::int4;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '5'::int8 % '0'::int4;
+ERROR:  division by zero
+SELECT mod('5'::int8, '2'::int4);
+ mod 
+-----
+   1
+(1 row)
+
