@@ -334,7 +334,12 @@ def write_arithmetic_op(f_c, f_sql, f_test_sql, op, leftarg, rightarg):
     rettype = args[-1]
     if type_unsigned(rettype):
         if op == '+':
-            c_check = 'result < arg1 || result < arg2'
+            if not type_unsigned(leftarg):
+                c_check = '(arg1 < 0 && result > arg2) || (arg1 > 0 && result < arg2)'
+            elif not type_unsigned(rightarg):
+                c_check = '(arg2 < 0 && result > arg1) || (arg2 > 0 && result < arg1)'
+            else:  # both arguments unsigned
+                c_check = 'result < arg1 || result < arg2'
         elif op == '-':
             c_check = 'result > arg1'
         else:
@@ -369,6 +374,16 @@ SELECT pg_typeof('1'::{lefttype} {op} '1'::{righttype});
 SELECT '1'::{lefttype} {op} '1'::{righttype};
 SELECT '3'::{lefttype} {op} '4'::{righttype};
 SELECT '5'::{lefttype} {op} '2'::{righttype};
+""".format(lefttype=leftarg, op=op, righttype=rightarg))
+    if not type_unsigned(leftarg) and op in ['+']:  # TODO
+        f_test_sql.write("""\
+SELECT '-3'::{lefttype} {op} '4'::{righttype};
+SELECT '-5'::{lefttype} {op} '2'::{righttype};
+""".format(lefttype=leftarg, op=op, righttype=rightarg))
+    if not type_unsigned(rightarg) and op in ['+']:  # TODO
+        f_test_sql.write("""\
+SELECT '3'::{lefttype} {op} '-4'::{righttype};
+SELECT '5'::{lefttype} {op} '-2'::{righttype};
 """.format(lefttype=leftarg, op=op, righttype=rightarg))
     if op in ['+', '*']:
         f_test_sql.write("SELECT '{max_left}'::{lefttype} {op} '{max_right}'::{righttype};\n"
