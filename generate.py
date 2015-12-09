@@ -177,7 +177,7 @@ def write_op_c_function(f, funcname, leftarg, rightarg, op, rettype, c_check='',
 }
 
 """
-    if op == '%':
+    if op == '%' and not type_unsigned(rightarg):
         body += """if (arg2 == -1)
 \tPG_RETURN_{0}(0);
 
@@ -352,11 +352,17 @@ def write_arithmetic_op(f_c, f_sql, f_test_sql, op, leftarg, rightarg):
             intermediate_type = next_bigger_type(rettype)
             c_check = '({0}) result2 != result2'.format(c_types[rettype])
         elif type_unsigned(rettype):
-            c_check = '(arg1 != ((uint32) arg1) || arg2 != ((uint32) arg2))' \
-                      ' && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
+            c_check = '(arg1 != ((uint32) arg1) || arg2 != ((uint32) arg2))'
+            if type_unsigned(leftarg) or type_unsigned(rightarg):
+                c_check += ' && (arg2 != 0 && (result / arg2 != arg1))'
+            else:
+                c_check += ' && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
         else:
-            c_check = '(arg1 != ((int32) arg1) || arg2 != ((int32) arg2))' \
-                      ' && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
+            c_check = '(arg1 != ((int32) arg1) || arg2 != ((int32) arg2))'
+            if type_unsigned(leftarg) or type_unsigned(rightarg):
+                c_check += ' && (arg2 != 0 && (result / arg2 != arg1))'
+            else:
+                c_check += ' && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
     write_code(f_c, f_sql, leftarg, rightarg, op, rettype, c_check, intermediate_type)
     f_test_sql.write("""\
 SELECT pg_typeof('1'::{lefttype} {op} '1'::{righttype});
