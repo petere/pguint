@@ -86,6 +86,10 @@ def type_bits(typ):
     return int(m.group(1)) * 8
 
 
+def type_signed(typ):
+    return not type_unsigned(typ)
+
+
 def type_unsigned(typ):
     return typ.startswith('u')
 
@@ -334,14 +338,19 @@ def write_arithmetic_op(f_c, f_sql, f_test_sql, op, leftarg, rightarg):
     rettype = args[-1]
     if type_unsigned(rettype):
         if op == '+':
-            if not type_unsigned(leftarg):
+            if type_signed(leftarg):
                 c_check = '(arg1 < 0 && result > arg2) || (arg1 > 0 && result < arg2)'
-            elif not type_unsigned(rightarg):
+            elif type_signed(rightarg):
                 c_check = '(arg2 < 0 && result > arg1) || (arg2 > 0 && result < arg1)'
             else:  # both arguments unsigned
                 c_check = 'result < arg1 || result < arg2'
         elif op == '-':
-            c_check = 'result > arg1'
+            if type_signed(leftarg):
+                c_check = '(arg1 < 0) || (result > arg1)'
+            elif type_signed(rightarg):
+                c_check = '(arg2 < 0 && result < arg1) || (arg2 > 0 && result > arg1)'
+            else:
+                c_check = 'result > arg1'
         else:
             c_check = ''
     else:
@@ -375,12 +384,12 @@ SELECT '1'::{lefttype} {op} '1'::{righttype};
 SELECT '3'::{lefttype} {op} '4'::{righttype};
 SELECT '5'::{lefttype} {op} '2'::{righttype};
 """.format(lefttype=leftarg, op=op, righttype=rightarg))
-    if not type_unsigned(leftarg) and op in ['+']:  # TODO
+    if not type_unsigned(leftarg) and op in ['+', '-']:  # TODO
         f_test_sql.write("""\
 SELECT '-3'::{lefttype} {op} '4'::{righttype};
 SELECT '-5'::{lefttype} {op} '2'::{righttype};
 """.format(lefttype=leftarg, op=op, righttype=rightarg))
-    if not type_unsigned(rightarg) and op in ['+']:  # TODO
+    if not type_unsigned(rightarg) and op in ['+', '-']:  # TODO
         f_test_sql.write("""\
 SELECT '3'::{lefttype} {op} '-4'::{righttype};
 SELECT '5'::{lefttype} {op} '-2'::{righttype};
