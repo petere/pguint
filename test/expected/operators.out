@@ -797,6 +797,30 @@ SELECT '5'::int1 * '2'::int1;
  10
 (1 row)
 
+SELECT '-3'::int1 * '4'::int1;
+ ?column? 
+----------
+ -12
+(1 row)
+
+SELECT '-5'::int1 * '2'::int1;
+ ?column? 
+----------
+ -10
+(1 row)
+
+SELECT '3'::int1 * '-4'::int1;
+ ?column? 
+----------
+ -12
+(1 row)
+
+SELECT '5'::int1 * '-2'::int1;
+ ?column? 
+----------
+ -10
+(1 row)
+
 SELECT '127'::int1 * '127'::int1;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int1 / '1'::int1);
@@ -1065,6 +1089,10 @@ SELECT '5'::int1 * '2'::uint1;
  10
 (1 row)
 
+SELECT '-3'::int1 * '4'::uint1;
+ERROR:  integer out of range
+SELECT '-5'::int1 * '2'::uint1;
+ERROR:  integer out of range
 SELECT '127'::int1 * '255'::uint1;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int1 / '1'::uint1);
@@ -1341,6 +1369,10 @@ SELECT '5'::int1 * '2'::uint2;
  10
 (1 row)
 
+SELECT '-3'::int1 * '4'::uint2;
+ERROR:  integer out of range
+SELECT '-5'::int1 * '2'::uint2;
+ERROR:  integer out of range
 SELECT '127'::int1 * '65535'::uint2;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int1 / '1'::uint2);
@@ -1617,6 +1649,10 @@ SELECT '5'::int1 * '2'::uint4;
  10
 (1 row)
 
+SELECT '-3'::int1 * '4'::uint4;
+ERROR:  integer out of range
+SELECT '-5'::int1 * '2'::uint4;
+ERROR:  integer out of range
 SELECT '127'::int1 * '4294967295'::uint4;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int1 / '1'::uint4);
@@ -1893,6 +1929,10 @@ SELECT '5'::int1 * '2'::uint8;
  10
 (1 row)
 
+SELECT '-3'::int1 * '4'::uint8;
+ERROR:  integer out of range
+SELECT '-5'::int1 * '2'::uint8;
+ERROR:  integer out of range
 SELECT '127'::int1 * '18446744073709551615'::uint8;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int1 / '1'::uint8);
@@ -2207,6 +2247,30 @@ SELECT '5'::int1 * '2'::int2;
  ?column? 
 ----------
        10
+(1 row)
+
+SELECT '-3'::int1 * '4'::int2;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '-5'::int1 * '2'::int2;
+ ?column? 
+----------
+      -10
+(1 row)
+
+SELECT '3'::int1 * '-4'::int2;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '5'::int1 * '-2'::int2;
+ ?column? 
+----------
+      -10
 (1 row)
 
 SELECT '127'::int1 * '32767'::int2;
@@ -2529,6 +2593,30 @@ SELECT '5'::int1 * '2'::int4;
        10
 (1 row)
 
+SELECT '-3'::int1 * '4'::int4;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '-5'::int1 * '2'::int4;
+ ?column? 
+----------
+      -10
+(1 row)
+
+SELECT '3'::int1 * '-4'::int4;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '5'::int1 * '-2'::int4;
+ ?column? 
+----------
+      -10
+(1 row)
+
 SELECT '127'::int1 * '2147483647'::int4;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int1 / '1'::int4);
@@ -2847,6 +2935,30 @@ SELECT '5'::int1 * '2'::int8;
  ?column? 
 ----------
        10
+(1 row)
+
+SELECT '-3'::int1 * '4'::int8;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '-5'::int1 * '2'::int8;
+ ?column? 
+----------
+      -10
+(1 row)
+
+SELECT '3'::int1 * '-4'::int8;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '5'::int1 * '-2'::int8;
+ ?column? 
+----------
+      -10
 (1 row)
 
 SELECT '127'::int1 * '9223372036854775807'::int8;
@@ -3401,6 +3513,10 @@ SELECT '5'::uint1 * '2'::int1;
  10
 (1 row)
 
+SELECT '3'::uint1 * '-4'::int1;
+ERROR:  integer out of range
+SELECT '5'::uint1 * '-2'::int1;
+ERROR:  integer out of range
 SELECT '255'::uint1 * '127'::int1;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::uint1 / '1'::int1);
@@ -4735,6 +4851,18 @@ SELECT '5'::uint1 * '2'::int2;
        10
 (1 row)
 
+SELECT '3'::uint1 * '-4'::int2;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '5'::uint1 * '-2'::int2;
+ ?column? 
+----------
+      -10
+(1 row)
+
 SELECT '255'::uint1 * '32767'::int2;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::uint1 / '1'::int2);
@@ -5025,6 +5153,18 @@ SELECT '5'::uint1 * '2'::int4;
        10
 (1 row)
 
+SELECT '3'::uint1 * '-4'::int4;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '5'::uint1 * '-2'::int4;
+ ?column? 
+----------
+      -10
+(1 row)
+
 SELECT '255'::uint1 * '2147483647'::int4;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::uint1 / '1'::int4);
@@ -5313,6 +5453,18 @@ SELECT '5'::uint1 * '2'::int8;
  ?column? 
 ----------
        10
+(1 row)
+
+SELECT '3'::uint1 * '-4'::int8;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '5'::uint1 * '-2'::int8;
+ ?column? 
+----------
+      -10
 (1 row)
 
 SELECT '255'::uint1 * '9223372036854775807'::int8;
@@ -5861,6 +6013,10 @@ SELECT '5'::uint2 * '2'::int1;
  10
 (1 row)
 
+SELECT '3'::uint2 * '-4'::int1;
+ERROR:  integer out of range
+SELECT '5'::uint2 * '-2'::int1;
+ERROR:  integer out of range
 SELECT '65535'::uint2 * '127'::int1;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::uint2 / '1'::int1);
@@ -7189,6 +7345,10 @@ SELECT '5'::uint2 * '2'::int2;
  10
 (1 row)
 
+SELECT '3'::uint2 * '-4'::int2;
+ERROR:  integer out of range
+SELECT '5'::uint2 * '-2'::int2;
+ERROR:  integer out of range
 SELECT '65535'::uint2 * '32767'::int2;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::uint2 / '1'::int2);
@@ -7481,6 +7641,18 @@ SELECT '5'::uint2 * '2'::int4;
        10
 (1 row)
 
+SELECT '3'::uint2 * '-4'::int4;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '5'::uint2 * '-2'::int4;
+ ?column? 
+----------
+      -10
+(1 row)
+
 SELECT '65535'::uint2 * '2147483647'::int4;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::uint2 / '1'::int4);
@@ -7769,6 +7941,18 @@ SELECT '5'::uint2 * '2'::int8;
  ?column? 
 ----------
        10
+(1 row)
+
+SELECT '3'::uint2 * '-4'::int8;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '5'::uint2 * '-2'::int8;
+ ?column? 
+----------
+      -10
 (1 row)
 
 SELECT '65535'::uint2 * '9223372036854775807'::int8;
@@ -8309,6 +8493,10 @@ SELECT '5'::uint4 * '2'::int1;
  10
 (1 row)
 
+SELECT '3'::uint4 * '-4'::int1;
+ERROR:  integer out of range
+SELECT '5'::uint4 * '-2'::int1;
+ERROR:  integer out of range
 SELECT '4294967295'::uint4 * '127'::int1;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::uint4 / '1'::int1);
@@ -9639,6 +9827,10 @@ SELECT '5'::uint4 * '2'::int2;
  10
 (1 row)
 
+SELECT '3'::uint4 * '-4'::int2;
+ERROR:  integer out of range
+SELECT '5'::uint4 * '-2'::int2;
+ERROR:  integer out of range
 SELECT '4294967295'::uint4 * '32767'::int2;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::uint4 / '1'::int2);
@@ -9923,6 +10115,10 @@ SELECT '5'::uint4 * '2'::int4;
  10
 (1 row)
 
+SELECT '3'::uint4 * '-4'::int4;
+ERROR:  integer out of range
+SELECT '5'::uint4 * '-2'::int4;
+ERROR:  integer out of range
 SELECT '4294967295'::uint4 * '2147483647'::int4;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::uint4 / '1'::int4);
@@ -10213,6 +10409,18 @@ SELECT '5'::uint4 * '2'::int8;
  ?column? 
 ----------
        10
+(1 row)
+
+SELECT '3'::uint4 * '-4'::int8;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '5'::uint4 * '-2'::int8;
+ ?column? 
+----------
+      -10
 (1 row)
 
 SELECT '4294967295'::uint4 * '9223372036854775807'::int8;
@@ -10753,6 +10961,10 @@ SELECT '5'::uint8 * '2'::int1;
  10
 (1 row)
 
+SELECT '3'::uint8 * '-4'::int1;
+ERROR:  integer out of range
+SELECT '5'::uint8 * '-2'::int1;
+ERROR:  integer out of range
 SELECT '18446744073709551615'::uint8 * '127'::int1;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::uint8 / '1'::int1);
@@ -12085,6 +12297,10 @@ SELECT '5'::uint8 * '2'::int2;
  10
 (1 row)
 
+SELECT '3'::uint8 * '-4'::int2;
+ERROR:  integer out of range
+SELECT '5'::uint8 * '-2'::int2;
+ERROR:  integer out of range
 SELECT '18446744073709551615'::uint8 * '32767'::int2;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::uint8 / '1'::int2);
@@ -12369,6 +12585,10 @@ SELECT '5'::uint8 * '2'::int4;
  10
 (1 row)
 
+SELECT '3'::uint8 * '-4'::int4;
+ERROR:  integer out of range
+SELECT '5'::uint8 * '-2'::int4;
+ERROR:  integer out of range
 SELECT '18446744073709551615'::uint8 * '2147483647'::int4;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::uint8 / '1'::int4);
@@ -12653,6 +12873,10 @@ SELECT '5'::uint8 * '2'::int8;
  10
 (1 row)
 
+SELECT '3'::uint8 * '-4'::int8;
+ERROR:  integer out of range
+SELECT '5'::uint8 * '-2'::int8;
+ERROR:  integer out of range
 SELECT '18446744073709551615'::uint8 * '9223372036854775807'::int8;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::uint8 / '1'::int8);
@@ -13233,6 +13457,30 @@ SELECT '5'::int2 * '2'::int1;
        10
 (1 row)
 
+SELECT '-3'::int2 * '4'::int1;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '-5'::int2 * '2'::int1;
+ ?column? 
+----------
+      -10
+(1 row)
+
+SELECT '3'::int2 * '-4'::int1;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '5'::int2 * '-2'::int1;
+ ?column? 
+----------
+      -10
+(1 row)
+
 SELECT '32767'::int2 * '127'::int1;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int2 / '1'::int1);
@@ -13533,6 +13781,18 @@ SELECT '5'::int2 * '2'::uint1;
        10
 (1 row)
 
+SELECT '-3'::int2 * '4'::uint1;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '-5'::int2 * '2'::uint1;
+ ?column? 
+----------
+      -10
+(1 row)
+
 SELECT '32767'::int2 * '255'::uint1;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int2 / '1'::uint1);
@@ -13811,6 +14071,10 @@ SELECT '5'::int2 * '2'::uint2;
  10
 (1 row)
 
+SELECT '-3'::int2 * '4'::uint2;
+ERROR:  integer out of range
+SELECT '-5'::int2 * '2'::uint2;
+ERROR:  integer out of range
 SELECT '32767'::int2 * '65535'::uint2;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int2 / '1'::uint2);
@@ -14087,6 +14351,10 @@ SELECT '5'::int2 * '2'::uint4;
  10
 (1 row)
 
+SELECT '-3'::int2 * '4'::uint4;
+ERROR:  integer out of range
+SELECT '-5'::int2 * '2'::uint4;
+ERROR:  integer out of range
 SELECT '32767'::int2 * '4294967295'::uint4;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int2 / '1'::uint4);
@@ -14363,6 +14631,10 @@ SELECT '5'::int2 * '2'::uint8;
  10
 (1 row)
 
+SELECT '-3'::int2 * '4'::uint8;
+ERROR:  integer out of range
+SELECT '-5'::int2 * '2'::uint8;
+ERROR:  integer out of range
 SELECT '32767'::int2 * '18446744073709551615'::uint8;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int2 / '1'::uint8);
@@ -14943,6 +15215,30 @@ SELECT '5'::int4 * '2'::int1;
        10
 (1 row)
 
+SELECT '-3'::int4 * '4'::int1;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '-5'::int4 * '2'::int1;
+ ?column? 
+----------
+      -10
+(1 row)
+
+SELECT '3'::int4 * '-4'::int1;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '5'::int4 * '-2'::int1;
+ ?column? 
+----------
+      -10
+(1 row)
+
 SELECT '2147483647'::int4 * '127'::int1;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int4 / '1'::int1);
@@ -15243,6 +15539,18 @@ SELECT '5'::int4 * '2'::uint1;
        10
 (1 row)
 
+SELECT '-3'::int4 * '4'::uint1;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '-5'::int4 * '2'::uint1;
+ ?column? 
+----------
+      -10
+(1 row)
+
 SELECT '2147483647'::int4 * '255'::uint1;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int4 / '1'::uint1);
@@ -15537,6 +15845,18 @@ SELECT '5'::int4 * '2'::uint2;
        10
 (1 row)
 
+SELECT '-3'::int4 * '4'::uint2;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '-5'::int4 * '2'::uint2;
+ ?column? 
+----------
+      -10
+(1 row)
+
 SELECT '2147483647'::int4 * '65535'::uint2;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int4 / '1'::uint2);
@@ -15815,6 +16135,10 @@ SELECT '5'::int4 * '2'::uint4;
  10
 (1 row)
 
+SELECT '-3'::int4 * '4'::uint4;
+ERROR:  integer out of range
+SELECT '-5'::int4 * '2'::uint4;
+ERROR:  integer out of range
 SELECT '2147483647'::int4 * '4294967295'::uint4;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int4 / '1'::uint4);
@@ -16091,6 +16415,10 @@ SELECT '5'::int4 * '2'::uint8;
  10
 (1 row)
 
+SELECT '-3'::int4 * '4'::uint8;
+ERROR:  integer out of range
+SELECT '-5'::int4 * '2'::uint8;
+ERROR:  integer out of range
 SELECT '2147483647'::int4 * '18446744073709551615'::uint8;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int4 / '1'::uint8);
@@ -16669,6 +16997,30 @@ SELECT '5'::int8 * '2'::int1;
        10
 (1 row)
 
+SELECT '-3'::int8 * '4'::int1;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '-5'::int8 * '2'::int1;
+ ?column? 
+----------
+      -10
+(1 row)
+
+SELECT '3'::int8 * '-4'::int1;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '5'::int8 * '-2'::int1;
+ ?column? 
+----------
+      -10
+(1 row)
+
 SELECT '9223372036854775807'::int8 * '127'::int1;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int8 / '1'::int1);
@@ -16969,6 +17321,18 @@ SELECT '5'::int8 * '2'::uint1;
        10
 (1 row)
 
+SELECT '-3'::int8 * '4'::uint1;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '-5'::int8 * '2'::uint1;
+ ?column? 
+----------
+      -10
+(1 row)
+
 SELECT '9223372036854775807'::int8 * '255'::uint1;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int8 / '1'::uint1);
@@ -17261,6 +17625,18 @@ SELECT '5'::int8 * '2'::uint2;
  ?column? 
 ----------
        10
+(1 row)
+
+SELECT '-3'::int8 * '4'::uint2;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '-5'::int8 * '2'::uint2;
+ ?column? 
+----------
+      -10
 (1 row)
 
 SELECT '9223372036854775807'::int8 * '65535'::uint2;
@@ -17557,6 +17933,18 @@ SELECT '5'::int8 * '2'::uint4;
        10
 (1 row)
 
+SELECT '-3'::int8 * '4'::uint4;
+ ?column? 
+----------
+      -12
+(1 row)
+
+SELECT '-5'::int8 * '2'::uint4;
+ ?column? 
+----------
+      -10
+(1 row)
+
 SELECT '9223372036854775807'::int8 * '4294967295'::uint4;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int8 / '1'::uint4);
@@ -17835,6 +18223,10 @@ SELECT '5'::int8 * '2'::uint8;
  10
 (1 row)
 
+SELECT '-3'::int8 * '4'::uint8;
+ERROR:  integer out of range
+SELECT '-5'::int8 * '2'::uint8;
+ERROR:  integer out of range
 SELECT '9223372036854775807'::int8 * '18446744073709551615'::uint8;
 ERROR:  integer out of range
 SELECT pg_typeof('1'::int8 / '1'::uint8);
