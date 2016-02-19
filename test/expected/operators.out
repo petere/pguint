@@ -897,6 +897,30 @@ SELECT '5'::int1 % '2'::int1;
  1
 (1 row)
 
+SELECT '-3'::int1 % '4'::int1;
+ ?column? 
+----------
+ -3
+(1 row)
+
+SELECT '-5'::int1 % '2'::int1;
+ ?column? 
+----------
+ -1
+(1 row)
+
+SELECT '3'::int1 % '-4'::int1;
+ ?column? 
+----------
+ 3
+(1 row)
+
+SELECT '5'::int1 % '-2'::int1;
+ ?column? 
+----------
+ 1
+(1 row)
+
 SELECT '5'::int1 % '0'::int1;
 ERROR:  division by zero
 SELECT mod('5'::int1, '2'::int1);
@@ -1173,6 +1197,10 @@ SELECT '5'::int1 % '2'::uint1;
  1
 (1 row)
 
+SELECT '-3'::int1 % '4'::uint1;
+ERROR:  integer out of range
+SELECT '-5'::int1 % '2'::uint1;
+ERROR:  integer out of range
 SELECT '5'::int1 % '0'::uint1;
 ERROR:  division by zero
 SELECT mod('5'::int1, '2'::uint1);
@@ -1457,6 +1485,10 @@ SELECT '5'::int1 % '2'::uint2;
  1
 (1 row)
 
+SELECT '-3'::int1 % '4'::uint2;
+ERROR:  integer out of range
+SELECT '-5'::int1 % '2'::uint2;
+ERROR:  integer out of range
 SELECT '5'::int1 % '0'::uint2;
 ERROR:  division by zero
 SELECT mod('5'::int1, '2'::uint2);
@@ -1741,6 +1773,10 @@ SELECT '5'::int1 % '2'::uint4;
  1
 (1 row)
 
+SELECT '-3'::int1 % '4'::uint4;
+ERROR:  integer out of range
+SELECT '-5'::int1 % '2'::uint4;
+ERROR:  integer out of range
 SELECT '5'::int1 % '0'::uint4;
 ERROR:  division by zero
 SELECT mod('5'::int1, '2'::uint4);
@@ -2025,6 +2061,10 @@ SELECT '5'::int1 % '2'::uint8;
  1
 (1 row)
 
+SELECT '-3'::int1 % '4'::uint8;
+ERROR:  integer out of range
+SELECT '-5'::int1 % '2'::uint8;
+ERROR:  integer out of range
 SELECT '5'::int1 % '0'::uint8;
 ERROR:  division by zero
 SELECT mod('5'::int1, '2'::uint8);
@@ -2384,6 +2424,30 @@ SELECT '3'::int1 % '4'::int2;
 (1 row)
 
 SELECT '5'::int1 % '2'::int2;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '-3'::int1 % '4'::int2;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int1 % '2'::int2;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '3'::int1 % '-4'::int2;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int1 % '-2'::int2;
  ?column? 
 ----------
         1
@@ -2757,6 +2821,30 @@ SELECT '5'::int1 % '2'::int4;
         1
 (1 row)
 
+SELECT '-3'::int1 % '4'::int4;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int1 % '2'::int4;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '3'::int1 % '-4'::int4;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int1 % '-2'::int4;
+ ?column? 
+----------
+        1
+(1 row)
+
 SELECT '5'::int1 % '0'::int4;
 ERROR:  division by zero
 SELECT mod('5'::int1, '2'::int4);
@@ -3120,6 +3208,30 @@ SELECT '3'::int1 % '4'::int8;
 (1 row)
 
 SELECT '5'::int1 % '2'::int8;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '-3'::int1 % '4'::int8;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int1 % '2'::int8;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '3'::int1 % '-4'::int8;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int1 % '-2'::int8;
  ?column? 
 ----------
         1
@@ -3685,6 +3797,10 @@ SELECT '5'::uint1 % '2'::int1;
  1
 (1 row)
 
+SELECT '3'::uint1 % '-4'::int1;
+ERROR:  integer out of range
+SELECT '5'::uint1 % '-2'::int1;
+ERROR:  integer out of range
 SELECT '5'::uint1 % '0'::int1;
 ERROR:  division by zero
 SELECT mod('5'::uint1, '2'::int1);
@@ -5043,6 +5159,18 @@ SELECT '5'::uint1 % '2'::int2;
         1
 (1 row)
 
+SELECT '3'::uint1 % '-4'::int2;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::uint1 % '-2'::int2;
+ ?column? 
+----------
+        1
+(1 row)
+
 SELECT '5'::uint1 % '0'::int2;
 ERROR:  division by zero
 SELECT mod('5'::uint1, '2'::int2);
@@ -5357,6 +5485,18 @@ SELECT '5'::uint1 % '2'::int4;
         1
 (1 row)
 
+SELECT '3'::uint1 % '-4'::int4;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::uint1 % '-2'::int4;
+ ?column? 
+----------
+        1
+(1 row)
+
 SELECT '5'::uint1 % '0'::int4;
 ERROR:  division by zero
 SELECT mod('5'::uint1, '2'::int4);
@@ -5666,6 +5806,18 @@ SELECT '3'::uint1 % '4'::int8;
 (1 row)
 
 SELECT '5'::uint1 % '2'::int8;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::uint1 % '-4'::int8;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::uint1 % '-2'::int8;
  ?column? 
 ----------
         1
@@ -6225,6 +6377,10 @@ SELECT '5'::uint2 % '2'::int1;
  1
 (1 row)
 
+SELECT '3'::uint2 % '-4'::int1;
+ERROR:  integer out of range
+SELECT '5'::uint2 % '-2'::int1;
+ERROR:  integer out of range
 SELECT '5'::uint2 % '0'::int1;
 ERROR:  division by zero
 SELECT mod('5'::uint2, '2'::int1);
@@ -7561,6 +7717,10 @@ SELECT '5'::uint2 % '2'::int2;
  1
 (1 row)
 
+SELECT '3'::uint2 % '-4'::int2;
+ERROR:  integer out of range
+SELECT '5'::uint2 % '-2'::int2;
+ERROR:  integer out of range
 SELECT '5'::uint2 % '0'::int2;
 ERROR:  division by zero
 SELECT mod('5'::uint2, '2'::int2);
@@ -7877,6 +8037,18 @@ SELECT '5'::uint2 % '2'::int4;
         1
 (1 row)
 
+SELECT '3'::uint2 % '-4'::int4;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::uint2 % '-2'::int4;
+ ?column? 
+----------
+        1
+(1 row)
+
 SELECT '5'::uint2 % '0'::int4;
 ERROR:  division by zero
 SELECT mod('5'::uint2, '2'::int4);
@@ -8186,6 +8358,18 @@ SELECT '3'::uint2 % '4'::int8;
 (1 row)
 
 SELECT '5'::uint2 % '2'::int8;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::uint2 % '-4'::int8;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::uint2 % '-2'::int8;
  ?column? 
 ----------
         1
@@ -8737,6 +8921,10 @@ SELECT '5'::uint4 % '2'::int1;
  1
 (1 row)
 
+SELECT '3'::uint4 % '-4'::int1;
+ERROR:  integer out of range
+SELECT '5'::uint4 % '-2'::int1;
+ERROR:  integer out of range
 SELECT '5'::uint4 % '0'::int1;
 ERROR:  division by zero
 SELECT mod('5'::uint4, '2'::int1);
@@ -10075,6 +10263,10 @@ SELECT '5'::uint4 % '2'::int2;
  1
 (1 row)
 
+SELECT '3'::uint4 % '-4'::int2;
+ERROR:  integer out of range
+SELECT '5'::uint4 % '-2'::int2;
+ERROR:  integer out of range
 SELECT '5'::uint4 % '0'::int2;
 ERROR:  division by zero
 SELECT mod('5'::uint4, '2'::int2);
@@ -10367,6 +10559,10 @@ SELECT '5'::uint4 % '2'::int4;
  1
 (1 row)
 
+SELECT '3'::uint4 % '-4'::int4;
+ERROR:  integer out of range
+SELECT '5'::uint4 % '-2'::int4;
+ERROR:  integer out of range
 SELECT '5'::uint4 % '0'::int4;
 ERROR:  division by zero
 SELECT mod('5'::uint4, '2'::int4);
@@ -10678,6 +10874,18 @@ SELECT '3'::uint4 % '4'::int8;
 (1 row)
 
 SELECT '5'::uint4 % '2'::int8;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '3'::uint4 % '-4'::int8;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::uint4 % '-2'::int8;
  ?column? 
 ----------
         1
@@ -11229,6 +11437,10 @@ SELECT '5'::uint8 % '2'::int1;
  1
 (1 row)
 
+SELECT '3'::uint8 % '-4'::int1;
+ERROR:  integer out of range
+SELECT '5'::uint8 % '-2'::int1;
+ERROR:  integer out of range
 SELECT '5'::uint8 % '0'::int1;
 ERROR:  division by zero
 SELECT mod('5'::uint8, '2'::int1);
@@ -12569,6 +12781,10 @@ SELECT '5'::uint8 % '2'::int2;
  1
 (1 row)
 
+SELECT '3'::uint8 % '-4'::int2;
+ERROR:  integer out of range
+SELECT '5'::uint8 % '-2'::int2;
+ERROR:  integer out of range
 SELECT '5'::uint8 % '0'::int2;
 ERROR:  division by zero
 SELECT mod('5'::uint8, '2'::int2);
@@ -12861,6 +13077,10 @@ SELECT '5'::uint8 % '2'::int4;
  1
 (1 row)
 
+SELECT '3'::uint8 % '-4'::int4;
+ERROR:  integer out of range
+SELECT '5'::uint8 % '-2'::int4;
+ERROR:  integer out of range
 SELECT '5'::uint8 % '0'::int4;
 ERROR:  division by zero
 SELECT mod('5'::uint8, '2'::int4);
@@ -13153,6 +13373,10 @@ SELECT '5'::uint8 % '2'::int8;
  1
 (1 row)
 
+SELECT '3'::uint8 % '-4'::int8;
+ERROR:  integer out of range
+SELECT '5'::uint8 % '-2'::int8;
+ERROR:  integer out of range
 SELECT '5'::uint8 % '0'::int8;
 ERROR:  division by zero
 SELECT mod('5'::uint8, '2'::int8);
@@ -13781,6 +14005,30 @@ SELECT '5'::int2 % '2'::int1;
         1
 (1 row)
 
+SELECT '-3'::int2 % '4'::int1;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int2 % '2'::int1;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '3'::int2 % '-4'::int1;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int2 % '-2'::int1;
+ ?column? 
+----------
+        1
+(1 row)
+
 SELECT '5'::int2 % '0'::int1;
 ERROR:  division by zero
 SELECT mod('5'::int2, '2'::int1);
@@ -14105,6 +14353,18 @@ SELECT '5'::int2 % '2'::uint1;
         1
 (1 row)
 
+SELECT '-3'::int2 % '4'::uint1;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int2 % '2'::uint1;
+ ?column? 
+----------
+       -1
+(1 row)
+
 SELECT '5'::int2 % '0'::uint1;
 ERROR:  division by zero
 SELECT mod('5'::int2, '2'::uint1);
@@ -14391,6 +14651,10 @@ SELECT '5'::int2 % '2'::uint2;
  1
 (1 row)
 
+SELECT '-3'::int2 % '4'::uint2;
+ERROR:  integer out of range
+SELECT '-5'::int2 % '2'::uint2;
+ERROR:  integer out of range
 SELECT '5'::int2 % '0'::uint2;
 ERROR:  division by zero
 SELECT mod('5'::int2, '2'::uint2);
@@ -14675,6 +14939,10 @@ SELECT '5'::int2 % '2'::uint4;
  1
 (1 row)
 
+SELECT '-3'::int2 % '4'::uint4;
+ERROR:  integer out of range
+SELECT '-5'::int2 % '2'::uint4;
+ERROR:  integer out of range
 SELECT '5'::int2 % '0'::uint4;
 ERROR:  division by zero
 SELECT mod('5'::int2, '2'::uint4);
@@ -14959,6 +15227,10 @@ SELECT '5'::int2 % '2'::uint8;
  1
 (1 row)
 
+SELECT '-3'::int2 % '4'::uint8;
+ERROR:  integer out of range
+SELECT '-5'::int2 % '2'::uint8;
+ERROR:  integer out of range
 SELECT '5'::int2 % '0'::uint8;
 ERROR:  division by zero
 SELECT mod('5'::int2, '2'::uint8);
@@ -15587,6 +15859,30 @@ SELECT '5'::int4 % '2'::int1;
         1
 (1 row)
 
+SELECT '-3'::int4 % '4'::int1;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int4 % '2'::int1;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '3'::int4 % '-4'::int1;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int4 % '-2'::int1;
+ ?column? 
+----------
+        1
+(1 row)
+
 SELECT '5'::int4 % '0'::int1;
 ERROR:  division by zero
 SELECT mod('5'::int4, '2'::int1);
@@ -15911,6 +16207,18 @@ SELECT '5'::int4 % '2'::uint1;
         1
 (1 row)
 
+SELECT '-3'::int4 % '4'::uint1;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int4 % '2'::uint1;
+ ?column? 
+----------
+       -1
+(1 row)
+
 SELECT '5'::int4 % '0'::uint1;
 ERROR:  division by zero
 SELECT mod('5'::int4, '2'::uint1);
@@ -16229,6 +16537,18 @@ SELECT '5'::int4 % '2'::uint2;
         1
 (1 row)
 
+SELECT '-3'::int4 % '4'::uint2;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int4 % '2'::uint2;
+ ?column? 
+----------
+       -1
+(1 row)
+
 SELECT '5'::int4 % '0'::uint2;
 ERROR:  division by zero
 SELECT mod('5'::int4, '2'::uint2);
@@ -16515,6 +16835,10 @@ SELECT '5'::int4 % '2'::uint4;
  1
 (1 row)
 
+SELECT '-3'::int4 % '4'::uint4;
+ERROR:  integer out of range
+SELECT '-5'::int4 % '2'::uint4;
+ERROR:  integer out of range
 SELECT '5'::int4 % '0'::uint4;
 ERROR:  division by zero
 SELECT mod('5'::int4, '2'::uint4);
@@ -16799,6 +17123,10 @@ SELECT '5'::int4 % '2'::uint8;
  1
 (1 row)
 
+SELECT '-3'::int4 % '4'::uint8;
+ERROR:  integer out of range
+SELECT '-5'::int4 % '2'::uint8;
+ERROR:  integer out of range
 SELECT '5'::int4 % '0'::uint8;
 ERROR:  division by zero
 SELECT mod('5'::int4, '2'::uint8);
@@ -17425,6 +17753,30 @@ SELECT '5'::int8 % '2'::int1;
         1
 (1 row)
 
+SELECT '-3'::int8 % '4'::int1;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int8 % '2'::int1;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '3'::int8 % '-4'::int1;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int8 % '-2'::int1;
+ ?column? 
+----------
+        1
+(1 row)
+
 SELECT '5'::int8 % '0'::int1;
 ERROR:  division by zero
 SELECT mod('5'::int8, '2'::int1);
@@ -17749,6 +18101,18 @@ SELECT '5'::int8 % '2'::uint1;
         1
 (1 row)
 
+SELECT '-3'::int8 % '4'::uint1;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int8 % '2'::uint1;
+ ?column? 
+----------
+       -1
+(1 row)
+
 SELECT '5'::int8 % '0'::uint1;
 ERROR:  division by zero
 SELECT mod('5'::int8, '2'::uint1);
@@ -18065,6 +18429,18 @@ SELECT '5'::int8 % '2'::uint2;
  ?column? 
 ----------
         1
+(1 row)
+
+SELECT '-3'::int8 % '4'::uint2;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int8 % '2'::uint2;
+ ?column? 
+----------
+       -1
 (1 row)
 
 SELECT '5'::int8 % '0'::uint2;
@@ -18385,6 +18761,18 @@ SELECT '5'::int8 % '2'::uint4;
         1
 (1 row)
 
+SELECT '-3'::int8 % '4'::uint4;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int8 % '2'::uint4;
+ ?column? 
+----------
+       -1
+(1 row)
+
 SELECT '5'::int8 % '0'::uint4;
 ERROR:  division by zero
 SELECT mod('5'::int8, '2'::uint4);
@@ -18671,6 +19059,10 @@ SELECT '5'::int8 % '2'::uint8;
  1
 (1 row)
 
+SELECT '-3'::int8 % '4'::uint8;
+ERROR:  integer out of range
+SELECT '-5'::int8 % '2'::uint8;
+ERROR:  integer out of range
 SELECT '5'::int8 % '0'::uint8;
 ERROR:  division by zero
 SELECT mod('5'::int8, '2'::uint8);
@@ -20442,6 +20834,30 @@ SELECT '5'::int2 % '2'::int4;
         1
 (1 row)
 
+SELECT '-3'::int2 % '4'::int4;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int2 % '2'::int4;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '3'::int2 % '-4'::int4;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int2 % '-2'::int4;
+ ?column? 
+----------
+        1
+(1 row)
+
 SELECT '5'::int2 % '0'::int4;
 ERROR:  division by zero
 SELECT mod('5'::int2, '2'::int4);
@@ -20469,6 +20885,30 @@ SELECT '3'::int4 % '4'::int2;
 (1 row)
 
 SELECT '5'::int4 % '2'::int2;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '-3'::int4 % '4'::int2;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int4 % '2'::int2;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '3'::int4 % '-4'::int2;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int4 % '-2'::int2;
  ?column? 
 ----------
         1
@@ -20506,6 +20946,30 @@ SELECT '5'::int8 % '2'::int2;
         1
 (1 row)
 
+SELECT '-3'::int8 % '4'::int2;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int8 % '2'::int2;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '3'::int8 % '-4'::int2;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int8 % '-2'::int2;
+ ?column? 
+----------
+        1
+(1 row)
+
 SELECT '5'::int8 % '0'::int2;
 ERROR:  division by zero
 SELECT mod('5'::int8, '2'::int2);
@@ -20533,6 +20997,30 @@ SELECT '3'::int8 % '4'::int4;
 (1 row)
 
 SELECT '5'::int8 % '2'::int4;
+ ?column? 
+----------
+        1
+(1 row)
+
+SELECT '-3'::int8 % '4'::int4;
+ ?column? 
+----------
+       -3
+(1 row)
+
+SELECT '-5'::int8 % '2'::int4;
+ ?column? 
+----------
+       -1
+(1 row)
+
+SELECT '3'::int8 % '-4'::int4;
+ ?column? 
+----------
+        3
+(1 row)
+
+SELECT '5'::int8 % '-2'::int4;
  ?column? 
 ----------
         1
