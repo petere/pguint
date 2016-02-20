@@ -86,6 +86,10 @@ def type_bits(typ):
     return int(m.group(1)) * 8
 
 
+def type_signed(typ):
+    return not type_unsigned(typ)
+
+
 def type_unsigned(typ):
     return typ.startswith('u')
 
@@ -334,9 +338,36 @@ def write_arithmetic_op(f_c, f_sql, f_test_sql, op, leftarg, rightarg):
     rettype = args[-1]
     if type_unsigned(rettype):
         if op == '+':
-            c_check = 'result < arg1 || result < arg2'
+            if type_signed(leftarg):
+                c_check = '(arg1 < 0 && result > arg2) || (arg1 > 0 && result < arg2)'
+            elif type_signed(rightarg):
+                c_check = '(arg2 < 0 && result > arg1) || (arg2 > 0 && result < arg1)'
+            else:  # both arguments unsigned
+                c_check = 'result < arg1 || result < arg2'
         elif op == '-':
-            c_check = 'result > arg1'
+            if type_signed(leftarg):
+                c_check = '(arg1 < 0) || (result > arg1)'
+            elif type_signed(rightarg):
+                c_check = '(arg2 < 0 && result < arg1) || (arg2 > 0 && result > arg1)'
+            else:
+                c_check = 'result > arg1'
+        elif op == '/':
+            if type_signed(leftarg):
+                c_check = 'arg1 < 0'
+            elif type_signed(rightarg):
+                c_check = 'arg2 < 0'
+            else:
+                c_check = ''
+        elif op == '%':
+            if type_signed(leftarg):
+                c_check = 'arg1 < 0'
+            elif type_signed(rightarg):
+                # This computation has a positive result, so it would
+                # actually fit just fine, but the C implementation
+                # makes a mess of it, so better prohibit it.
+                c_check = 'arg2 < 0'
+            else:
+                c_check = ''
         else:
             c_check = ''
     else:
@@ -352,11 +383,18 @@ def write_arithmetic_op(f_c, f_sql, f_test_sql, op, leftarg, rightarg):
             intermediate_type = next_bigger_type(rettype)
             c_check = '({0}) result2 != result2'.format(c_types[rettype])
         elif type_unsigned(rettype):
-            c_check = '(arg1 != ((uint32) arg1) || arg2 != ((uint32) arg2))'
+            if type_unsigned(leftarg) and type_signed(rightarg):
+                c_check = '(arg2 < 0) || ('
+            elif type_signed(leftarg) and type_unsigned(rightarg):
+                c_check = '(arg1 < 0) || ('
+            else:
+                c_check = '('
+            c_check += '(arg1 != ((uint32) arg1) || arg2 != ((uint32) arg2))'
             if type_unsigned(leftarg) or type_unsigned(rightarg):
                 c_check += ' && (arg2 != 0 && (result / arg2 != arg1))'
             else:
                 c_check += ' && (arg2 != 0 && ((arg2 == -1 && arg1 < 0 && result < 0) || result / arg2 != arg1))'
+            c_check += ')'
         else:
             c_check = '(arg1 != ((int32) arg1) || arg2 != ((int32) arg2))'
             if type_unsigned(leftarg) or type_unsigned(rightarg):
@@ -369,6 +407,16 @@ SELECT pg_typeof('1'::{lefttype} {op} '1'::{righttype});
 SELECT '1'::{lefttype} {op} '1'::{righttype};
 SELECT '3'::{lefttype} {op} '4'::{righttype};
 SELECT '5'::{lefttype} {op} '2'::{righttype};
+""".format(lefttype=leftarg, op=op, righttype=rightarg))
+    if not type_unsigned(leftarg) and op in ['+', '-', '*', '/', '%']:
+        f_test_sql.write("""\
+SELECT '-3'::{lefttype} {op} '4'::{righttype};
+SELECT '-5'::{lefttype} {op} '2'::{righttype};
+""".format(lefttype=leftarg, op=op, righttype=rightarg))
+    if not type_unsigned(rightarg) and op in ['+', '-', '*', '/', '%']:
+        f_test_sql.write("""\
+SELECT '3'::{lefttype} {op} '-4'::{righttype};
+SELECT '5'::{lefttype} {op} '-2'::{righttype};
 """.format(lefttype=leftarg, op=op, righttype=rightarg))
     if op in ['+', '*']:
         f_test_sql.write("SELECT '{max_left}'::{lefttype} {op} '{max_right}'::{righttype};\n"
