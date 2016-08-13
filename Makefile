@@ -9,6 +9,10 @@ ifneq (,$(indexonlyscan_supported))
 export PGOPTIONS = -c enable_indexonlyscan=off
 endif
 
+pg_config_h := $(shell $(PG_CONFIG) --includedir-server)/pg_config.h
+use_float8_byval := $(shell grep -q 'USE_FLOAT8_BYVAL 1' $(pg_config_h) && echo yes)
+comma = ,
+
 extension_version = 0
 
 EXTENSION = uint
@@ -25,7 +29,7 @@ PGXS := $(shell $(PG_CONFIG) --pgxs)
 include $(PGXS)
 
 uint--$(extension_version).sql: uint.sql hash.sql hex.sql operators.sql
-	cat $^ >$@
+	cat $^ | sed 's/@UINT8_PASSEDBYVALUE@/$(if $(use_float8_byval),PASSEDBYVALUE$(comma))/' >$@
 
 PYTHON ?= python
 
