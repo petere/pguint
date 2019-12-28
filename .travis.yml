@@ -1,16 +1,25 @@
+dist: bionic
 language: c
-before_install:
-  - wget https://gist.github.com/petere/5893799/raw/apt.postgresql.org.sh
-  - wget https://gist.github.com/petere/6023944/raw/pg-travis-test.sh
-  - sudo sh ./apt.postgresql.org.sh
+addons:
+  apt:
+    sources:
+      - sourceline: 'deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main'
+        key_url: 'https://www.postgresql.org/media/keys/ACCC4CF8.asc'
+    update: true
 install:
   - sudo pip install pep8 pyflakes pylint
 env:
-  - PGVERSION=9.1
-  - PGVERSION=9.2
   - PGVERSION=9.3
   - PGVERSION=9.4
   - PGVERSION=9.5
-script:
-  - bash ./pg-travis-test.sh
-  - make python-check
+  - PGVERSION=9.6
+  - PGVERSION=10
+script: |
+  set -e
+  PATH=/usr/lib/postgresql/$PGVERSION/bin:$PATH
+  sudo apt-get install postgresql-$PGVERSION postgresql-server-dev-$PGVERSION
+  sudo pg_createcluster --start $PGVERSION test -p 55435 -- -A trust
+  make python-check
+  make all
+  sudo make install
+  PGPORT=55435 make installcheck PGUSER=postgres
