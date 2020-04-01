@@ -1,7 +1,8 @@
 *.o
 *.so
 /results/
-/*--*.sql
+/*.sql
+/uint--*.sql.in
 /operators.c
-/operators.sql
+/operators--*.sql.in
 /test/sql/operators.sql
