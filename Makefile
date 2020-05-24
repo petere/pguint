@@ -13,27 +13,35 @@ pg_config_h := $(shell $(PG_CONFIG) --includedir-server)/pg_config.h
 use_float8_byval := $(shell grep -q 'USE_FLOAT8_BYVAL 1' $(pg_config_h) && echo yes)
 comma = ,
 
-extension_version = 0
-
 EXTENSION = uint
 MODULE_big = uint
 OBJS = aggregates.o hash.o hex.o inout.o magic.o misc.o operators.o
-DATA_built = uint--$(extension_version).sql
+DATA_built = uint--1.sql uint--0--1.sql \
+		 uint--0.sql
 
 REGRESS = init hash hex operators misc drop
 REGRESS_OPTS = --inputdir=test
 
-EXTRA_CLEAN += operators.c operators.sql test/sql/operators.sql
+EXTRA_CLEAN += operators.c operators--0.sql.in test/sql/operators.sql
 
 PGXS := $(shell $(PG_CONFIG) --pgxs)
 include $(PGXS)
 
-uint--$(extension_version).sql: uint.sql hash.sql hex.sql operators.sql
-	cat $^ | sed 's/@UINT8_PASSEDBYVALUE@/$(if $(use_float8_byval),PASSEDBYVALUE$(comma))/' >$@
+uint--1.sql.in: types--1.sql.in hash--0.sql.in hex--0.sql.in operators--0.sql.in
+	cat $^ >$@
+
+uint--0--1.sql.in: types--0--1.sql.in
+	cat $^ >$@
+
+uint--0.sql.in: types--0.sql.in hash--0.sql.in hex--0.sql.in operators--0.sql.in
+	cat $^ >$@
+
+uint--%.sql: uint--%.sql.in
+	sed 's/@UINT8_PASSEDBYVALUE@/$(if $(use_float8_byval),PASSEDBYVALUE$(comma))/' $< >$@
 
 PYTHON ?= python
 
-operators.c operators.sql test/sql/operators.sql: generate.py
+operators.c operators--0.sql.in test/sql/operators.sql: generate.py
 	$(PYTHON) $< $(pg_version)
 
 python-check: generate.py

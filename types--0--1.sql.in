@@ -1,0 +1,118 @@
+-- add recv/send functions
+
+CREATE FUNCTION int1recv(internal) RETURNS int1
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'int1recv';
+
+CREATE FUNCTION int1send(int1) RETURNS bytea
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'int1send';
+
+--    RECEIVE = int1recv,
+--    SEND = int1send,
+
+UPDATE pg_type SET typreceive = 'int1recv', typsend = 'int1send'
+	WHERE typname = 'int1';
+
+INSERT INTO pg_depend (classid, objid, objsubid, refclassid, refobjid, refobjsubid, deptype)
+	VALUES
+		('pg_type'::regclass, 'int1'::regtype, 0, 'pg_proc'::regclass, 'int1recv'::regproc, 0, 'n'),
+		('pg_type'::regclass, 'int1'::regtype, 0, 'pg_proc'::regclass, 'int1send'::regproc, 0, 'n');
+
+
+CREATE FUNCTION uint1recv(internal) RETURNS uint1
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'uint1recv';
+
+CREATE FUNCTION uint1send(uint1) RETURNS bytea
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'uint1send';
+
+--    RECEIVE = uint1recv,
+--    SEND = uint1send,
+
+UPDATE pg_type SET typreceive = 'uint1recv', typsend = 'uint1send'
+	WHERE typname = 'uint1';
+
+INSERT INTO pg_depend (classid, objid, objsubid, refclassid, refobjid, refobjsubid, deptype)
+	VALUES
+		('pg_type'::regclass, 'uint1'::regtype, 0, 'pg_proc'::regclass, 'uint1recv'::regproc, 0, 'n'),
+		('pg_type'::regclass, 'uint1'::regtype, 0, 'pg_proc'::regclass, 'uint1send'::regproc, 0, 'n');
+
+CREATE FUNCTION uint2recv(internal) RETURNS uint2
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'uint2recv';
+
+CREATE FUNCTION uint2send(uint2) RETURNS bytea
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'uint2send';
+
+--    RECEIVE = uint2recv,
+--    SEND = uint2send,
+
+UPDATE pg_type SET typreceive = 'uint2recv', typsend = 'uint2send'
+	WHERE typname = 'uint2';
+
+INSERT INTO pg_depend (classid, objid, objsubid, refclassid, refobjid, refobjsubid, deptype)
+	VALUES
+		('pg_type'::regclass, 'uint2'::regtype, 0, 'pg_proc'::regclass, 'uint2recv'::regproc, 0, 'n'),
+		('pg_type'::regclass, 'uint2'::regtype, 0, 'pg_proc'::regclass, 'uint2send'::regproc, 0, 'n');
+
+CREATE FUNCTION uint4recv(internal) RETURNS uint4
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'uint4recv';
+
+CREATE FUNCTION uint4send(uint4) RETURNS bytea
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'uint4send';
+
+--    RECEIVE = uint4recv,
+--    SEND = uint4send,
+
+UPDATE pg_type SET typreceive = 'uint4recv', typsend = 'uint4send'
+	WHERE typname = 'uint4';
+
+INSERT INTO pg_depend (classid, objid, objsubid, refclassid, refobjid, refobjsubid, deptype)
+	VALUES
+		('pg_type'::regclass, 'uint4'::regtype, 0, 'pg_proc'::regclass, 'uint4recv'::regproc, 0, 'n'),
+		('pg_type'::regclass, 'uint4'::regtype, 0, 'pg_proc'::regclass, 'uint4send'::regproc, 0, 'n');
+
+CREATE FUNCTION uint8recv(internal) RETURNS uint8
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'uint8recv';
+
+CREATE FUNCTION uint8send(uint8) RETURNS bytea
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'uint8send';
+
+--    RECEIVE = uint8recv,
+--    SEND = uint8send,
+
+UPDATE pg_type SET typreceive = 'uint8recv', typsend = 'uint8send'
+	WHERE typname = 'uint8';
+
+INSERT INTO pg_depend (classid, objid, objsubid, refclassid, refobjid, refobjsubid, deptype)
+	VALUES
+		('pg_type'::regclass, 'uint8'::regtype, 0, 'pg_proc'::regclass, 'uint8recv'::regproc, 0, 'n'),
+		('pg_type'::regclass, 'uint8'::regtype, 0, 'pg_proc'::regclass, 'uint8send'::regproc, 0, 'n');
+
