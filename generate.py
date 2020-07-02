@@ -689,4 +689,4 @@ RESET enable_bitmapscan;
 
 
 if __name__ == '__main__':
-    main(pgversion=float(re.match(r'\d+\.\d+', sys.argv[1]).group(0)))
+    main(pgversion=float(sys.argv[1]))
