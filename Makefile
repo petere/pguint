@@ -9,7 +9,13 @@ ifneq (,$(indexonlyscan_supported))
 export PGOPTIONS = -c enable_indexonlyscan=off
 endif
 
-pg_config_h := $(shell $(PG_CONFIG) --includedir-server)/pg_config.h
+# Some package managers such as RPM has indirected pg_config.h 
+arch := $(shell uname -m)
+pg_config_h := $(shell $(PG_CONFIG) --includedir-server)/pg_config_$(arch).h
+ifeq (,$(wildcard $(pg_config_h)))
+	pg_config_h := $(shell $(PG_CONFIG) --includedir-server)/pg_config.h
+endif 
+
 use_float8_byval := $(shell if grep -q 'USE_FLOAT8_BYVAL 1' $(pg_config_h) || grep -q 'SIZEOF_VOID_P 8' $(pg_config_h); then echo yes; fi)
 comma = ,
 
