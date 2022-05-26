@@ -140,7 +140,7 @@ CREATE TYPE uint8 (
     INPUT = uint8in,
     OUTPUT = uint8out,
     INTERNALLENGTH = 8,
-    @UINT8_PASSEDBYVALUE@
+    PASSEDBYVALUE,  -- requires 64-bit
     ALIGNMENT = double
 );
 

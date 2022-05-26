@@ -9,10 +9,6 @@ ifneq (,$(indexonlyscan_supported))
 export PGOPTIONS = -c enable_indexonlyscan=off
 endif
 
-pg_config_h := $(shell $(PG_CONFIG) --includedir-server)/pg_config.h
-use_float8_byval := $(shell if grep -q 'USE_FLOAT8_BYVAL 1' $(pg_config_h) || grep -q 'SIZEOF_VOID_P 8' $(pg_config_h); then echo yes; fi)
-comma = ,
-
 extension_version = 0
 
 EXTENSION = uint
@@ -29,7 +25,7 @@ PGXS := $(shell $(PG_CONFIG) --pgxs)
 include $(PGXS)
 
 uint--$(extension_version).sql: uint.sql hash.sql hex.sql operators.sql
-	cat $^ | sed 's/@UINT8_PASSEDBYVALUE@/$(if $(use_float8_byval),PASSEDBYVALUE$(comma))/' >$@
+	cat $^ >$@
 
 PYTHON ?= python
 
