@@ -1,0 +1,36 @@
+env:
+  DEBIAN_FRONTEND: noninteractive
+  LANG: C
+
+task:
+  name: Linux (Debian/Ubuntu)
+  matrix:
+    - container:
+        image: ubuntu:20.04
+  env:
+    matrix:
+      - PGVERSION: 14
+      - PGVERSION: 13
+      - PGVERSION: 12
+      - PGVERSION: 11
+      - PGVERSION: 10
+      - PGVERSION: 9.6
+      - PGVERSION: 9.5
+      - PGVERSION: 9.4
+      - PGVERSION: 9.3
+  setup_script:
+    - apt-get update
+    - apt-get -y install curl gnupg lsb-release
+    - curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+    - echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list
+    - apt-get update
+    - apt-get -y install gcc make pep8 postgresql-$PGVERSION postgresql-server-dev-$PGVERSION pyflakes pylint
+    - pg_createcluster --start $PGVERSION test -p 55435 -- -A trust
+  build_script:
+    - PATH=/usr/lib/postgresql/$PGVERSION/bin:$PATH
+    - make python-check
+    - make all
+    - make install
+  test_script:
+    - PATH=/usr/lib/postgresql/$PGVERSION/bin:$PATH
+    - PGPORT=55435 make installcheck PGUSER=postgres
