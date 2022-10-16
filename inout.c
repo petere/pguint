@@ -14,7 +14,11 @@ int1in(PG_FUNCTION_ARGS)
 {
 	char	   *s = PG_GETARG_CSTRING(0);
 
+	#if PG_VERSION_NUM >= 150000
+	PG_RETURN_INT8(pg_strtoint64(s));
+	#else
 	PG_RETURN_INT8(pg_atoi(s, sizeof(int8), '\0'));
+	#endif
 }
 
 PG_FUNCTION_INFO_V1(int1out);
