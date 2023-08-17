@@ -105,9 +105,23 @@ CREATE FUNCTION uint4out(uint4) RETURNS cstring
     LANGUAGE C
     AS '$libdir/uint', 'uint4out';
 
+CREATE FUNCTION uint4recv(internal) RETURNS uint4
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'uint4recv';
+
+CREATE FUNCTION uint4send(uint4) RETURNS bytea
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'uint4send';
+
 CREATE TYPE uint4 (
     INPUT = uint4in,
     OUTPUT = uint4out,
+    RECEIVE = uint4recv,
+    SEND = uint4send,
     INTERNALLENGTH = 4,
     PASSEDBYVALUE,
     ALIGNMENT = int4
@@ -136,9 +150,23 @@ CREATE FUNCTION uint8out(uint8) RETURNS cstring
     LANGUAGE C
     AS '$libdir/uint', 'uint8out';
 
+CREATE FUNCTION uint8recv(internal) RETURNS uint8
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'uint8recv';
+
+CREATE FUNCTION uint8send(uint8) RETURNS bytea
+    IMMUTABLE
+    STRICT
+    LANGUAGE C
+    AS '$libdir/uint', 'uint8send';
+
 CREATE TYPE uint8 (
     INPUT = uint8in,
     OUTPUT = uint8out,
+    RECEIVE = uint8recv,
+    SEND = uint8send,
     INTERNALLENGTH = 8,
     PASSEDBYVALUE,  -- requires 64-bit
     ALIGNMENT = double

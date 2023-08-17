@@ -1,4 +1,6 @@
 #include <postgres.h>
+#include <lib/stringinfo.h>
+#include <libpq/pqformat.h>
 #include <fmgr.h>
 #include <utils/builtins.h>
 
@@ -151,6 +153,25 @@ uint4out(PG_FUNCTION_ARGS)
 	PG_RETURN_CSTRING(result);
 }
 
+PG_FUNCTION_INFO_V1(uint4recv);
+Datum uint4recv(PG_FUNCTION_ARGS)
+{
+    StringInfo msg = (StringInfo)PG_GETARG_POINTER(0);
+    uint32 data = pq_getmsgint(msg, 4);
+
+    PG_RETURN_UINT32(data);
+}
+
+PG_FUNCTION_INFO_V1(uint4send);
+Datum uint4send(PG_FUNCTION_ARGS)
+{
+    uint32 data = PG_GETARG_UINT32(0);
+    StringInfoData buf;
+    pq_begintypsend(&buf);
+    pq_sendint32(&buf, data);
+    PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
+}
+
 PG_FUNCTION_INFO_V1(uint8in);
 Datum
 uint8in(PG_FUNCTION_ARGS)
@@ -202,4 +223,23 @@ uint8out(PG_FUNCTION_ARGS)
 
 	sprintf(result, "%"PRIu64, (uint64_t) arg1);
 	PG_RETURN_CSTRING(result);
+}
+
+PG_FUNCTION_INFO_V1(uint8recv);
+Datum uint8recv(PG_FUNCTION_ARGS)
+{
+    StringInfo msg = (StringInfo)PG_GETARG_POINTER(0);
+    uint64 data = pq_getmsgint64(msg);
+
+    PG_RETURN_UINT64(data);
+}
+
+PG_FUNCTION_INFO_V1(uint8send);
+Datum uint8send(PG_FUNCTION_ARGS)
+{
+    uint64 data = PG_GETARG_UINT64(0);
+    StringInfoData buf;
+    pq_begintypsend(&buf);
+    pq_sendint64(&buf, data);
+    PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
 }
