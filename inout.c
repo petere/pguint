@@ -30,6 +30,25 @@ int1out(PG_FUNCTION_ARGS)
 	PG_RETURN_CSTRING(result);
 }
 
+PG_FUNCTION_INFO_V1(int1recv);
+Datum int1recv(PG_FUNCTION_ARGS)
+{
+	StringInfo msg = (StringInfo)PG_GETARG_POINTER(0);
+	int8 data = pq_getmsgint(msg, 1);
+
+	PG_RETURN_INT8(data);
+}
+
+PG_FUNCTION_INFO_V1(int1send);
+Datum int1send(PG_FUNCTION_ARGS)
+{
+	int8 data = PG_GETARG_INT8(0);
+	StringInfoData buf;
+	pq_begintypsend(&buf);
+	pq_sendint(&buf, data, 1);
+	PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
+}
+
 static uint32
 pg_atou(const char *s, int size)
 {
@@ -113,6 +132,25 @@ uint1out(PG_FUNCTION_ARGS)
 	PG_RETURN_CSTRING(result);
 }
 
+PG_FUNCTION_INFO_V1(uint1recv);
+Datum uint1recv(PG_FUNCTION_ARGS)
+{
+	StringInfo msg = (StringInfo)PG_GETARG_POINTER(0);
+	uint8 data = pq_getmsgint(msg, 1);
+
+	PG_RETURN_UINT8(data);
+}
+
+PG_FUNCTION_INFO_V1(uint1send);
+Datum uint1send(PG_FUNCTION_ARGS)
+{
+	uint8 data = PG_GETARG_UINT8(0);
+	StringInfoData buf;
+	pq_begintypsend(&buf);
+	pq_sendint(&buf, data, 1);
+	PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
+}
+
 PG_FUNCTION_INFO_V1(uint2in);
 Datum
 uint2in(PG_FUNCTION_ARGS)
@@ -131,6 +169,25 @@ uint2out(PG_FUNCTION_ARGS)
 
 	sprintf(result, "%u", arg1);
 	PG_RETURN_CSTRING(result);
+}
+
+PG_FUNCTION_INFO_V1(uint2recv);
+Datum uint2recv(PG_FUNCTION_ARGS)
+{
+	StringInfo msg = (StringInfo)PG_GETARG_POINTER(0);
+	uint16 data = pq_getmsgint(msg, 2);
+
+	PG_RETURN_UINT8(data);
+}
+
+PG_FUNCTION_INFO_V1(uint2send);
+Datum uint2send(PG_FUNCTION_ARGS)
+{
+	uint16 data = PG_GETARG_UINT16(0);
+	StringInfoData buf;
+	pq_begintypsend(&buf);
+	pq_sendint(&buf, data, 2);
+	PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
 }
 
 PG_FUNCTION_INFO_V1(uint4in);
@@ -168,8 +225,8 @@ Datum uint4send(PG_FUNCTION_ARGS)
     uint32 data = PG_GETARG_UINT32(0);
     StringInfoData buf;
     pq_begintypsend(&buf);
-    pq_sendint32(&buf, data);
-    PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
+	pq_sendint(&buf, data, 4);
+	PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
 }
 
 PG_FUNCTION_INFO_V1(uint8in);
