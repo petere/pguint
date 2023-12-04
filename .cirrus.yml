@@ -16,8 +16,6 @@ task:
       - PGVERSION: 10
       - PGVERSION: 9.6
       - PGVERSION: 9.5
-      - PGVERSION: 9.4
-      - PGVERSION: 9.3
   setup_script:
     - apt-get update
     - apt-get -y install curl gnupg lsb-release

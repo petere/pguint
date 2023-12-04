@@ -11,15 +11,15 @@ SELECT '-55'::int1;
 (1 row)
 
 SELECT ''::int1;
-ERROR:  invalid input syntax for integer: ""
+ERROR:  invalid input syntax for type integer: ""
 LINE 1: SELECT ''::int1;
                ^
 SELECT 'x'::int1;
-ERROR:  invalid input syntax for integer: "x"
+ERROR:  invalid input syntax for type integer: "x"
 LINE 1: SELECT 'x'::int1;
                ^
 SELECT '55 x'::int1;
-ERROR:  invalid input syntax for integer: "55 x"
+ERROR:  invalid input syntax for type integer: "55 x"
 LINE 1: SELECT '55 x'::int1;
                ^
 SELECT '127'::int1;
@@ -20113,7 +20113,7 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::int2;
                   QUERY PLAN                   
 -----------------------------------------------
  Index Scan using test_int1_x_key on test_int1
-   Index Cond: (x = 3::smallint)
+   Index Cond: (x = '3'::smallint)
 (2 rows)
 
 SELECT * FROM test_int1 WHERE x = 3::int2;
@@ -20139,7 +20139,7 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_int1 WHERE x = 3::int8;
                   QUERY PLAN                   
 -----------------------------------------------
  Index Scan using test_int1_x_key on test_int1
-   Index Cond: (x = 3::bigint)
+   Index Cond: (x = '3'::bigint)
 (2 rows)
 
 SELECT * FROM test_int1 WHERE x = 3::int8;
@@ -20224,7 +20224,7 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::int2;
                    QUERY PLAN                    
 -------------------------------------------------
  Index Scan using test_uint1_x_key on test_uint1
-   Index Cond: (x = 3::smallint)
+   Index Cond: (x = '3'::smallint)
 (2 rows)
 
 SELECT * FROM test_uint1 WHERE x = 3::int2;
@@ -20250,7 +20250,7 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_uint1 WHERE x = 3::int8;
                    QUERY PLAN                    
 -------------------------------------------------
  Index Scan using test_uint1_x_key on test_uint1
-   Index Cond: (x = 3::bigint)
+   Index Cond: (x = '3'::bigint)
 (2 rows)
 
 SELECT * FROM test_uint1 WHERE x = 3::int8;
@@ -20335,7 +20335,7 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::int2;
                    QUERY PLAN                    
 -------------------------------------------------
  Index Scan using test_uint2_x_key on test_uint2
-   Index Cond: (x = 3::smallint)
+   Index Cond: (x = '3'::smallint)
 (2 rows)
 
 SELECT * FROM test_uint2 WHERE x = 3::int2;
@@ -20361,7 +20361,7 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_uint2 WHERE x = 3::int8;
                    QUERY PLAN                    
 -------------------------------------------------
  Index Scan using test_uint2_x_key on test_uint2
-   Index Cond: (x = 3::bigint)
+   Index Cond: (x = '3'::bigint)
 (2 rows)
 
 SELECT * FROM test_uint2 WHERE x = 3::int8;
@@ -20446,7 +20446,7 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::int2;
                    QUERY PLAN                    
 -------------------------------------------------
  Index Scan using test_uint4_x_key on test_uint4
-   Index Cond: (x = 3::smallint)
+   Index Cond: (x = '3'::smallint)
 (2 rows)
 
 SELECT * FROM test_uint4 WHERE x = 3::int2;
@@ -20472,7 +20472,7 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_uint4 WHERE x = 3::int8;
                    QUERY PLAN                    
 -------------------------------------------------
  Index Scan using test_uint4_x_key on test_uint4
-   Index Cond: (x = 3::bigint)
+   Index Cond: (x = '3'::bigint)
 (2 rows)
 
 SELECT * FROM test_uint4 WHERE x = 3::int8;
@@ -20557,7 +20557,7 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::int2;
                    QUERY PLAN                    
 -------------------------------------------------
  Index Scan using test_uint8_x_key on test_uint8
-   Index Cond: (x = 3::smallint)
+   Index Cond: (x = '3'::smallint)
 (2 rows)
 
 SELECT * FROM test_uint8 WHERE x = 3::int2;
@@ -20583,7 +20583,7 @@ EXPLAIN (COSTS OFF) SELECT * FROM test_uint8 WHERE x = 3::int8;
                    QUERY PLAN                    
 -------------------------------------------------
  Index Scan using test_uint8_x_key on test_uint8
-   Index Cond: (x = 3::bigint)
+   Index Cond: (x = '3'::bigint)
 (2 rows)
 
 SELECT * FROM test_uint8 WHERE x = 3::int8;
