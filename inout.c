@@ -8,13 +8,65 @@
 #include <limits.h>
 
 
+/*
+ * Copy of old pg_atoi() from PostgreSQL, cut down to support int8 only.
+ */
+static int8
+my_pg_atoi8(const char *s)
+{
+	long		result;
+	char	   *badp;
+
+	/*
+	 * Some versions of strtol treat the empty string as an error, but some
+	 * seem not to.  Make an explicit test to be sure we catch it.
+	 */
+	if (s == NULL)
+		elog(ERROR, "NULL pointer");
+	if (*s == 0)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+				 errmsg("invalid input syntax for type %s: \"%s\"",
+						"integer", s)));
+
+	errno = 0;
+	result = strtol(s, &badp, 10);
+
+	/* We made no progress parsing the string, so bail out */
+	if (s == badp)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+				 errmsg("invalid input syntax for type %s: \"%s\"",
+						"integer", s)));
+
+	if (errno == ERANGE || result < SCHAR_MIN || result > SCHAR_MAX)
+		ereport(ERROR,
+				(errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
+				 errmsg("value \"%s\" is out of range for 8-bit integer", s)));
+
+	/*
+	 * Skip any trailing whitespace; if anything but whitespace remains before
+	 * the terminating character, bail out
+	 */
+	while (*badp && isspace((unsigned char) *badp))
+		badp++;
+
+	if (*badp)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
+				 errmsg("invalid input syntax for type %s: \"%s\"",
+						"integer", s)));
+
+	return (int8) result;
+}
+
 PG_FUNCTION_INFO_V1(int1in);
 Datum
 int1in(PG_FUNCTION_ARGS)
 {
 	char	   *s = PG_GETARG_CSTRING(0);
 
-	PG_RETURN_INT8(pg_atoi(s, sizeof(int8), '\0'));
+	PG_RETURN_INT8(my_pg_atoi8(s));
 }
 
 PG_FUNCTION_INFO_V1(int1out);
