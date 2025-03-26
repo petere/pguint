@@ -28,11 +28,12 @@ uint--$(extension_version).sql: uint.sql hash.sql hex.sql operators.sql
 	cat $^ >$@
 
 PYTHON ?= python
+PYFLAKES ?= pyflakes
 
 operators.c operators.sql test/sql/operators.sql: generate.py
 	$(PYTHON) $< $(MAJORVERSION)
 
 python-check: generate.py
 	pep8 $^
-	pyflakes $^
+	$(PYFLAKES) $^
 	pylint $^
