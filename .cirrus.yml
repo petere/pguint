@@ -9,6 +9,7 @@ task:
         image: ubuntu:20.04
   env:
     matrix:
+      - PGVERSION: 17
       - PGVERSION: 16
       - PGVERSION: 15
       - PGVERSION: 14
