@@ -24,7 +24,7 @@ task:
     - curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
     - echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list
     - apt-get update
-    - apt-get -y install gcc make pep8 postgresql-$PGVERSION postgresql-server-dev-$PGVERSION pyflakes3 pylint
+    - apt-get -y install gcc make postgresql-$PGVERSION postgresql-server-dev-$PGVERSION pycodestyle pyflakes3 pylint
     - pg_createcluster --start $PGVERSION test -p 55435 -- -A trust
   build_script:
     - PATH=/usr/lib/postgresql/$PGVERSION/bin:$PATH

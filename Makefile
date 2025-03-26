@@ -34,6 +34,6 @@ operators.c operators.sql test/sql/operators.sql: generate.py
 	$(PYTHON) $< $(MAJORVERSION)
 
 python-check: generate.py
-	pep8 $^
+	pycodestyle $^
 	$(PYFLAKES) $^
 	pylint $^
