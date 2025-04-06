@@ -1,0 +1,43 @@
+{
+   "name": "uint",
+   "abstract": "Unsigned integer types extension for PostgreSQL",
+   "description": "This extension provides additional integer types for PostgreSQL: int1, uint1, uint2, uint4, uint8",
+   "version": "0.0.1",
+   "maintainer": "Peter Eisentraut <peter_e@gmx.net>",
+   "license": "postgresql",
+   "provides": {
+      "semver": {
+         "abstract": "A semantic version data type",
+         "file": "uint.sql",
+         "docfile": "README.mmd",
+         "version": "0.0.1"
+      }
+   },
+   "prereqs": {
+      "runtime": {
+         "requires": {
+            "PostgreSQL": "9.1.0"
+         }
+      }
+   },
+   "resources": {
+      "bugtracker": {
+         "web": "https://github.com/petere/pguint/issues/"
+      },
+      "repository": {
+        "url":  "git://github.com/petere/pguint.git",
+        "web":  "https://github.com/petere/pguint/",
+        "type": "git"
+      }
+   },
+   "generated_by": "David E. Wheeler",
+   "meta-spec": {
+      "version": "1.0.0",
+      "url": "http://pgxn.org/meta/spec.txt"
+   },
+   "tags": [
+      "integer",
+      "unsigned",
+      "unsigned integer"
+   ]
+}
