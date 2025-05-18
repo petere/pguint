@@ -11,15 +11,15 @@ SELECT '-55'::int1;
 (1 row)
 
 SELECT ''::int1;
-ERROR:  invalid input syntax for integer: ""
+ERROR:  invalid input syntax for type integer: ""
 LINE 1: SELECT ''::int1;
                ^
 SELECT 'x'::int1;
-ERROR:  invalid input syntax for integer: "x"
+ERROR:  invalid input syntax for type integer: "x"
 LINE 1: SELECT 'x'::int1;
                ^
 SELECT '55 x'::int1;
-ERROR:  invalid input syntax for integer: "55 x"
+ERROR:  invalid input syntax for type integer: "55 x"
 LINE 1: SELECT '55 x'::int1;
                ^
 SELECT '127'::int1;

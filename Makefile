@@ -19,7 +19,7 @@ OBJS = aggregates.o hash.o hex.o inout.o magic.o misc.o operators.o
 DATA_built = uint--1.sql uint--0--1.sql \
 		 uint--0.sql
 
-REGRESS = init hash hex operators misc drop
+REGRESS = init hash hex operators misc binary drop upgrade
 REGRESS_OPTS = --inputdir=test
 
 EXTRA_CLEAN += operators.c operators--0.sql.in test/sql/operators.sql
