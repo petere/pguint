@@ -433,7 +433,7 @@ SELECT '5'::{lefttype} {op} '-2'::{righttype};
 
 def main(pgversion):
     f_c = open('operators.c', 'w')
-    f_sql = open('operators.sql', 'w')
+    f_sql = open('operators--0.sql.in', 'w')
     f_test_sql = open('test/sql/operators.sql', 'w')
 
     f_c.write("""\

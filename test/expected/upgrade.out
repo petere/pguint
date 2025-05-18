@@ -1,0 +1,78 @@
+-- Test extension upgrade from version 0 to 1
+-- Version 0 has the types without binary I/O
+-- Version 1 adds the binary send/recv functions
+-- Start with version 0
+CREATE EXTENSION uint VERSION '0';
+-- Test that types work
+SELECT 42::uint4;
+ uint4 
+-------
+ 42
+(1 row)
+
+SELECT 255::uint1;
+ uint1 
+-------
+ 255
+(1 row)
+
+-- Verify binary functions don't exist yet
+\df uint1send
+                       List of functions
+ Schema | Name | Result data type | Argument data types | Type 
+--------+------+------------------+---------------------+------
+(0 rows)
+
+\df uint1recv
+                       List of functions
+ Schema | Name | Result data type | Argument data types | Type 
+--------+------+------------------+---------------------+------
+(0 rows)
+
+-- Upgrade to version 1
+ALTER EXTENSION uint UPDATE TO '1';
+-- Verify binary functions now exist
+\df uint1send
+                         List of functions
+ Schema |   Name    | Result data type | Argument data types | Type 
+--------+-----------+------------------+---------------------+------
+ public | uint1send | bytea            | uint1               | func
+(1 row)
+
+\df uint1recv
+                         List of functions
+ Schema |   Name    | Result data type | Argument data types | Type 
+--------+-----------+------------------+---------------------+------
+ public | uint1recv | uint1            | internal            | func
+(1 row)
+
+-- Test binary protocol functions work
+SELECT encode(uint1send(255::uint1), 'hex');
+ encode 
+--------
+ ff
+(1 row)
+
+SELECT encode(uint4send(4294967295::uint4), 'hex');
+  encode  
+----------
+ ffffffff
+(1 row)
+
+-- Test roundtrip through binary format
+CREATE TEMP TABLE upgrade_test (
+    u1 uint1,
+    u4 uint4
+);
+INSERT INTO upgrade_test VALUES (128, 2147483648);
+-- Use COPY to test binary I/O
+COPY upgrade_test TO '/tmp/upgrade_test.dat' WITH (FORMAT binary);
+DELETE FROM upgrade_test;
+COPY upgrade_test FROM '/tmp/upgrade_test.dat' WITH (FORMAT binary);
+SELECT * FROM upgrade_test;
+ u1  |     u4     
+-----+------------
+ 128 | 2147483648
+(1 row)
+
+DROP TABLE upgrade_test;
