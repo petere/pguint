@@ -43,7 +43,7 @@ PYTHON ?= python
 PYFLAKES ?= pyflakes
 
 operators.c operators--0.sql.in test/sql/operators.sql: generate.py
-	$(PYTHON) $< $(pg_version)
+	$(PYTHON) $< $(MAJORVERSION)
 
 python-check: generate.py
 	pycodestyle $^
