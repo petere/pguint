@@ -108,9 +108,9 @@ pg_atou(const char *s, int size)
 	{
 		case sizeof(uint32):
 			if (errno == ERANGE
-#if defined(HAVE_LONG_INT_64)
+#if SIZEOF_LONG == 8
 				|| result > UINT_MAX
-				#endif
+#endif
 				)
 				out_of_range = true;
 			break;
