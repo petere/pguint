@@ -12,7 +12,7 @@ This extension provides additional integer types for PostgreSQL:
 Installation
 ------------
 
-PostgreSQL version 9.1 or later is required.  Currently, only 64-bit
+PostgreSQL version 9.2 or later is required.  Currently, only 64-bit
 builds are supported.
 
 To build and install this module:

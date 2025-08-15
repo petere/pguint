@@ -255,9 +255,8 @@ def write_cmp_sql_function(f, leftarg, rightarg):
     write_sql_function(f, funcname, [leftarg, rightarg], 'integer')
 
 
-def write_sortsupport_c_function(f, typ, pgversion):
-    if pgversion >= 9.2:
-        f.write("""
+def write_sortsupport_c_function(f, typ):
+    f.write("""
 static int
 bt{typ}fastcmp(Datum x, Datum y, SortSupport ssup)
 {{
@@ -284,7 +283,7 @@ bt{typ}sortsupport(PG_FUNCTION_ARGS)
 """.format(typ=typ, ctype=c_types[typ], Ctype=c_types[typ].replace('u', 'U').replace('i', 'I')))
 
 
-def write_opclasses_sql(f, typ, pgversion):
+def write_opclasses_sql(f, typ):
     f.write("""CREATE OPERATOR CLASS {typ}_ops
     DEFAULT FOR TYPE {typ} USING btree FAMILY integer_ops AS
         OPERATOR        1       < ,
@@ -292,11 +291,8 @@ def write_opclasses_sql(f, typ, pgversion):
         OPERATOR        3       = ,
         OPERATOR        4       >= ,
         OPERATOR        5       > ,
-        FUNCTION        1       bt{typ}{typ}cmp({typ}, {typ})""".format(typ=typ))
-    if pgversion >= 9.2:
-        f.write(""",
-        FUNCTION        2       bt{typ}sortsupport(internal)""".format(typ=typ))
-    f.write(""";
+        FUNCTION        1       bt{typ}{typ}cmp({typ}, {typ}),
+        FUNCTION        2       bt{typ}sortsupport(internal);
 
 CREATE OPERATOR CLASS {typ}_ops
     DEFAULT FOR TYPE {typ} USING hash FAMILY integer_ops AS
@@ -432,6 +428,7 @@ SELECT '5'::{lefttype} {op} '-2'::{righttype};
 
 
 def main(pgversion):
+    _ = pgversion  # unused
     f_c = open('operators.c', 'w', encoding='ascii')
     f_sql = open('operators.sql', 'w', encoding='ascii')
     f_test_sql = open('test/sql/operators.sql', 'w', encoding='ascii')
@@ -442,9 +439,7 @@ def main(pgversion):
 
 #include "uint.h"
 
-""")
-    if pgversion >= 9.2:
-        f_c.write("""#include <utils/sortsupport.h>
+#include <utils/sortsupport.h>
 
 """)
 
@@ -565,10 +560,9 @@ SELECT '6'::{typ} {op} 3;
 
         f_test_sql.write("\n")
 
-        write_sortsupport_c_function(f_c, arg, pgversion)
-        if pgversion >= 9.2:
-            write_sql_function(f_sql, 'bt' + arg + 'sortsupport', ['internal'], 'void')
-        write_opclasses_sql(f_sql, arg, pgversion)
+        write_sortsupport_c_function(f_c, arg)
+        write_sql_function(f_sql, 'bt' + arg + 'sortsupport', ['internal'], 'void')
+        write_opclasses_sql(f_sql, arg)
 
         for agg, funcname, op in [('min', arg + "smaller", '<'),
                                   ('max', arg + "larger", '>')]:
