@@ -9,6 +9,7 @@ task:
         image: ubuntu:24.04
   env:
     matrix:
+      - PGVERSION: 18
       - PGVERSION: 17
       - PGVERSION: 16
       - PGVERSION: 15
@@ -23,7 +24,7 @@ task:
     - apt-get update
     - apt-get -y install curl gnupg lsb-release
     - curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-    - echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list
+    - echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main 18" | tee /etc/apt/sources.list.d/pgdg.list
     - apt-get update
     - apt-get -y install gcc make postgresql-$PGVERSION postgresql-server-dev-$PGVERSION pycodestyle pyflakes3 pylint
     - pg_createcluster --start $PGVERSION test -p 55435 -- -A trust
