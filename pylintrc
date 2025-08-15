@@ -1,5 +1,5 @@
 [MESSAGES CONTROL]
-disable=R,invalid-name,missing-docstring
+disable=R,consider-using-f-string,invalid-name,missing-docstring,invalid-format-index
 
 [REPORTS]
 output-format=colorized

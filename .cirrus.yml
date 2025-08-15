@@ -6,7 +6,7 @@ task:
   name: Linux (Debian/Ubuntu)
   matrix:
     - container:
-        image: ubuntu:20.04
+        image: ubuntu:24.04
   env:
     matrix:
       - PGVERSION: 17
