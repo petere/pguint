@@ -1,5 +1,6 @@
 *.dylib
 *.o
+*.bc
 *.so
 /results/
 /*--*.sql
