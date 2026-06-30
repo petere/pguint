@@ -8,6 +8,15 @@
 #define DatumGetInt8(X)		((int8) (X))
 #endif
 
+#if PG_VERSION_NUM >= 190000
+
+static inline Datum
+Int8GetDatum(int8 X)
+{
+	return (Datum) X;
+}
+
+#endif
 
 #if PG_VERSION_NUM < 90600
 
