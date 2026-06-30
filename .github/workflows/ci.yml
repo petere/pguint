@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  DEBIAN_FRONTEND: noninteractive
+  LANG: C
+
+jobs:
+  linux:
+    name: Linux (Ubuntu) - PG ${{ matrix.pgversion }}
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        pgversion:
+          - 18
+          - 17
+          - 16
+          - 15
+          - 14
+          - 13
+          - 12
+          - 11
+          - 10
+          - 9.6
+          - 9.5
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-common ca-certificates build-essential
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -v ${{ matrix.pgversion }} -i -p
+          sudo apt-get install -y pycodestyle pyflakes3 pylint
+
+      - name: Build and install
+        run: |
+          PATH=/usr/lib/postgresql/${{ matrix.pgversion }}/bin:$PATH
+          make python-check PYFLAKES=pyflakes3
+          make all
+          sudo PATH="$PATH" make install
+
+      - name: Test
+        run: |
+          PATH=/usr/lib/postgresql/${{ matrix.pgversion }}/bin:$PATH
+          sudo pg_createcluster --start ${{ matrix.pgversion }} test -p 55435 -- -A trust
+          PGPORT=55435 make installcheck PGUSER=postgres
+
+      - name: Upload logs
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: regression-diffs-pg${{ matrix.pgversion }}
+          path: regression.diffs
